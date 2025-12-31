@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -9,170 +10,163 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>SwiftConvert | Free HEIC to JPG Online - 100% Private & Bulk</title>
-    <meta name="description" content="Convert HEIC and WebP to JPG for free. No file upload required - all processing happens in your browser for 100% privacy. Fast, bulk conversion tool.">
-    <meta name="keywords" content="HEIC to JPG, WebP to JPG, Image Converter, Privacy, Free Online Converter, Batch Convert">
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
-    
-
+    <title>SwiftConvert | HEIC, WebP, PNG to JPG & PDF</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body class="bg-slate-50 min-h-screen font-sans">
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900 py-12 px-4">
 
-    <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
         <header class="text-center mb-12">
-            <h1 class="text-5xl font-black text-slate-900 tracking-tight mb-4">SwiftConvert<span class="text-indigo-600">.io</span></h1>
-            <p class="text-slate-500 text-lg max-w-lg mx-auto">The fastest way to convert photos. <span class="text-indigo-600 font-semibold">No uploads</span>, just instant privacy-first conversion.</p>
+            <h1 class="text-5xl font-black tracking-tight text-slate-900 mb-3">SwiftConvert<span class="text-indigo-600">.io</span></h1>
+            <p class="text-slate-500 font-medium">Simple, Fast & 100% Local Image Converter</p>
         </header>
 
-        <div id="drop-zone" class="bg-white border-4 border-dashed border-indigo-100 rounded-[2.5rem] p-12 md:p-20 text-center hover:border-indigo-400 transition-all cursor-pointer shadow-xl shadow-indigo-100/50 group">
-            <input type="file" id="file-input" accept=".heic,.webp" multiple class="hidden">
-            <div class="space-y-6">
-                <div class="bg-indigo-600 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto transform group-hover:rotate-6 transition-transform shadow-lg shadow-indigo-200">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        <div class="bg-white rounded-3xl p-6 mb-6 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-6">
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-3 text-slate-400">
+                    <label class="text-[10px] font-black uppercase tracking-widest">Quality</label>
+                    <input type="range" id="quality-slider" min="0.1" max="1.0" step="0.1" value="0.8" class="w-32 h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                    <span id="quality-val" class="text-indigo-600 font-bold text-xs">80%</span>
                 </div>
+            </div>
+            
+            <button id="clear-all" class="text-slate-300 hover:text-red-500 transition-colors flex items-center text-[10px] font-black uppercase tracking-widest">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4m-4 0a1 1 0 00-1 1v1h6V4a1 1 0 00-1-1m-4 0h4m-5 1h6"></path></svg>
+                Reset
+            </button>
+        </div>
+
+        <div id="drop-zone" class="bg-white border-4 border-dashed border-slate-200 rounded-[2.5rem] p-16 text-center hover:border-indigo-300 transition-all cursor-pointer group shadow-xl shadow-slate-200/50">
+            <input type="file" id="file-input" accept=".heic,.webp,.jpg,.jpeg,.png" multiple class="hidden">
+            
+            <div class="flex flex-col items-center space-y-8">
+                <div class="flex items-center justify-center gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-[9px] font-black text-slate-400 transform -rotate-6 group-hover:rotate-0 transition-transform tracking-tighter">HEIC</div>
+                        <div class="w-12 h-12 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-[9px] font-black text-slate-600 shadow-sm relative z-10 tracking-tighter">PNG</div>
+                        <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-[9px] font-black text-slate-400 transform rotate-6 group-hover:rotate-0 transition-transform tracking-tighter">WEBP</div>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <div class="bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl">
+                        <span class="text-xs font-black text-indigo-600 uppercase tracking-tighter leading-none">JPG / PDF</span>
+                    </div>
+                </div>
+
                 <div>
-                    <p class="text-2xl font-bold text-slate-800">Select HEIC or WebP images</p>
-                    <p class="text-slate-400 mt-2">or drag and drop files here</p>
+                    <p class="text-2xl font-black text-slate-800 tracking-tight leading-none">Drop files to convert</p>
+                    <p class="text-slate-400 text-sm mt-3 font-medium">No server uploads • 100% Secure</p>
                 </div>
             </div>
         </div>
 
-        <section id="file-list-container" class="mt-10 bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden hidden">
-            <div class="p-6 border-b border-slate-50 flex justify-between items-center bg-slate-50/50">
-                <span id="file-count" class="font-bold text-slate-600 uppercase tracking-widest text-xs">Ready</span>
-                <button id="download-all" class="hidden bg-indigo-600 text-white font-bold px-8 py-2.5 rounded-full text-sm hover:bg-indigo-700 transition-all active:scale-95 shadow-lg shadow-indigo-200">DOWNLOAD ALL (ZIP)</button>
+        <section id="file-list-container" class="mt-8 bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden hidden transform transition-all">
+            <div class="p-6 border-b border-slate-50 flex flex-wrap justify-between items-center gap-4 bg-slate-50/50">
+                <span id="file-count" class="font-black text-slate-400 uppercase tracking-widest text-[10px]">Processing Queue</span>
+                <div class="flex items-center gap-3">
+                    <button id="main-download-btn" class="bg-indigo-600 text-white font-black px-8 py-3 rounded-2xl text-[10px] hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 uppercase tracking-widest">Download Results</button>
+                    <button id="download-pdf" class="bg-slate-900 text-white font-black px-8 py-3 rounded-2xl text-[10px] hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10 uppercase tracking-widest">Save as PDF</button>
+                </div>
             </div>
-            <ul id="file-list" class="divide-y divide-slate-50 max-h-96 overflow-y-auto"></ul>
+            <ul id="file-list" class="divide-y divide-slate-50 max-h-80 overflow-y-auto"></ul>
         </section>
 
-        <section class="mt-24 border-t border-slate-200 pt-16">
-            <div class="grid md:grid-cols-3 gap-6 mb-20">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m12.892 9.04A12.001 12.001 0 0112 21.32a12.001 12.001 0 01-8.892-9.34L3 12.626V11.7a12.001 12.001 0 0118 0v.926l-.382.1z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-slate-800 text-lg mb-3">100% Private</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your photos never touch our servers. All processing is done locally in your browser, keeping your data safe.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 text-emerald-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-slate-800 text-lg mb-3">Batch Convert</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Stop converting photos one by one. Drag multiple files and get your results in a single ZIP file instantly.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-slate-800 text-lg mb-3">No Install</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">No software to download. Works on Windows, Mac, and Linux directly through your web browser.</p>
-                </div>
+        <section class="mt-20 border-t border-slate-200 pt-16 grid md:grid-cols-2 gap-12 pb-20">
+            <div>
+                <h3 class="text-lg font-black text-slate-800 uppercase tracking-tight mb-4 leading-none">Privacy Guaranteed</h3>
+                <p class="text-slate-500 text-sm leading-relaxed font-medium">SwiftConvert processes all images locally in your browser. We don't have servers that store your files, ensuring 100% privacy and security for your personal photos.</p>
             </div>
-
-            <div class="max-w-2xl mx-auto">
-                <h2 class="text-3xl font-black text-slate-900 text-center mb-10 tracking-tight">FAQ</h2>
-                <div class="space-y-4">
-                    <details class="group bg-white rounded-2xl border border-slate-100 shadow-sm" open>
-                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-slate-800">
-                            How to convert HEIC to JPG?
-                            <span class="transition group-open:rotate-180 opacity-50"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></span>
-                        </summary>
-                        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
-                            Select your HEIC files using the box above. The tool will convert them to high-quality JPGs locally. Once finished, download them individually or as a ZIP.
-                        </div>
-                    </details>
-                    <details class="group bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-slate-800">
-                            Does it work with WebP?
-                            <span class="transition group-open:rotate-180 opacity-50"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></span>
-                        </summary>
-                        <div class="px-6 pb-6 text-slate-500 text-sm leading-relaxed">
-                            Yes! Our converter supports both .HEIC (Apple) and .WebP (Google) image formats, converting both to universally compatible JPGs.
-                        </div>
-                    </details>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2 leading-none">Smart Batch</h4>
+                    <p class="text-slate-500 text-[13px] leading-relaxed font-medium">Upload multiple files to get a ZIP archive, or a single file for an instant JPG download.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h4 class="text-xs font-black text-slate-800 uppercase tracking-widest mb-2 leading-none">Format Support</h4>
+                    <p class="text-slate-500 text-[13px] leading-relaxed font-medium">Easily convert Apple HEIC, Google WebP, and standard PNG files into universal JPG or PDF formats.</p>
                 </div>
             </div>
         </section>
 
-        <footer class="mt-32 text-center py-12 border-t border-slate-200">
-            <div class="flex justify-center gap-8 mb-6 text-slate-400 text-sm font-medium">
-                <a href="#" class="hover:text-indigo-600 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-indigo-600 transition-colors">Terms</a>
-                <a href="mailto:support@swiftconvert.io" class="hover:text-indigo-600 transition-colors">Contact</a>
-            </div>
-            <p class="text-slate-400 text-xs tracking-widest uppercase font-bold">&copy; 2025 SwiftConvert.io</p>
+        <footer class="text-center py-10 border-t border-slate-100">
+            <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">&copy; 2025 SwiftConvert.io</p>
         </footer>
     </div>
 
     <script>
+        const { jsPDF } = window.jspdf;
         const fileInput = document.getElementById('file-input');
         const dropZone = document.getElementById('drop-zone');
         const fileList = document.getElementById('file-list');
         const container = document.getElementById('file-list-container');
-        const downloadAllBtn = document.getElementById('download-all');
+        const mainBtn = document.getElementById('main-download-btn');
+        const downloadPdfBtn = document.getElementById('download-pdf');
+        const clearAllBtn = document.getElementById('clear-all');
+        const qualitySlider = document.getElementById('quality-slider');
+        const qualityVal = document.getElementById('quality-val');
         const fileCountText = document.getElementById('file-count');
 
         let convertedFiles = [];
+        let currentQuality = 0.8;
+
+        qualitySlider.oninput = (e) => {
+            currentQuality = parseFloat(e.target.value);
+            qualityVal.innerText = `${Math.round(currentQuality * 100)}%`;
+        };
+
+        clearAllBtn.onclick = () => {
+            convertedFiles = [];
+            fileList.innerHTML = '';
+            container.classList.add('hidden');
+            fileInput.value = '';
+        };
 
         dropZone.onclick = () => fileInput.click();
-
-        // 拖拽支持
-        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('border-indigo-500'); };
-        dropZone.ondragleave = () => dropZone.classList.remove('border-indigo-500');
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('border-indigo-300'); };
+        dropZone.ondragleave = () => dropZone.classList.remove('border-indigo-300');
         dropZone.ondrop = (e) => {
             e.preventDefault();
-            dropZone.classList.remove('border-indigo-500');
+            dropZone.classList.remove('border-indigo-300');
             handleFiles(Array.from(e.dataTransfer.files));
         };
 
         fileInput.onchange = (e) => handleFiles(Array.from(e.target.files));
 
         async function handleFiles(files) {
-            const validFiles = files.filter(f => f.name.toLowerCase().match(/\.(heic|webp)$/i));
-            if (validFiles.length === 0) return;
-
+            if (files.length === 0) return;
             container.classList.remove('hidden');
-            fileCountText.innerText = `Processing ${validFiles.length} files...`;
-            fileList.innerHTML = '';
-            convertedFiles = [];
-            downloadAllBtn.classList.add('hidden');
-
-            for (const file of validFiles) {
+            fileCountText.innerText = "Processing...";
+            
+            for (const file of files) {
                 const li = document.createElement('li');
                 li.className = 'p-5 flex items-center justify-between hover:bg-slate-50 transition-colors';
-                li.innerHTML = `<span class="text-sm font-medium text-slate-700 truncate w-48 md:w-80">${file.name}</span>
-                                <span class="flex items-center space-x-2">
-                                    <span class="animate-pulse text-xs font-bold text-amber-500 uppercase tracking-tighter">Converting</span>
-                                </span>`;
+                li.innerHTML = `<span class="text-sm font-bold text-slate-600 truncate w-48">${file.name}</span>
+                                <span class="text-[10px] font-black text-amber-500 animate-pulse uppercase italic">Converting</span>`;
                 fileList.appendChild(li);
 
                 try {
                     let resultBlob;
-                    if (file.name.toLowerCase().endsWith('.heic')) {
-                        resultBlob = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.85 });
+                    const ext = file.name.split('.').pop().toLowerCase();
+                    if (ext === 'heic') {
+                        resultBlob = await heic2any({ blob: file, toType: "image/jpeg", quality: currentQuality });
                     } else {
                         resultBlob = await convertViaCanvas(file);
                     }
 
-                    const newName = file.name.replace(/\.(heic|webp)$/i, '.jpg');
+                    const newName = file.name.replace(/\.[^/.]+$/, "") + ".jpg";
                     convertedFiles.push({ blob: resultBlob, name: newName });
-                    
-                    li.innerHTML = `<span class="text-sm font-medium text-slate-700 truncate w-48 md:w-80">${file.name}</span>
-                                    <span class="text-xs font-black text-emerald-500 uppercase">Success</span>`;
+                    li.innerHTML = `<span class="text-sm font-bold text-slate-800 truncate w-48">${file.name}</span>
+                                    <span class="text-[10px] font-black text-indigo-600 uppercase italic tracking-widest">Ready</span>`;
                 } catch (err) {
-                    li.innerHTML = `<span class="text-sm text-slate-700">${file.name}</span>
-                                    <span class="text-xs font-bold text-red-400">Error</span>`;
+                    li.innerHTML = `<span class="text-sm text-slate-400 italic">${file.name}</span>
+                                    <span class="text-[10px] font-black text-red-500 uppercase tracking-widest">Error</span>`;
                 }
             }
 
-            fileCountText.innerText = `Conversion Complete`;
-            if (convertedFiles.length > 0) downloadAllBtn.classList.remove('hidden');
+            fileCountText.innerText = `${convertedFiles.length} item(s) loaded`;
+            mainBtn.innerText = convertedFiles.length > 1 ? "Download All (ZIP)" : "Download JPG";
         }
 
         function convertViaCanvas(file) {
@@ -182,11 +176,10 @@
                     const img = new Image();
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
+                        canvas.width = img.width; canvas.height = img.height;
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0);
-                        canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.85);
+                        canvas.toBlob((blob) => resolve(blob), 'image/jpeg', currentQuality);
                     };
                     img.src = e.target.result;
                 };
@@ -194,24 +187,45 @@
             });
         }
 
-        downloadAllBtn.onclick = async () => {
+        mainBtn.onclick = async () => {
+            if (convertedFiles.length === 0) return;
             if (convertedFiles.length === 1) {
-                const url = URL.createObjectURL(convertedFiles[0].blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = convertedFiles[0].name;
-                a.click();
+                const f = convertedFiles[0];
+                saveFile(f.blob, f.name);
             } else {
                 const zip = new JSZip();
                 convertedFiles.forEach(f => zip.file(f.name, f.blob));
                 const content = await zip.generateAsync({type:"blob"});
-                const url = URL.createObjectURL(content);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = "SwiftConvert_Images.zip";
-                a.click();
+                saveFile(content, "SwiftConvert_Batch.zip");
             }
         };
+
+        downloadPdfBtn.onclick = async () => {
+            const doc = new jsPDF();
+            for (let i = 0; i < convertedFiles.length; i++) {
+                const imgData = await blobToDataURL(convertedFiles[i].blob);
+                if (i > 0) doc.addPage();
+                const props = doc.getImageProperties(imgData);
+                const w = doc.internal.pageSize.getWidth();
+                const h = (props.height * w) / props.width;
+                doc.addImage(imgData, 'JPEG', 0, 0, w, h);
+            }
+            doc.save("SwiftConvert_Merged.pdf");
+        };
+
+        function blobToDataURL(blob) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        function saveFile(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = filename; a.click();
+        }
     </script>
 </body>
 </html>
