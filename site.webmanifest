@@ -1,0 +1,14 @@
+{
+  "name": "SwiftConvert",
+  "short_name": "SwiftConvert",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5"
+}
