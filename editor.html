@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JKW589EGYQ');
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>SwiftConvert | Free HEIC to JPG & WebP Converter</title>
+        <meta name="description" content="Fast, free, and 100% private online image converter. Convert HEIC, WebP, and PNG to JPG locally in your browser. No file uploads, maximum security.">
+        <meta name="keywords" content="HEIC to JPG, WebP to JPG, PNG to JPG, Image to PDF, Private Image Converter, Offline Image Conversion, SwiftConvert">
+        <link rel="canonical" href="https://www.swiftconvert.ink/" />
+    	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    	
+    	<!-- Favicon / Google Search / Browser -->
+    	<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    
+    	<!-- Apple iOS -->
+    	<link rel="apple-touch-icon" sizes="512x512" href="/favicon.png">
+    
+    	<!-- Android / PWA -->
+    	<link rel="manifest" href="/site.webmanifest">
+     
+    
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.swiftconvert.ink/">
+        <meta property="og:title" content="SwiftConvert - Convert Images Locally & Privately">
+        <meta property="og:description" content="Protect your privacy. Convert HEIC and WebP files to JPG right in your browser. No server required.">
+        <meta property="og:image" content="https://www.swiftconvert.ink/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.swiftconvert.ink/">
+        <meta property="twitter:title" content="SwiftConvert | Secure Image Converter">
+        <meta property="twitter:description" content="Local browser-based image conversion for HEIC, WebP, and PNG. 100% Secure.">
+    <script src="https://scaleflex.cloudimg.io/v7/plugins/filerobot-image-editor/latest/filerobot-image-editor.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #privacy-modal { display: none; }
+        #privacy-modal.active { display: flex; }
+        .modal-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+
+        .nav-link {
+            position: relative;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #64748b;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover { color: #4f46e5; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4f46e5;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-active::after { width: 100%; }
+        .nav-active { color: #4f46e5 !important; }
+
+        .brand-dot {
+            height: 4px; width: 4px;
+            background-color: #4f46e5;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 2px;
+        }
+
+        #editor-container {
+            height: 700px;
+            width: 100%;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900 pt-32 px-4">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-12">
+                <a href="index.html" class="flex items-center group">
+                    <span class="text-xl font-black text-slate-900 tracking-tighter uppercase italic">
+                        Swift<span class="text-indigo-600">Convert</span>
+                    </span>
+                    <span class="brand-dot"></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" data-i18n="nav_converter" class="nav-link">Image Converter</a>
+                    <a href="editor.html" data-i18n="nav_editor" class="nav-link nav-active">Image Editor</a>
+                    <a href="javascript:void(0)" onclick="openModal('about')" data-i18n="nav_about" class="nav-link">About</a>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span id="lang-btn-text">中文</span>
+                </button>
+                <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span data-i18n="nav_private" class="text-[9px] font-black uppercase tracking-widest text-emerald-700">100% Private</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                <div class="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <span data-i18n="tool_crop" class="text-[10px] font-black uppercase text-slate-800">Crop & Resize</span>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                <div class="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17l.343-.343"></path></svg>
+                </div>
+                <span data-i18n="tool_filters" class="text-[10px] font-black uppercase text-slate-800">Filters</span>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                </div>
+                <span data-i18n="tool_annotate" class="text-[10px] font-black uppercase text-slate-800">Annotate</span>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <span data-i18n="tool_offline" class="text-[10px] font-black uppercase text-slate-800">100% Offline</span>
+            </div>
+        </div>
+
+        <div id="editor-wrapper" class="bg-white border-4 border-dashed border-slate-200 rounded-[2.5rem] p-6 text-center shadow-xl shadow-slate-200/50 mb-12 min-h-[400px] flex items-center justify-center transition-all hover:border-indigo-400">
+            <div id="upload-prompt" class="flex flex-col items-center py-20 cursor-pointer w-full" onclick="document.getElementById('editor-file-input').click()">
+                <input type="file" id="editor-file-input" accept="image/*" class="hidden">
+                <div class="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-white shadow-2xl mb-6 hover:scale-110 transition-transform">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                </div>
+                <h2 data-i18n="hero_title" class="text-2xl font-black text-slate-800 tracking-tight mb-2">Upload image to edit</h2>
+                <p data-i18n="hero_subtitle" class="text-slate-400 text-sm font-medium">Supports PNG, JPG</p>
+            </div>
+            <div id="editor-container" class="hidden"></div>
+        </div>
+
+        <section class="mt-16 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
+            <h3 data-i18n="faq_title" class="text-2xl font-black text-slate-900 mb-8 tracking-tight">Frequently Asked Questions</h3>
+            <div class="grid gap-10 md:grid-cols-2">
+                <div>
+                    <h4 data-i18n="faq_cat_privacy" class="font-black text-[11px] uppercase text-emerald-600 tracking-widest mb-3">Privacy & Safety</h4>
+                    <h5 data-i18n="faq_safety_title" class="font-bold text-slate-800 mb-2">Is it safe to edit photos here?</h5>
+                    <p data-i18n="faq_safety_desc" class="text-sm text-slate-500 leading-relaxed">Yes. SwiftConvert processes images 100% locally in your browser. Your private photos are never uploaded to any server.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="faq_cat_quick" class="font-black text-[11px] uppercase text-indigo-600 tracking-widest mb-3">Online Editor</h4>
+                    <h5 data-i18n="faq_editor_title" class="font-bold text-slate-800 mb-2">Can I edit HEIC or WebP files?</h5>
+                    <p data-i18n="faq_editor_desc" class="text-sm text-slate-500 leading-relaxed">Absolutely! Our professional editor supports HEIC, WebP, and PNG format. You can crop, resize and add filters instantly.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="faq_cat_batch" class="font-black text-[11px] uppercase text-amber-600 tracking-widest mb-3">Format Support</h4>
+                    <h5 data-i18n="faq_format_title" class="font-bold text-slate-800 mb-2">Convert while editing?</h5>
+                    <p data-i18n="faq_format_desc" class="text-sm text-slate-500 leading-relaxed">Yes. After editing your HEIC or WebP image, you can save it directly as a high-quality JPG file.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="faq_cat_pdf" class="font-black text-[11px] uppercase text-indigo-600 tracking-widest mb-3">No Installation</h4>
+                    <h5 data-i18n="faq_install_title" class="font-bold text-slate-800 mb-2">Do I need to install software?</h5>
+                    <p data-i18n="faq_install_desc" class="text-sm text-slate-500 leading-relaxed">No. SwiftConvert is a web-based tool. It uses WebAssembly to provide desktop-class performance without any installation.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-16 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+                    <h4 data-i18n="feat_local_title" class="text-[11px] font-black uppercase text-slate-800 mb-1">Local Processing</h4>
+                    <p data-i18n="feat_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
+                </div>
+                <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+                    <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black uppercase text-slate-800 mb-1">High Efficiency</h4>
+                    <p data-i18n="feat_efficient_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
+                </div>
+                <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+                    <h4 data-i18n="feat_pdf_title" class="text-[11px] font-black uppercase text-slate-800 mb-1">Professional Tools</h4>
+                    <p data-i18n="feat_pdf_desc_editor" class="text-[11px] text-slate-400">Full featured annotation & filters.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex space-x-6">
+                    <a href="javascript:void(0)" onclick="openModal('privacy')" data-i18n="privacy" class="text-[10px] font-black text-slate-300 uppercase hover:text-indigo-600">Privacy Policy</a>
+                    <a href="javascript:void(0)" onclick="openModal('terms')" data-i18n="terms" class="text-[10px] font-black text-slate-300 uppercase hover:text-indigo-600">Terms of Service</a>
+                </div>
+                <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em]">&copy; 2026 SwiftConvert</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="privacy-modal" class="fixed inset-0 z-[100] p-4 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm">
+        <div class="modal-glass w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                <h3 id="modal-title" class="font-black uppercase tracking-widest text-xs text-slate-800">Title</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+            </div>
+            <div id="modal-body" class="p-8 md:p-10 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-6"></div>
+            <div class="p-6 bg-slate-50/50 border-t border-slate-100 text-center">
+                <button onclick="closeModal()" data-i18n="modal_confirm" class="bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px] uppercase tracking-widest">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const i18n = {
+            en: {
+                nav_converter: 'Image Converter',
+                nav_editor: 'Image Editor',
+                nav_about: 'About',
+                nav_private: '100% Private',
+                tool_crop: 'Crop & Resize',
+                tool_filters: 'Filters',
+                tool_annotate: 'Annotate',
+                tool_offline: '100% Offline',
+                hero_title: 'Upload image to edit',
+                hero_subtitle: 'Supports PNG, JPG',
+                faq_title: 'Frequently Asked Questions',
+                faq_cat_privacy: 'Privacy & Safety',
+                faq_cat_quick: 'Online Editor',
+                faq_cat_batch: 'Format Support',
+                faq_cat_pdf: 'No Installation',
+                faq_safety_title: 'Is it safe to edit photos here?',
+                faq_safety_desc: 'Yes. SwiftConvert processes images 100% locally in your browser. Your private photos are never uploaded to any server.',
+                faq_editor_title: 'Can I edit HEIC or WebP files?',
+                faq_editor_desc: 'Absolutely! Our professional editor supports HEIC, WebP, and PNG format. You can crop, resize and add filters instantly.',
+                faq_format_title: 'Convert while editing?',
+                faq_format_desc: 'Yes. After editing your HEIC or WebP image, you can save it directly as a high-quality JPG file.',
+                faq_install_title: 'Do I need to install software?',
+                faq_install_desc: 'No. SwiftConvert is a web-based tool. It uses WebAssembly to provide desktop-class performance without any installation.',
+                feat_local_title: 'Local Processing',
+                feat_local_desc: 'Your images never touch our servers.',
+                feat_efficient_title: 'High Efficiency',
+                feat_efficient_desc: 'Batch convert in seconds.',
+                feat_pdf_title: 'Professional Tools',
+                feat_pdf_desc_editor: 'Full featured annotation & filters.',
+                privacy: 'Privacy Policy',
+                terms: 'Terms of Service',
+                modal_confirm: 'I Understand',
+                about: 'About SwiftConvert',
+                // 完全同步 Index.html 的内容
+                about_content: `<div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4 py-1">
+                        <h4 class="text-slate-900 font-black uppercase text-xs tracking-wider">The Local-First Revolution</h4>
+                        <p class="text-slate-500 text-xs mt-1">Speed meets absolute privacy.</p>
+                    </div>
+                    <p>SwiftConvert is a modern image utility designed to solve the dilemma of "Security vs. Convenience". Traditionally, converting HEIC or WebP required uploading files to a cloud server—exposing your private photos to potential risks.</p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-indigo-600 font-bold text-[10px] block mb-1 uppercase">Technology</span>
+                            <p class="text-[11px] leading-tight">Powered by WASM, processing images directly in your browser's RAM.</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-emerald-600 font-bold text-[10px] block mb-1 uppercase">Privacy</span>
+                            <p class="text-[11px] leading-tight">Zero-Server Architecture. Your data never leaves your device.</p>
+                        </div>
+                    </div>
+                    <p>Our mission is to provide a professional-grade tool that is 100% free, without ads, and without compromise on your data sovereignty.</p>
+                </div>`,
+                privacy_content: '<section><h4 class="font-black text-slate-900 uppercase text-[11px] mb-2 tracking-wide">Zero Upload Policy</h4><p>We never see or store your images. All conversion processes happen 100% locally in your browser\'s sandbox. We do not use cookies or tracking beyond basic analytics.</p></section>',
+                terms_content: '<p>SwiftConvert is provided "as is" for free personal use. By using this tool, you agree that your files remain your own property, and we are not responsible for any issues arising from image conversion.</p>'
+            },
+            zh: {
+                nav_converter: '图片转换',
+                nav_editor: '图片编辑',
+                nav_about: '关于我们',
+                nav_private: '100% 本地隐私保护',
+                tool_crop: '裁剪与缩放',
+                tool_filters: '丰富滤镜',
+                tool_annotate: '标注与绘图',
+                tool_offline: '100% 离线',
+                hero_title: '上传图片开始编辑',
+                hero_subtitle: '支持 PNG、JPG',
+                faq_title: '常见问题解答',
+                faq_cat_privacy: '隐私与安全',
+                faq_cat_quick: '在线编辑器',
+                faq_cat_batch: '格式支持',
+                faq_cat_pdf: '无需安装',
+                faq_safety_title: '在这里编辑照片安全吗？',
+                faq_safety_desc: '非常安全。SwiftConvert 100% 在本地处理图片，您的私人照片永远不会被传到任何服务器。',
+                faq_editor_title: '支持编辑 HEIC 或 WebP 文件吗？',
+                faq_editor_desc: '当然可以！我们的专业编辑器支持 HEIC、WebP 和 PNG 格式。您可以立即进行裁剪、缩放和添加滤镜。',
+                faq_format_title: '编辑时可以转换格式吗？',
+                faq_format_desc: '是的。在编辑完 HEIC 或 WebP 图片后，您可以直接将其保存为高质量的 JPG 文件。',
+                faq_install_title: '我需要安装软件吗？',
+                faq_install_desc: '不需要。SwiftConvert 是一个基于网页的工具。它使用 WebAssembly 技术，无需安装即可提供桌面级的性能。',
+                feat_local_title: '本地处理',
+                feat_local_desc: '您的图片永远不会离开您的电脑。',
+                feat_efficient_title: '极速响应',
+                feat_efficient_desc: '利用本地算力，数秒内完成处理。',
+                feat_pdf_title: '专业工具',
+                feat_pdf_desc_editor: '全功能的标注、滤镜与修图。',
+                privacy: '隐私政策',
+                terms: '服务条款',
+                modal_confirm: '我已了解',
+                about: '关于 SwiftConvert',
+                // 完全同步 Index.html 的内容
+                about_content: `<div class="space-y-4">
+                    <div class="border-l-4 border-indigo-600 pl-4 py-1">
+                        <h4 class="text-slate-900 font-black uppercase text-xs tracking-wider">本地化处理的革新</h4>
+                        <p class="text-slate-500 text-[10px] mt-1">速度与隐私的完美契合</p>
+                    </div>
+                    <p>SwiftConvert 是一款现代化的图像工具，旨在解决“安全与便捷”之间的矛盾。传统转换器需要将文件上传到云端服务器，这让您的私人照片面临泄露风险。</p>
+                    <div class="grid grid-cols-2 gap-4 my-6">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-indigo-600 font-bold text-[10px] block mb-1 uppercase">技术核心</span>
+                            <p class="text-[11px] leading-tight">基于 WebAssembly 技术，直接在您的浏览器内存中处理图片。</p>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                            <span class="text-emerald-600 font-bold text-[10px] block mb-1 uppercase">隐私承诺</span>
+                            <p class="text-[11px] leading-tight">零服务器架构。您的数据永远不会离开您的个人设备。</p>
+                        </div>
+                    </div>
+                    <p>我们的使命是提供一个专业、免费且无广告的工具，在提升效率的同时，绝对尊重您的数据所有权。</p>
+                </div>`,
+                privacy_content: '<section><h4 class="font-black text-slate-900 uppercase text-[11px] mb-2 tracking-wide">零上传政策</h4><p>我们绝不会查看或存储您的图片。所有转换过程 100% 在您浏览器的沙箱环境中本地完成。除了基本的数据分析，我们不使用 Cookie 或任何跟踪技术。</p></section>',
+                terms_content: '<p>SwiftConvert 按“原样”免费提供个人使用。使用此工具即表示您同意您的文件仍为您个人所有，我们不对转换过程中产生的任何问题负责。</p>'
+            }
+        };
+
+        let currentLang = localStorage.getItem('swiftconvert_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+        const t = (key) => i18n[currentLang][key] || key;
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (i18n[lang][key]) el.innerText = i18n[lang][key];
+            });
+            document.getElementById('lang-btn-text').innerText = lang === 'en' ? '中文' : 'English';
+            localStorage.setItem('swiftconvert_lang', lang);
+        }
+
+        const fileInput = document.getElementById('editor-file-input');
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('upload-prompt').classList.add('hidden');
+                document.getElementById('editor-container').classList.remove('hidden');
+                initEditor(file);
+            }
+        };
+
+        function initEditor(file) {
+            const { TABS, TOOLS } = FilerobotImageEditor;
+            const config = {
+                source: file,
+                onSave: (info, items) => {
+                    const link = document.createElement('a');
+                    link.href = info.imageBase64;
+                    link.download = info.fullName;
+                    link.click();
+                },
+                tabsIds: [TABS.ADJUST, TABS.FILTERS, TABS.ANNOTATE, TABS.WATERMARK],
+                defaultTabId: TABS.ADJUST,
+            };
+            const filerobotImageEditor = new FilerobotImageEditor(
+                document.getElementById('editor-container'),
+                config
+            );
+            filerobotImageEditor.render();
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById('privacy-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            // 同步 Index.html 的弹窗逻辑
+            if (type === 'about') {
+                title.innerText = t('about');
+                body.innerHTML = t('about_content');
+            } else if (type === 'privacy') {
+                title.innerText = t('privacy');
+                body.innerHTML = t('privacy_content');
+            } else if (type === 'terms') {
+                title.innerText = t('terms');
+                body.innerHTML = t('terms_content');
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('privacy-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        applyLanguage(currentLang);
+        document.getElementById('lang-toggle').onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+    </script>
+</body>
+</html>
