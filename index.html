@@ -109,27 +109,33 @@
                 </a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#converter" data-i18n="nav_converter" class="nav-link nav-active">Image Converter</a>
-                   
+                    <a href="document-converter.html" data-i18n="document_converter" class="nav-link">PDF Tools</a>
                     <a href="javascript:void(0)" onclick="openModal('about')" data-i18n="nav_about" class="nav-link">About</a>
                 </div>
 				<div class="flex md:hidden items-center space-x-4">
 				    <a href="#converter"
 				       data-i18n="nav_converter"
-				       class="text-xs font-black uppercase text-slate-700">
+				       class="text-xs font-black  text-slate-700">
 				        Image Converter
 				    </a>
+					 <a href="document-converter.html" 
+						data-i18n="document_converter"
+						class="text-xs font-black  text-slate-700">
+					        PDF Tools
+					    </a>
 				    <a href="javascript:void(0)"
 				       onclick="openModal('about')"
 				       data-i18n="nav_about"
-				       class="text-xs font-black uppercase text-slate-700">
+				       class="text-xs font-black  text-slate-700">
 				        About
 				    </a>
 				</div>
 
             </div>
+			
 
             <div class="flex items-center space-x-3 md:space-x-6 shrink-0">
-                <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
+                <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black  tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                     <span id="lang-btn-text">中文</span>
                 </button>
@@ -141,37 +147,40 @@
 
                 <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
                     <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span data-i18n="nav_private" class="text-[9px] font-black uppercase tracking-widest text-emerald-700">100% Private</span>
+                    <span data-i18n="nav_private" class="text-[9px] font-black  tracking-widest text-emerald-700">100% Private</span>
                 </div>
             </div>
         </div>
     </nav>
 
     <div id="converter" class="max-w-4xl mx-auto">
+		<h1 class="sr-only">
+		  Free Online Images Tools – HEIC to JPG & WebP to JPG & PNG to JPG
+		</h1>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
                 <div class="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 </div>
-                <span data-i18n="card_heic" class="text-[10px] font-black uppercase text-slate-800">HEIC to JPG</span>
+                <span data-i18n="card_heic" class="text-[10px] font-black  text-slate-800">HEIC to JPG</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
                 <div class="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                 </div>
-                <span data-i18n="card_webp" class="text-[10px] font-black uppercase text-slate-800">WebP to JPG</span>
+                <span data-i18n="card_webp" class="text-[10px] font-black  text-slate-800">WebP to JPG</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
                 <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                 </div>
-                <span data-i18n="card_pdf" class="text-[10px] font-black uppercase text-slate-800">Merge to PDF</span>
+                <span data-i18n="card_pdf" class="text-[10px] font-black  text-slate-800">Merge to PDF</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
                 <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                 </div>
-                <span data-i18n="card_offline" class="text-[10px] font-black uppercase text-slate-800">100% Offline</span>
+                <span data-i18n="card_offline" class="text-[10px] font-black  text-slate-800">100% Offline</span>
             </div>
         </div>
 
@@ -188,11 +197,11 @@
 
         <div class="bg-white rounded-2xl p-4 mb-6 border border-slate-100 shadow-sm flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-4">
-                <span data-i18n="quality" class="text-[10px] font-black uppercase text-slate-400 tracking-widest">Quality</span>
+                <span data-i18n="quality" class="text-[10px] font-black  text-slate-400 tracking-widest">Quality</span>
                 <input type="range" id="quality-slider" min="0.1" max="1.0" step="0.1" value="0.8" class="w-32 h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 <span id="quality-val" class="text-indigo-600 font-bold text-xs">80%</span>
             </div>
-            <button id="clear-all" class="text-slate-300 hover:text-red-500 text-[10px] font-black uppercase tracking-widest flex items-center">
+            <button id="clear-all" class="text-slate-300 hover:text-red-500 text-[10px] font-black  tracking-widest flex items-center">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4m-4 0a1 1 0 00-1 1v1h6V4a1 1 0 00-1-1m-4 0h4m-5 1h6"></path></svg>
                 <span data-i18n="clear">Clear</span>
             </button>
@@ -200,36 +209,36 @@
 
         <section id="file-list-container" class="bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden hidden mb-12">
             <div class="p-6 bg-slate-50/50 border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
-                <span id="file-count" class="font-black text-slate-400 uppercase tracking-widest text-[10px]">Queue Status</span>
+                <span id="file-count" class="font-black text-slate-400  tracking-widest text-[10px]">Queue Status</span>
                 <div class="flex w-full md:w-auto gap-2">
-                    <button id="main-download-btn" data-i18n="btn_download" class="flex-1 md:flex-none bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100">Download</button>
-                    <button id="download-pdf" data-i18n="btn_pdf" class="flex-1 md:flex-none bg-slate-900 text-white font-black px-8 py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10">To PDF</button>
+                    <button id="main-download-btn" data-i18n="btn_download" class="flex-1 md:flex-none bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px]  tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100">Download</button>
+                    <button id="download-pdf" data-i18n="btn_pdf" class="flex-1 md:flex-none bg-slate-900 text-white font-black px-8 py-3 rounded-xl text-[10px]  tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10">To PDF</button>
                 </div>
             </div>
             <ul id="file-list" class="divide-y divide-slate-50 max-h-64 overflow-y-auto"></ul>
         </section>
 
         <section class="mt-16 bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
-            <h3 data-i18n="faq_title" class="text-2xl font-black text-slate-900 mb-8 tracking-tight">Frequently Asked Questions</h3>
+            <h2 data-i18n="faq_title" class="text-2xl font-black text-slate-900 mb-8 tracking-tight">Frequently Asked Questions</h2>
             <div class="grid gap-10 md:grid-cols-2">
                 <div>
-                    <h4 data-i18n="faq_cat_quick" class="font-black text-[11px] uppercase text-indigo-600 tracking-widest mb-3">Quick Conversion</h4>
-                    <h5 data-i18n="faq_heic_title" class="font-bold text-slate-800 mb-2">How to convert HEIC to JPG?</h5>
+                    <h3 data-i18n="faq_cat_quick" class="font-black text-[11px]  text-indigo-600 tracking-widest mb-3">Quick Conversion</h3>
+                    <h4 data-i18n="faq_heic_title" class="font-bold text-slate-800 mb-2">How to convert HEIC to JPG?</h4>
                     <p data-i18n="faq_heic_desc" class="text-sm text-slate-500 leading-relaxed">Simply drag and drop HEIC files. Our tool converts them instantly in your browser.</p>
                 </div>
                 <div>
-                    <h4 data-i18n="faq_cat_privacy" class="font-black text-[11px] uppercase text-emerald-600 tracking-widest mb-3">Privacy</h4>
-                    <h5 data-i18n="faq_safety_title" class="font-bold text-slate-800 mb-2">Is it safe?</h5>
+                    <h3 data-i18n="faq_cat_privacy" class="font-black text-[11px]  text-emerald-600 tracking-widest mb-3">Privacy</h3>
+                    <h4 data-i18n="faq_safety_title" class="font-bold text-slate-800 mb-2">Is it safe?</h4>
                     <p data-i18n="faq_safety_desc" class="text-sm text-slate-500 leading-relaxed">Yes. SwiftConvert processes images 100% locally. No servers involved.</p>
                 </div>
                 <div>
-                    <h4 data-i18n="faq_cat_batch" class="font-black text-[11px] uppercase text-amber-600 tracking-widest mb-3">Batch Processing</h4>
-                    <h5 data-i18n="faq_batch_title" class="font-bold text-slate-800 mb-2">Bulk WebP to JPG?</h5>
+                    <h3 data-i18n="faq_cat_batch" class="font-black text-[11px]  text-amber-600 tracking-widest mb-3">Batch Processing</h3>
+                    <h4 data-i18n="faq_batch_title" class="font-bold text-slate-800 mb-2">Bulk WebP to JPG?</h4>
                     <p data-i18n="faq_batch_desc" class="text-sm text-slate-500 leading-relaxed">Absolutely! SwiftConvert supports multi-file processing and ZIP download.</p>
                 </div>
                 <div>
-                    <h4 data-i18n="faq_cat_pdf" class="font-black text-[11px] uppercase text-indigo-600 tracking-widest mb-3">PDF Feature</h4>
-                    <h5 data-i18n="faq_pdf_title" class="font-bold text-slate-800 mb-2">Merge images to PDF?</h5>
+                    <h3 data-i18n="faq_cat_pdf" class="font-black text-[11px]  text-indigo-600 tracking-widest mb-3">PDF Feature</h3>
+                    <h4 data-i18n="faq_pdf_title" class="font-bold text-slate-800 mb-2">Merge images to PDF?</h4>
                     <p data-i18n="faq_pdf_desc" class="text-sm text-slate-500 leading-relaxed">After converting, click "To PDF" to combine all photos into one document.</p>
                 </div>
             </div>
@@ -238,24 +247,25 @@
         <footer class="mt-16 pb-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
                 <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-                    <h4 data-i18n="feat_local_title" class="text-[11px] font-black uppercase text-slate-800 mb-1"><strong>Local Processing</strong></h4>
+                    <h4 data-i18n="feat_local_title" class="text-[11px] font-black  text-slate-800 mb-1"><strong>Local Processing</strong></h4>
                     <p data-i18n="feat_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
                 </div>
                 <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-                    <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black uppercase text-slate-800 mb-1">High Efficiency</h4>
+                    <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black  text-slate-800 mb-1">High Efficiency</h4>
                     <p data-i18n="feat_efficient_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
                 </div>
                 <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-                    <h4 data-i18n="feat_pdf_title" class="text-[11px] font-black uppercase text-slate-800 mb-1">PDF Merge</h4>
+                    <h4 data-i18n="feat_pdf_title" class="text-[11px] font-black  text-slate-800 mb-1">PDF Merge</h4>
                     <p data-i18n="feat_pdf_desc" class="text-[11px] text-slate-400">Combine photos into one document.</p>
                 </div>
             </div>
             <div class="flex flex-col items-center space-y-4">
                 <div class="flex space-x-6">
-                    <a href="javascript:void(0)" onclick="openModal('privacy')" data-i18n="privacy" class="text-[10px] font-black text-slate-300 uppercase hover:text-indigo-600">Privacy Policy</a>
-                    <a href="javascript:void(0)" onclick="openModal('terms')" data-i18n="terms" class="text-[10px] font-black text-slate-300 uppercase hover:text-indigo-600">Terms of Service</a>
+                    <a href="javascript:void(0)" onclick="openModal('privacy')" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
+                    <a href="javascript:void(0)" onclick="openModal('terms')" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
+					<a href="javascript:void(0)" onclick="openModal('contact')" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
                 </div>
-                <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em]">&copy; 2026 SwiftConvert</p>
+                <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy; 2026 SwiftConvert</p>
             </div>
         </footer>
     </div>
@@ -263,12 +273,12 @@
     <div id="privacy-modal" class="fixed inset-0 z-[100] p-4 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm">
         <div class="modal-glass w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                <h3 id="modal-title" class="font-black uppercase tracking-widest text-xs text-slate-800">Title</h3>
+                <h3 id="modal-title" class="font-black  tracking-widest text-xs text-slate-800">Title</h3>
                 <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
             </div>
             <div id="modal-body" class="p-8 md:p-10 overflow-y-auto text-sm text-slate-600 leading-relaxed space-y-6"></div>
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 text-center">
-                <button onclick="closeModal()" data-i18n="modal_confirm" class="bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px] uppercase tracking-widest">I Understand</button>
+                <button onclick="closeModal()" data-i18n="modal_confirm" class="bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px]  tracking-widest">I Understand</button>
             </div>
         </div>
     </div>
@@ -281,6 +291,7 @@
                 nav_about: 'About',
                 nav_private: '100% Private',
                 // 新增卡片多语言
+				document_converter: 'PDF Tools',
                 card_heic: 'HEIC to JPG',
                 card_webp: 'WebP to JPG',
                 card_pdf: 'Merge to PDF',
@@ -321,35 +332,49 @@
                 feat_pdf_desc: 'Combine photos into one document.',
                 privacy: 'Privacy Policy',
                 terms: 'Terms of Service',
+				contact: 'Contact Us',
                 modal_confirm: 'I Understand',
 				about: 'About SwiftConvert',
 				about_content: `
 					<div class="space-y-4">
 						<div class="border-l-4 border-indigo-600 pl-4 py-1">
-							<h4 class="text-slate-900 font-black uppercase text-xs tracking-wider">The Local-First Revolution</h4>
+							<h4 class="text-slate-900 font-black  text-xs tracking-wider">The Local-First Revolution</h4>
 							<p class="text-slate-500 text-xs mt-1">Speed meets absolute privacy.</p>
 						</div>
 						<p>SwiftConvert is a modern image utility designed to solve the dilemma of "Security vs. Convenience". Traditionally, converting HEIC or WebP required uploading files to a cloud server—exposing your private photos to potential risks.</p>
 						<div class="grid grid-cols-2 gap-4 my-6">
 							<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-								<span class="text-indigo-600 font-bold text-[10px] block mb-1 uppercase">Technology</span>
+								<span class="text-indigo-600 font-bold text-[10px] block mb-1 ">Technology</span>
 								<p class="text-[11px] leading-tight">Powered by WASM, processing images directly in your browser's RAM.</p>
 							</div>
 							<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-								<span class="text-emerald-600 font-bold text-[10px] block mb-1 uppercase">Privacy</span>
+								<span class="text-emerald-600 font-bold text-[10px] block mb-1 ">Privacy</span>
 								<p class="text-[11px] leading-tight">Zero-Server Architecture. Your data never leaves your device.</p>
 							</div>
 						</div>
 						<p>Our mission is to provide a professional-grade tool that is 100% free, without ads, and without compromise on your data sovereignty.</p>
 					</div>`,
-				privacy_content: '<section><h4 class="font-black text-slate-900 uppercase text-[11px] mb-2 tracking-wide">Zero Upload Policy</h4><p>We never see or store your images. All conversion processes happen 100% locally in your browser\'s sandbox. We do not use cookies or tracking beyond basic analytics.</p></section>',
-				terms_content: '<p>SwiftConvert is provided "as is" for free personal use. By using this tool, you agree that your files remain your own property, and we are not responsible for any issues arising from image conversion.</p>'},
-            zh: {
+				privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">Zero Upload Policy</h4><p>We never see or store your images. All conversion processes happen 100% locally in your browser\'s sandbox. We do not use cookies or tracking beyond basic analytics.</p></section>',
+				terms_content: '<p>SwiftConvert is provided "as is" for free personal use. By using this tool, you agree that your files remain your own property, and we are not responsible for any issues arising from image conversion.</p>',
+				contact_content: `
+				            <div class="space-y-4">
+				                <p>Have questions or suggestions? We'd love to hear from you.</p>
+				                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+				                    <p class="font-black text-indigo-600  text-[10px] mb-1">Email Support</p>
+				                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
+				                </div>
+				                <p class="text-[11px] italic">We typically respond within 24 hours.</p>
+				            </div>
+				        `
+				},
+				
+			zh: {
                 nav_converter: '图片转换',
                 nav_editor: '图片编辑',
                 nav_about: '关于我们',
                 nav_private: '100% 本地隐私保护',
                 // 新增卡片多语言
+				document_converter: 'PDF工具',
                 card_heic: 'HEIC 转 JPG',
                 card_webp: 'WebP 转 JPG',
                 card_pdf: '合并为 PDF',
@@ -390,29 +415,40 @@
                 feat_pdf_desc: '轻松将多张转换后的照片合并为一个专业的 PDF。',
                 privacy: '隐私政策',
                 terms: '服务条款',
+				contact: '联系我们',
                 modal_confirm: '我已了解',
 				about: '关于 SwiftConvert',
 				about_content: `
 				            <div class="space-y-4">
 				                <div class="border-l-4 border-indigo-600 pl-4 py-1">
-				                    <h4 class="text-slate-900 font-black uppercase text-xs tracking-wider">本地化处理的革新</h4>
+				                    <h4 class="text-slate-900 font-black  text-xs tracking-wider">本地化处理的革新</h4>
 				                    <p class="text-slate-500 text-[10px] mt-1">速度与隐私的完美契合</p>
 				                </div>
 				                <p>SwiftConvert 是一款现代化的图像工具，旨在解决“安全与便捷”之间的矛盾。传统转换器需要将文件上传到云端服务器，这让您的私人照片面临泄露风险。</p>
 				                <div class="grid grid-cols-2 gap-4 my-6">
 				                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-				                        <span class="text-indigo-600 font-bold text-[10px] block mb-1 uppercase">技术核心</span>
+				                        <span class="text-indigo-600 font-bold text-[10px] block mb-1 ">技术核心</span>
 				                        <p class="text-[11px] leading-tight">基于 WebAssembly 技术，直接在您的浏览器内存中处理图片。</p>
 				                    </div>
 				                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-				                        <span class="text-emerald-600 font-bold text-[10px] block mb-1 uppercase">隐私承诺</span>
+				                        <span class="text-emerald-600 font-bold text-[10px] block mb-1 ">隐私承诺</span>
 				                        <p class="text-[11px] leading-tight">零服务器架构。您的数据永远不会离开您的个人设备。</p>
 				                    </div>
 				                </div>
 				                <p>我们的使命是提供一个专业、免费且无广告的工具，在提升效率的同时，绝对尊重您的数据所有权。</p>
 				            </div>`,
-                privacy_content: '<section><h4 class="font-black text-slate-900 uppercase text-[11px] mb-2 tracking-wide">零上传政策</h4><p>我们绝不会查看或存储您的图片。所有转换过程 100% 在您浏览器的沙箱环境中本地完成。除了基本的数据分析，我们不使用 Cookie 或任何跟踪技术。</p></section>',
-                terms_content: '<p>SwiftConvert 按“原样”免费提供个人使用。使用此工具即表示您同意您的文件仍为您个人所有，我们不对转换过程中产生的任何问题负责。</p>'
+                privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">零上传政策</h4><p>我们绝不会查看或存储您的图片。所有转换过程 100% 在您浏览器的沙箱环境中本地完成。除了基本的数据分析，我们不使用 Cookie 或任何跟踪技术。</p></section>',
+                terms_content: '<p>SwiftConvert 按“原样”免费提供个人使用。使用此工具即表示您同意您的文件仍为您个人所有，我们不对转换过程中产生的任何问题负责。</p>',
+				contact_content: `
+				            <div class="space-y-4">
+				                <p>有任何问题或建议？欢迎随时联系我们。</p>
+				                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+				                    <p class="font-black text-indigo-600  text-[10px] mb-1">邮件支持</p>
+				                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
+				                </div>
+				                <p class="text-[11px] italic">我们通常会在 24 小时内回复您的邮件。</p>
+				            </div>
+				        `
             }
         };
 
@@ -423,17 +459,32 @@
         const t = (key) => i18n[currentLang][key] || key;
 
         function applyLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
-            document.getElementById('lang-btn-text').innerText = lang === 'en' ? '中文' : 'English';
-            document.getElementById('lang-select').value = lang;
-            updateStatusText();
-            localStorage.setItem('swiftconvert_lang', lang);
-        }
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    
+    // 1. 翻译所有带有 data-i18n 的元素
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key]) el.innerText = i18n[lang][key];
+    });
+
+    // 2. 核心调整：更新桌面端按钮显示的“目标语言”提示
+    const langBtnText = document.getElementById('lang-btn-text');
+    if (langBtnText) {
+        // 如果当前是中文，按钮应该提示切换到 "English"
+        langBtnText.innerText = lang === 'en' ? '中文' : 'English';
+    }
+
+    // 3. 核心调整：强制同步移动端下拉框的选中值
+    const langSelect = document.getElementById('lang-select');
+    if (langSelect) {
+        langSelect.value = lang;
+    }
+
+    updateStatusText();
+    // 4. 保存到本地存储
+    localStorage.setItem('swiftconvert_lang', lang);
+}
 
         function updateStatusText() {
             const countEl = document.getElementById('file-count');
@@ -482,8 +533,8 @@
             for (const file of files) {
                 const li = document.createElement('li');
                 li.className = 'p-4 flex items-center justify-between hover:bg-slate-50 transition-colors';
-                li.innerHTML = `<span class="text-[11px] font-bold text-slate-600 truncate w-32 uppercase">${file.name}</span>
-                                <span class="status-label text-[8px] font-black text-amber-500 animate-pulse uppercase">${t('status_converting')}</span>`;
+                li.innerHTML = `<span class="text-[11px] font-bold text-slate-600 truncate w-32 ">${file.name}</span>
+                                <span class="status-label text-[8px] font-black text-amber-500 animate-pulse ">${t('status_converting')}</span>`;
                 fileList.appendChild(li);
 
                 try {
@@ -568,6 +619,7 @@
             const modal = document.getElementById('privacy-modal');
             const title = document.getElementById('modal-title');
             const body = document.getElementById('modal-body');
+		
             
             // 动态匹配 i18n 中的 key
             if (type === 'about') {
@@ -579,6 +631,9 @@
             } else if (type === 'terms') {
                 title.innerText = t('terms');
                 body.innerHTML = t('terms_content');
+            } else if (type === 'contact') {
+                title.innerText = t('contact');
+                body.innerHTML = t('contact_content');
             }
             
             modal.classList.add('active');
@@ -590,10 +645,24 @@
             document.body.style.overflow = '';
         }
 
-        // Initial setup
-        applyLanguage(currentLang);
-        document.getElementById('lang-toggle').onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
-        document.getElementById('lang-select').onchange = (e) => applyLanguage(e.target.value);
+
+		// 在脚本的最末尾替换原来的 Initial setup 部分
+		document.addEventListener('DOMContentLoaded', () => {
+		    // 1. 从存储中恢复语言并应用
+		    applyLanguage(currentLang);
+		
+		    // 2. 桌面端切换逻辑
+		    const langToggle = document.getElementById('lang-toggle');
+		    if (langToggle) {
+		        langToggle.onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+		    }
+		
+		    // 3. 移动端切换逻辑 (确保在 DOM 加载后绑定)
+		    const langSelect = document.getElementById('lang-select');
+		    if (langSelect) {
+		        langSelect.onchange = (e) => applyLanguage(e.target.value);
+		    }
+		});
     </script>
 </body>
 </html>
