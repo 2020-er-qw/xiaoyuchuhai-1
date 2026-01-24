@@ -65,6 +65,10 @@
             display: inline-block;
             margin-left: 2px;
         }
+		
+		font-black-italic { font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -0.05em; }
+		        .nav-link { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; color: #64748b; transition: all 0.3s ease; }
+		        .nav-link:hover { color: #4f46e5; }
     </style>
 	
 </head>
@@ -140,29 +144,49 @@
    </nav>
    
 
-<main class="max-w-3xl mx-auto bg-white rounded-[2.5rem] p-10 md:p-16 shadow-xl border border-slate-100">
-        <h1 data-i18n="contact_title" class="text-3xl font-black mb-8 tracking-tight text-slate-800">Contact Us</h1>
-        
-        <div class="prose prose-slate max-w-none space-y-8">
-            <p data-i18n="contact_desc" class="text-slate-500 font-medium leading-relaxed">Have questions or feedback? We'd love to hear from you.</p>
-            
-            <div class="bg-indigo-50 border-l-4 border-indigo-600 p-8 rounded-r-3xl mb-10">
-                <h2 data-i18n="support_title" class="text-indigo-900 font-bold mb-2 uppercase text-xs tracking-widest">Technical Support</h2>
-                <p class="text-indigo-700 text-lg">Email: <a href="mailto:support@swiftconvert.ink" class="underline font-black">yuerkang175@gmail.com</a></p>
-                <p data-i18n="support_time" class="text-sm mt-3 text-indigo-500 italic">Response time: 24-48 hours.</p>
+<main class="max-w-4xl mx-auto space-y-12">
+        <section class="bg-white rounded-[2.5rem] p-10 md:p-16 shadow-sm border border-slate-100">
+            <h2 data-i18n="about_title" class="text-3xl font-black mb-8 tracking-tight text-slate-800">Contact Us</h2>
+            <div class="prose prose-slate max-w-none">
+                <p data-i18n="about_desc_1" class="text-lg text-slate-600 leading-relaxed font-medium mb-6">
+                    SwiftConvert was built on a simple principle: your files should never leave your computer. We provide professional-grade media tools that run entirely in your browser.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-indigo-200 transition-colors">
+                        <h4 data-i18n="about_why_1" class="font-bold text-slate-800 mb-2">Bug Report</h4>
+                        <p data-i18n="about_feature_1" class="text-xs text-slate-500">Help us improve the local engine.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-indigo-200 transition-colors">
+                        <h4 data-i18n="about_why_2" class="font-bold text-slate-800 mb-2">Feature Request</h4>
+                        <p data-i18n="about_feature_2" class="text-xs text-slate-500">What tool should we build next?</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 gap-8 text-sm">
-                <div class="p-6 border border-slate-100 rounded-2xl">
-                    <h3 data-i18n="why_1_t" class="font-bold text-slate-800 mb-2">Bug Report</h3>
-                    <p data-i18n="why_1_d" class="text-slate-500">Found an issue with conversion? Let us know.</p>
+        <section id="contact" class="bg-white rounded-[2.5rem] p-10 md:p-16 shadow-sm border border-slate-100">
+            <h2 data-i18n="contact_title" class="text-3xl font-black mb-8 tracking-tight text-slate-800">Contact Us</h2>
+            <div class="space-y-8">
+                <p data-i18n="contact_desc" class="text-slate-500 font-medium">Found a bug or have a feature request? We'd love to hear from you.</p>
+                
+                <div class="bg-indigo-50 border-l-4 border-indigo-600 p-8 rounded-r-3xl">
+                    <h3 data-i18n="support_title" class="text-indigo-900 font-bold mb-2 uppercase text-xs tracking-widest">Technical Support</h3>
+                    <p class="text-indigo-700 text-xl font-black">yuerkang175@gmail.com</p>
+                    <p data-i18n="support_time" class="text-sm mt-3 text-indigo-500 italic">Response time: 24-48 hours.</p>
                 </div>
-                <div class="p-6 border border-slate-100 rounded-2xl">
-                    <h3 data-i18n="why_2_t" class="font-bold text-slate-800 mb-2">Feature Request</h3>
-                    <p data-i18n="why_2_d" class="text-slate-500">Suggestions for our tools are always welcome.</p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-indigo-200 transition-colors">
+                        <h4 data-i18n="why_1_t" class="font-bold text-slate-800 mb-2">Bug Report</h4>
+                        <p data-i18n="why_1_d" class="text-xs text-slate-500">Help us improve the local engine.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-indigo-200 transition-colors">
+                        <h4 data-i18n="why_2_t" class="font-bold text-slate-800 mb-2">Feature Request</h4>
+                        <p data-i18n="why_2_d" class="text-xs text-slate-500">What tool should we build next?</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
 <footer class="mt-16 pb-12 flex flex-col items-center space-y-6">
@@ -189,7 +213,14 @@
 	                why_2_d: 'Tell us what tools you want to see next on SwiftConvert.',
 	                footer_privacy: 'Privacy Policy',
 	                footer_terms: 'Terms of Service',
-	                footer_contact: 'Contact Us'
+	                footer_contact: 'Contact Us',
+					
+					about_title: 'Pure Power. Zero Uploads.',
+					                    about_desc_1: 'SwiftConvert was built on a simple principle: your files should never leave your computer. We provide professional-grade media tools that run entirely in your browser.',
+					                    about_why_1: '100% Private',
+										about_feature_1: 'Processing happens on your local CPU/GPU. Zero risk of data breaches.',
+					                    about_why_2: 'High Speed',
+										about_feature_2: 'Skip the upload wait. Convert and edit at the speed of your hardware.'
 	            },
 	            zh: {
 					nav_home: '首页',nav_editor: '图片编辑',
@@ -204,7 +235,13 @@
 	                why_2_d: '告诉我们您希望在 SwiftConvert 上看到哪些新功能。',
 	                footer_privacy: '隐私政策',
 	                footer_terms: '服务条款',
-	                footer_contact: '联系我们'
+	                footer_contact: '联系我们',
+					about_title: '强大处理，无需上传。',
+					                    about_desc_1: 'SwiftConvert 的核心原则是：您的文件永远不应离开您的电脑。我们提供完全在浏览器本地运行的专业级工具。',
+					                    about_why_1: '100%隐私保护',
+										about_feature_1: '所有处理均在本地 CPU/GPU 完成，无任何隐私泄露风险。',
+					                    about_why_2: '高速处理',
+										about_feature_2: '无需等待上传下载，处理速度取决于您的硬件性能。'
 	            }
 	        };
 	
