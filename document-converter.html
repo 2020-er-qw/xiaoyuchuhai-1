@@ -83,23 +83,34 @@
                    </span>
                </a>
                <div class="hidden md:flex items-center space-x-8">
-                   <a href="index.html" data-i18n="nav_converter" class="nav-link">Image Converter</a>
+                   <a href="index.html" data-i18n="nav_home" class="nav-link">Home</a>
+                   <a href="converter.html" data-i18n="nav_converter" class="nav-link">Image Converter</a>
+				   <a href="editor.html" data-i18n="nav_editor" class="nav-link">Image Editor</a>
                    <a href="document-converter.html" data-i18n="document_converter" class="nav-link nav-active">PDF Tools</a>
-                   <a href="javascript:void(0)" onclick="openModal('about')" data-i18n="nav_about" class="nav-link">About</a>
+                   <a href="contact.html" data-i18n="nav_about" class="nav-link">About</a>
                </div>
    			<div class="flex md:hidden items-center space-x-4">
    			    <a href="index.html"
-   			       data-i18n="nav_converter"
+   			       data-i18n="nav_home"
    			       class="text-xs font-black  text-slate-700">
-   			        Image Converter
+   			        Home
    			    </a>
+				<a href="converter.html"
+				   data-i18n="nav_converter"
+				   class="text-xs font-black  text-slate-700">
+				    Image Converter
+				</a>
+				<a href="editor.html"
+				   data-i18n="nav_editor"
+				   class="text-xs font-black  text-slate-700">
+				    Image Editor
+				</a>
    				 <a href="document-converter.html" 
    					data-i18n="document_converter"
    					class="text-xs font-black  text-slate-700">
    				        PDF Tools
    				    </a>
-   			    <a href="javascript:void(0)"
-   			       onclick="openModal('about')"
+   			    <a href="contact.html"
    			       data-i18n="nav_about"
    			       class="text-xs font-black  text-slate-700">
    			        About
@@ -217,7 +228,17 @@
 				    <p data-i18n="faq_batch_desc" class="text-sm text-slate-500 leading-relaxed italic">Technically unlimited. As long as your browser has enough memory, you can merge dozens of PDFs instantly.</p>
 				</div>
             </div>
+			<section class="mt-16 text-slate-600">
+			    <h2 data-i18n="deep_pdf_title" class="text-xl font-black text-slate-800 mb-6"></h2>
+			    <div class="space-y-4 text-sm leading-relaxed">
+			        <p data-i18n="deep_pdf_p1"></p>
+			        <p data-i18n="deep_pdf_p2"></p>
+			        <p data-i18n="deep_pdf_p3"></p>
+			    </div>
+			</section>
+			
         </section>
+		
 
         <footer class="pb-12 text-center">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
@@ -237,11 +258,11 @@
 			
             <div class="flex flex-col items-center space-y-4">
                 <div class="flex space-x-6">
-                    <a href="javascript:void(0)" onclick="openModal('privacy')" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
-                    <a href="javascript:void(0)" onclick="openModal('terms')" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
-            		<a href="javascript:void(0)" onclick="openModal('contact')" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
+                    <a href="privacy.html" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
+                	<a href="contact.html" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
                 </div>
-                <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy; 2026 SwiftConvert</p>
+                <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
             </div>
         </footer>
     </main>
@@ -265,6 +286,12 @@
     // 2. 完整语言包
     const i18n = {
         en: {
+			nav_home:'Home',
+			nav_editor: 'Image Editor',
+			deep_pdf_title: 'Why Choose SwiftConvert for PDF? 100% Privacy & Local Performance',
+			deep_pdf_p1: 'PDF (Portable Document Format) is the global standard for documents, but most online tools require you to upload files for merging, splitting, or converting images to PDF. SwiftConvert changes this by leveraging advanced WebAssembly technology to run a professional PDF processing engine directly within your browser\'s local memory.',
+			deep_pdf_p2: 'By merging, splitting, or converting images to PDF locally, you bypass server wait times and upload limits. It is the fastest and most secure way to handle professional document workflows without any risk of data leakage.',
+			deep_pdf_p3: 'Our tools are designed for security-conscious users. Whether you are working on a confidential project or simply want to save bandwidth, our "Zero-Upload" engine provides high-performance PDF synthesis entirely offline.',
             nav_converter: 'Image Converter', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
             card_heic: 'Merge PDF', card_webp: 'Split PDF', card_pdf: 'Img to PDF', card_offline: '100% Offline',
             merge_name: 'Merge PDF', merge_desc: 'Combine multiple PDF files into one.', merge_btn: 'Select PDFs',
@@ -318,12 +345,7 @@
 							                <p class="text-[11px] italic">We typically respond within 24 hours.</p>
 							            </div>
 							        `,
-									
-									        
-									        
-									        status_complete: 'Complete',
-									        
-									
+							status_complete: 'Complete',
 									        // PDF 专属卡片文案
 									        feat_pdf_local_title: 'Local Security',
 									        feat_pdf_local_desc: 'Your PDF documents never touch our servers.',
@@ -341,7 +363,13 @@
 													clear: 'Clear'
         },
         zh: {
-            nav_converter: '图片转换', document_converter: 'PDF 工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
+			nav_home:"首页",
+			deep_pdf_title: '为什么选择 SwiftConvert 处理 PDF？100% 隐私与本地性能',
+			deep_pdf_p1: 'PDF (Portable Document Format) 是全球通用的文档标准，但在合并、拆分或将图片转换为 PDF 时，大多数在线工具会要求您上传文件。SwiftConvert 改变了这一现状，我们利用先进的浏览器 WebAssembly 技术，将专业的 PDF 处理引擎直接运行在您的浏览器本地内存中。',
+			deep_pdf_p2: '我们的“零上传”技术确保您的合同、发票和个人照片永远不会离开您的设备。当您进行 PDF 合并或图片转 PDF 操作时，所有的计算和合成都在本地 CPU 上完成。这不仅消除了服务器端数据泄露的风险，还绕过了因上传大文件而产生的速度限制。',
+			deep_pdf_p3: 'SwiftConvert 致力于提供极简且高效的文档工作流。无论是在没有网络的环境下，还是处理高度机密的商务文档，您都可以信赖我们的本地 PDF 工具箱。我们不存储、不查看、也不收集您的任何文档数据，为您提供真正的数据主权。',
+			
+            nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF 工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
             card_heic: '合并 PDF', card_webp: '拆分 PDF', card_pdf: '图片转 PDF', card_offline: '100% 离线',
             merge_name: '合并 PDF', merge_desc: '将多个 PDF 文件合并为一个单份文档。', merge_btn: '选择 PDF 文件',
             split_name: 'PDF 拆分', split_desc: '提取页面或将 PDF 拆分为独立文件。', split_btn: '选择 PDF 文件',
