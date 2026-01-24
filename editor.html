@@ -173,7 +173,7 @@
     <script>
         const translations = {
             zh: {
-                nav_home: '首页', nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
+                nav_home: '首页', nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF工具', nav_about: '关于', nav_private: '100% 本地隐私',
                 feat_local_title: '本地处理',
                 feat_local_desc: '您的图片永远不会离开您的电脑，100% 隐私保护。',
                 feat_efficient_title: '极速转换',
@@ -223,7 +223,8 @@
             }
         };
 
-        let currentLang = localStorage.getItem('swift_lang') || 'zh';
+        let currentLang = localStorage.getItem('swiftconvert_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+        const t = (k) => i18n[currentLang][k] || k;
 
         function updateContent() {
             const t = translations[currentLang];
@@ -243,7 +244,7 @@
             // 4. 同步移动端 Select
             document.getElementById('lang-select').value = currentLang;
 
-            localStorage.setItem('swift_lang', currentLang);
+            localStorage.setItem('swiftconvert_lang', currentLang);
             document.documentElement.lang = currentLang;
         }
 
