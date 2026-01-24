@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Compress Image Online - Reduce File Size without Quality Loss | SwiftConvert</title>
+    <meta name="description" content="Shrink JPG, PNG, and WebP images locally. Adjust quality to get the perfect file size. Secure and private media toolkit.">
+    <link rel="canonical" href="https://www.swiftconvert.ink/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    
+    <!-- Favicon / Google Search / Browser -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+        
+    <!-- Apple iOS -->
+    <link rel="apple-touch-icon" sizes="512x512" href="/favicon.png">
+        
+    <!-- Android / PWA -->
+    <link rel="manifest" href="/site.webmanifest">
+         
+        
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.swiftconvert.ink/">
+    <meta property="og:title" content="SwiftConvert - Convert Images Locally & Privately">
+    <meta property="og:description" content="Protect your privacy. Convert HEIC and WebP files to JPG right in your browser. No server required.">
+    <meta property="og:image" content="https://www.swiftconvert.ink/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.swiftconvert.ink/">
+    <meta property="twitter:title" content="SwiftConvert | Secure Image Converter">
+    <meta property="twitter:description" content="Local browser-based image conversion for HEIC, WebP, and PNG. 100% Secure.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        .font-black-italic { font-weight: 900; font-style: italic; text-transform: none; letter-spacing: -0.05em; }
+        /* 自定义滑动条样式 */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-runnable-track { background: #f1f5f9; height: 8px; border-radius: 4px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; background: #4f46e5; border-radius: 50%; margin-top: -6px; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+		#privacy-modal { display: none; }
+		#privacy-modal.active { display: flex; }
+		.modal-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+				
+		.nav-link {
+		    position: relative;
+		    font-size: 11px;
+		    font-weight: 800;
+		    text-transform: none;
+		    letter-spacing: 0.15em;
+		    color: #64748b;
+		    transition: all 0.3s ease;
+		}
+		.nav-link:hover { color: #4f46e5; }
+		.nav-link::after {
+		    content: '';
+		    position: absolute;
+		    bottom: -4px;
+		    left: 0;
+		    width: 0;
+		    height: 2px;
+		    background: #4f46e5;
+		    transition: width 0.3s ease;
+		    border-radius: 2px;
+		}
+		.nav-link:hover::after, .nav-active::after { width: 100%; }
+		.nav-active { color: #4f46e5 !important; }
+				
+		.brand-dot {
+		    height: 4px; width: 4px;
+		    background-color: #4f46e5;
+		    border-radius: 50%;
+		    display: inline-block;
+		    margin-left: 2px;
+		}
+	
+	</style>
+</head>
+<body class="bg-slate-50 min-h-screen pt-24 pb-12">
+	<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
+	       <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+	           <div class="flex items-center space-x-3 md:space-x-12 flex-wrap">
+	               <a href="index.html" class="flex items-center group">
+	                   <span class="text-xl font-black hidden sm:inline">
+	                     Swift<span class="text-indigo-600">Convert</span>
+	                   </span>
+	                   <span class="text-xl font-black sm:hidden">SC</span>
+	               </a>
+	               <div class="hidden md:flex items-center space-x-8">
+						<a href="index.html" data-i18n="nav_home" class="nav-link">Home</a>
+	                   <a href="converter.html" data-i18n="nav_converter" class="nav-link">Image Converter</a>
+						<a href="editor.html" data-i18n="nav_editor" class="nav-link nav-active">Image Editor</a>
+	                   <a href="document-converter.html" data-i18n="document_converter" class="nav-link">PDF Tools</a>
+	                   <a href="contact.html" data-i18n="nav_about" class="nav-link">About</a>
+	               </div>
+	           </div>
+	
+	           <div class="flex items-center space-x-3 md:space-x-6 shrink-0">
+	               <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
+	                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+	                   <span id="lang-btn-text">中文</span>
+	               </button>
+	               
+	               <select id="lang-select" class="md:hidden text-[10px] font-black border-slate-200 rounded-lg px-2 py-1 bg-slate-50">
+	                   <option value="en">EN</option>
+	                   <option value="zh">CN</option>
+	               </select>
+	
+	               <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+	                   <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+	                   <span data-i18n="nav_private" class="text-[9px] font-black tracking-widest text-emerald-700 ">100% Private</span>
+	               </div>
+	           </div>
+	       </div>
+	   </nav>
+
+    <main class="max-w-4xl mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            <h1 data-i18n="compress_title" class="text-4xl md:text-5xl font-black-italic text-slate-900 mb-4">Compress Image</h1>
+            <p data-i18n="compress_desc" class="text-slate-500 font-medium text-lg">Reduce file size while keeping best quality locally.</p>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] border border-slate-100 p-8 shadow-sm">
+            <div id="drop-zone" class="border-2 border-dashed border-slate-200 rounded-[2rem] p-12 text-center cursor-pointer hover:border-indigo-400 group transition-all">
+                <input type="file" id="file-input" class="hidden" accept="image/jpeg,image/png,image/webp">
+                <p class="font-black text-slate-900 " data-i18n="drop_text">Click or Drop Image Here</p>
+                <p class="text-slate-400 text-xs mt-2" data-i18n="format_support">Supports JPG, PNG, WebP</p>
+            </div>
+
+            <div id="controls" class="hidden mt-8 space-y-8 animate-in fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-slate-50 rounded-[2rem] p-8">
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center">
+                            <label class="text-[10px] font-black text-slate-400  tracking-widest" data-i18n="quality_label">Compression Quality</label>
+                            <span id="quality-val" class="text-indigo-600 font-black italic">80%</span>
+                        </div>
+                        <input type="range" id="quality-range" min="1" max="100" value="80" class="w-full">
+                        
+                        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/50">
+                            <div>
+                                <p class="text-[9px] font-black text-slate-400 " data-i18n="original_size">Original</p>
+                                <p id="old-size" class="text-slate-900 font-bold">-</p>
+                            </div>
+                            <div>
+                                <p class="text-[9px] font-black text-slate-400 " data-i18n="new_size">Compressed (Est.)</p>
+                                <p id="new-size" class="text-indigo-600 font-black italic">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-center">
+                        <img id="preview-img" class="max-h-48 rounded-xl shadow-md border-4 border-white">
+                    </div>
+                </div>
+
+                <button id="download-btn" class="w-full py-5 bg-indigo-600 text-white rounded-[1.5rem] font-black  tracking-widest hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100" data-i18n="download_btn">
+                    Download Compressed Image
+                </button>
+                <button id="reset-btn" class="w-full py-2 text-slate-400 font-black  text-[10px] tracking-widest hover:text-indigo-600" data-i18n="reset_btn">
+                    Upload Another Image
+                </button>
+            </div>
+        </div>
+		
+		<footer class="mt-16 pb-12">
+		    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+		            <h4 data-i18n="feat_local_title" class="text-[11px] font-black  text-slate-800 mb-1"><strong>Local Processing</strong></h4>
+		            <p data-i18n="feat_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
+		        </div>
+		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+		            <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black  text-slate-800 mb-1">High Efficiency</h4>
+		            <p data-i18n="feat_efficient_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
+		        </div>
+		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
+		            <h4 data-i18n="feat_free_title" class="text-[11px] font-black  text-slate-800 mb-1">Free Usage</h4>
+		            <p data-i18n="feat_free_desc" class="text-[11px] text-slate-400">All features are, and will always be, free to use.</p>
+		        </div>
+		    </div>
+		    <div class="flex flex-col items-center space-y-4">
+		        <div class="flex space-x-6">
+		            <a href="privacy.html" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
+		            <a href="terms.html" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
+					<a href="contact.html" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
+		        </div>
+		        <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
+		    </div>
+		</footer>
+    </main>
+
+    <script>
+        const i18n = {
+            en: {
+                nav_home: 'Home', nav_converter: 'Image Converter', nav_editor:'Image Editor', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
+                feat_local_title: 'Local Processing',
+                feat_local_desc: 'Your images never leave your computer,100% Private',
+                feat_efficient_title: 'High Efficiency',
+                feat_efficient_desc: 'Batch convert HEIC/WebP in seconds.',
+                feat_free_title: 'Free Usage',
+                feat_free_desc: 'All features are, and will always be, free to use.',
+                privacy: 'Privacy Policy',
+                terms: 'Terms of Service',
+                contact: 'Contact Us',
+				
+				
+                compress_title: "Compress Image", compress_desc: "Reduce file size while keeping best quality locally.",
+                drop_text: "Click or Drop Image Here", format_support: "Supports JPG, PNG",
+                quality_label: "Compression Quality", original_size: "Original",
+                new_size: "Compressed (Est.)", download_btn: "Download Image",
+                reset_btn: "Upload Another", lang_btn: "中文"
+            },
+            zh: {
+                nav_home: '首页', nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF工具', nav_about: '关于', nav_private: '100% 本地隐私',
+                feat_local_title: '本地处理',
+                feat_local_desc: '您的图片永远不会离开您的电脑，100% 隐私保护。',
+                feat_efficient_title: '极速转换',
+                feat_efficient_desc: '利用本地算力，数秒内完成大批量格式转换。',
+                feat_free_title: '免费使用',
+                feat_free_desc: '我们承诺所有功能免费使用。',
+                privacy: '隐私政策',
+                terms: '服务条款',
+                contact: '联系我们',
+				
+                compress_title: "压缩图片", compress_desc: "在保持画质的同时减小体积，100% 本地处理。",
+                drop_text: "点击或拖拽图片到此处", format_support: "支持 JPG, PNG格式",
+                quality_label: "压缩质量", original_size: "原始大小",
+                new_size: "压缩后 (预估)", download_btn: "下载图片",
+                reset_btn: "重新上传", lang_btn: "English"
+            }
+        };
+
+        let currentLang = localStorage.getItem('swiftconvert_lang') || 'en';
+        let originalFile = null;
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const t = i18n[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+            document.getElementById('lang-btn-text').textContent = t.lang_btn;
+            localStorage.setItem('swiftconvert_lang', lang);
+        }
+
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const controls = document.getElementById('controls');
+        const qualityRange = document.getElementById('quality-range');
+        const qualityVal = document.getElementById('quality-val');
+        const oldSize = document.getElementById('old-size');
+        const newSize = document.getElementById('new-size');
+        const previewImg = document.getElementById('preview-img');
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+        function handleFile(file) {
+            if (!file) return;
+            originalFile = file;
+            oldSize.textContent = (file.size / 1024).toFixed(1) + ' KB';
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImg.src = e.target.result;
+                controls.classList.remove('hidden');
+                dropZone.classList.add('hidden');
+                updateCompression();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateCompression() {
+            const quality = qualityRange.value / 100;
+            qualityVal.textContent = qualityRange.value + '%';
+            
+            // 预估大小（仅作前端展示参考，实际以 canvas 导出为准）
+            const estimated = (originalFile.size * (quality * 0.9) / 1024).toFixed(1);
+            newSize.textContent = estimated + ' KB';
+        }
+
+        qualityRange.oninput = updateCompression;
+
+        document.getElementById('download-btn').onclick = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = () => {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                const quality = qualityRange.value / 100;
+                const link = document.createElement('a');
+                link.download = `compressed-${Date.now()}.jpg`;
+                // 核心：通过 canvas 导出并设置质量参数
+                link.href = canvas.toDataURL('image/jpeg', quality);
+                link.click();
+            };
+            img.src = previewImg.src;
+        };
+
+        document.getElementById('reset-btn').onclick = () => {
+            controls.classList.add('hidden');
+            dropZone.classList.remove('hidden');
+            fileInput.value = "";
+        };
+
+        document.getElementById('lang-toggle').onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+        applyLanguage(currentLang);
+    </script>
+</body>
+</html>
