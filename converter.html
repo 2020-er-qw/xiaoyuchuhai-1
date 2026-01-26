@@ -13,7 +13,7 @@
         <title>Free HEIC to JPG & WebP Converter</title>
         <meta name="description" content="Fast, free, and 100% private online image converter. Convert HEIC, WebP, and PNG to JPG locally in your browser. No file uploads, maximum security.">
         <meta name="keywords" content="HEIC to JPG, WebP to JPG, PNG to JPG, Image to PDF, Private Image Converter, Offline Image Conversion, SwiftConvert">
-        <link rel="canonical" href="https://www.swiftconvert.ink/" />
+        <link rel="canonical" href="https://www.swiftconvert.ink/converter" />
     	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 		<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -30,11 +30,11 @@
      
     
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://www.swiftconvert.ink/">
+        <meta property="og:url" content="https://www.swiftconvert.ink/converter">
         <meta property="og:title" content="SwiftConvert - Convert Images Locally & Privately">
         <meta property="og:description" content="Protect your privacy. Convert HEIC and WebP files to JPG right in your browser. No server required.">
         <meta property="og:image" content="https://www.swiftconvert.ink/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://www.swiftconvert.ink/">
+        <meta property="twitter:url" content="https://www.swiftconvert.ink/converter">
         <meta property="twitter:title" content="SwiftConvert | Secure Image Converter">
         <meta property="twitter:description" content="Local browser-based image conversion for HEIC, WebP, and PNG. 100% Secure.">
 
@@ -99,7 +99,7 @@
    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
            <div class="flex items-center space-x-3 md:space-x-12 flex-wrap">
-               <a href="index.html" class="flex items-center group">
+               <a href="/" class="flex items-center group">
                    <span class="text-xl font-black ... hidden sm:inline">
                      Swift<span class="text-indigo-600">Convert</span>
                    </span>
@@ -108,34 +108,34 @@
                    </span>
                </a>
                <div class="hidden md:flex items-center space-x-8">
-                   <a href="index.html" data-i18n="nav_home" class="nav-link">Home</a>
-                   <a href="converter.html" data-i18n="nav_converter" class="nav-link nav-active">Image Converter</a>
-				   <a href="editor.html" data-i18n="nav_editor" class="nav-link">Image Editor</a>
-                   <a href="document-converter.html" data-i18n="document_converter" class="nav-link">PDF Tools</a>
-                   <a href="contact.html" data-i18n="nav_about" class="nav-link">About</a>
+                   <a href="index" data-i18n="nav_home" class="nav-link">Home</a>
+                   <a href="converter" data-i18n="nav_converter" class="nav-link nav-active">Image Converter</a>
+				   <a href="editor" data-i18n="nav_editor" class="nav-link">Image Editor</a>
+                   <a href="document-converter" data-i18n="document_converter" class="nav-link">PDF Tools</a>
+                   <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
                </div>
    			<div class="flex md:hidden items-center space-x-4">
-   			    <a href="index.html"
+   			    <a href="index"
    			       data-i18n="nav_home"
    			       class="text-xs font-black  text-slate-700">
    			        Home
    			    </a>
-				<a href="converter.html"
+				<a href="converter"
 				   data-i18n="nav_converter"
 				   class="text-xs font-black  text-slate-700">
 				    Image Converter
 				</a>
-				<a href="editor.html"
+				<a href="editor"
 				   data-i18n="nav_editor"
 				   class="text-xs font-black  text-slate-700">
 				    Image Editor
 				</a>
-   				 <a href="document-converter.html" 
+   				 <a href="document-converter" 
    					data-i18n="document_converter"
    					class="text-xs font-black  text-slate-700">
    				        PDF Tools
    				    </a>
-   			    <a href="contact.html"
+   			    <a href="contact"
    			       data-i18n="nav_about"
    			       class="text-xs font-black  text-slate-700">
    			        About
@@ -282,9 +282,9 @@
             </div>
             <div class="flex flex-col items-center space-y-4">
                 <div class="flex space-x-6">
-                    <a href="privacy.html" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
-                    <a href="terms.html" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
-					<a href="contact.html" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
+                    <a href="privacy" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
+                    <a href="terms" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
+					<a href="contact" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
                 </div>
                 <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
             </div>
@@ -401,6 +401,7 @@
 				    deep_content_p2: '与传统的在线转换站不同，我们坚守“零上传”原则。当你在 SwiftConvert 上转换 HEIC 或 WebP 时，数据流仅在你的设备 CPU 和 RAM 之间传输，没有任何字节会被发送到互联网。这不仅杜绝了隐私泄露的风险，更在处理大批量照片时，省去了上传和下载的时间消耗。',
 				    deep_content_p3: '我们的编辑器集成了专业级的图片处理算法，支持 WebP、PNG 及 JPG 的即时编辑。无论是调整社交媒体图片的大小，还是为摄影作品添加滤镜，你都可以在一个完全离线的安全环境中完成。',
                 nav_converter: '图片转换',
+
 				nav_home: '首页',
                 nav_editor: '图片编辑',
                 nav_about: '关于我们',
