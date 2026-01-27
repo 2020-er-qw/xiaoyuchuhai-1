@@ -539,16 +539,13 @@
             }
         }
 
-        // 修改前：
-		// const { jsPDF } = window.jspdf;
-		
-		// 修改后：确保 window.jspdf 存在后再解构
-		const jsPDF = window.jspdf ? window.jspdf.jsPDF : null;
-		
-		if (!jsPDF) {
-		    console.error("jsPDF library not loaded yet.");
-		    // 如果是在点击转换时触发，可以给用户一个提示
-		}
+        // 这样可以确保即使 window.jspdf 还没加载，也不会直接 crash 脚本
+		const getJsPDF = () => {
+		    if (window.jspdf && window.jspdf.jsPDF) {
+		        return window.jspdf.jsPDF;
+		    }
+		    return null;
+		};
         const fileInput = document.getElementById('file-input');
         const dropZone = document.getElementById('drop-zone');
         const fileList = document.getElementById('file-list');
@@ -743,6 +740,7 @@
     </script>
 </body>
 </html>
+
 
 
 
