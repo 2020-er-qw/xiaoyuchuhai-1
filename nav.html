@@ -1,0 +1,55 @@
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
+    
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        <div class="flex items-center space-x-10">
+            <a href="/" class="flex items-center space-x-3 group">
+                <img src="favicon.png" alt="Logo" class="w-8 h-8 rounded-lg object-contain">
+                <span class="text-xl font-black text-slate-900 tracking-tight">
+                    Swift<span class="text-indigo-600">Convert</span>
+                </span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" data-i18n="nav_home" class="nav-link">Home</a>
+                <a href="converter" data-i18n="nav_converter" class="nav-link">Converter</a>
+                <a href="editor" data-i18n="nav_editor" class="nav-link">Editor</a>
+                <a href="document-converter" data-i18n="document_converter" class="nav-link">PDF Tools</a>
+                <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-bold tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white transition-all active:scale-95 shadow-sm">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                <span id="lang-btn-text">中文</span>
+            </button>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-indigo-600 focus:outline-none">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 shadow-xl transition-all duration-300 ease-in-out">
+            <div class="max-w-7xl mx-auto p-6 flex flex-col space-y-4">
+                <a href="/" data-i18n="nav_home" class="text-sm font-bold text-slate-700 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="converter" data-i18n="nav_converter" class="text-sm font-bold text-slate-700 hover:text-indigo-600 transition-colors">Converter</a>
+                <a href="editor" data-i18n="nav_editor" class="text-sm font-bold text-slate-700 hover:text-indigo-600 transition-colors">Editor</a>
+                <a href="document-converter" data-i18n="document_converter" class="text-sm font-bold text-slate-700 hover:text-indigo-600 transition-colors">PDF Tools</a>
+                <a href="contact" data-i18n="nav_about" class="text-sm font-bold text-slate-700 hover:text-indigo-600 transition-colors">About</a>
+                
+                <hr class="border-slate-50">
+                
+                <div class="flex items-center justify-between pt-2">
+                    <span data-i18n="nav_language" class="text-xs font-bold text-slate-400 tracking-widest">Language</span>
+                    <select id="lang-select-mobile" class="text-xs font-bold border-slate-200 rounded-lg px-2 py-1 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
