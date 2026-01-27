@@ -643,8 +643,18 @@
         };
 
         document.getElementById('download-pdf').onclick = async () => {
-            const doc = new jsPDF();
-            for (let i = 0; i < convertedFiles.length; i++) {
+            
+			const jsPDFConstructor = getJsPDF(); // 获取构造函数
+    
+		    if (!jsPDFConstructor) {
+		        alert(currentLang === 'zh' ? "PDF 库正在加载中，请稍候..." : "PDF library is still loading, please wait...");
+		        return;
+		    }
+		
+		    try {
+		        const doc = new jsPDFConstructor(); // 使用获取到的构造函数
+		        // ... 你的 PDF 生成逻辑 ...
+				for (let i = 0; i < convertedFiles.length; i++) {
                 const imgData = await new Promise(resolve => {
                     const reader = new FileReader();
                     reader.onload = (e) => resolve(e.target.result);
@@ -657,6 +667,9 @@
                 doc.addImage(imgData, 'JPEG', 0, 0, w, h);
             }
             doc.save("SwiftConvert.pdf");
+		    } catch (error) {
+		        console.error("PDF generation failed:", error);
+		    }
         };
 
         function saveFile(blob, filename) {
@@ -730,6 +743,7 @@
     </script>
 </body>
 </html>
+
 
 
 
