@@ -498,32 +498,35 @@
         const t = (key) => i18n[currentLang][key] || key;
 
         function applyLanguage(lang) {
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    
-    // 1. 翻译所有带有 data-i18n 的元素
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (i18n[lang][key]) el.innerText = i18n[lang][key];
-    });
-
-    // 2. 核心调整：更新桌面端按钮显示的“目标语言”提示
-    const langBtnText = document.getElementById('lang-btn-text');
-    if (langBtnText) {
-        // 如果当前是中文，按钮应该提示切换到 "English"
-        langBtnText.innerText = lang === 'en' ? '中文' : 'English';
-    }
-
-    // 3. 核心调整：强制同步移动端下拉框的选中值
-    const langSelect = document.getElementById('lang-select');
-    if (langSelect) {
-        langSelect.value = lang;
-    }
-
-    updateStatusText();
-    // 4. 保存到本地存储
-    localStorage.setItem('swiftconvert_lang', lang);
-}
+		    currentLang = lang;
+		    document.documentElement.lang = lang;
+		    
+		    // 1. 翻译所有带有 data-i18n 的元素
+		    document.querySelectorAll('[data-i18n]').forEach(el => {
+		        const key = el.dataset.i18n;
+		        if (i18n[lang] && i18n[lang][key]) {
+		            el.innerHTML = i18n[lang][key]; // 使用 innerHTML 以支持带有标签的翻译
+		        }
+		    });
+		
+		    // 2. 同步桌面端按钮文字：显示“另一种”语言
+		    const langBtnText = document.getElementById('lang-btn-text');
+		    if (langBtnText) {
+		        langBtnText.innerText = lang === 'en' ? '中文' : 'English';
+		    }
+		
+		    // 3. 同步移动端下拉框选中的值
+		    const langSelect = document.getElementById('lang-select');
+		    if (langSelect) {
+		        langSelect.value = lang;
+		    }
+		
+		    // 4. 更新页面上其他动态状态文字（如果有）
+		    if (typeof updateStatusText === "function") updateStatusText();
+		
+		    // 5. 保存设置
+		    localStorage.setItem('swiftconvert_lang', lang);
+		}
 
         function updateStatusText() {
             const countEl = document.getElementById('file-count');
@@ -685,28 +688,31 @@
         }
 
 
-		// 在脚本的最末尾替换原来的 Initial setup 部分
 		document.addEventListener('DOMContentLoaded', () => {
-			// 优先检查 URL 参数中的 lang
+		    // 1. 获取初始语言：优先 URL 参数 -> 其次本地存储 -> 最后浏览器默认
 		    const urlParams = new URLSearchParams(window.location.search);
 		    const langParam = urlParams.get('lang');
 		    
-		    if (langParam && (langParam === 'zh' || langParam === 'en')) {
+		    if (langParam && i18n[langParam]) {
 		        currentLang = langParam;
 		    } else {
-		        currentLang = localStorage.getItem('swiftconvert_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+		        currentLang = localStorage.getItem('swiftconvert_lang') || 
+		                      (navigator.language.startsWith('zh') ? 'zh' : 'en');
 		    }
-			
-		    // 1. 从存储中恢复语言并应用
+		
+		    // 2. 执行首次语言应用
 		    applyLanguage(currentLang);
 		
-		    // 2. 桌面端切换逻辑
+		    // 3. 绑定桌面端点击事件
 		    const langToggle = document.getElementById('lang-toggle');
 		    if (langToggle) {
-		        langToggle.onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+		        langToggle.onclick = (e) => {
+		            e.preventDefault();
+		            applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+		        };
 		    }
 		
-		    // 3. 移动端切换逻辑 (确保在 DOM 加载后绑定)
+		    // 4. 绑定移动端下拉框切换事件
 		    const langSelect = document.getElementById('lang-select');
 		    if (langSelect) {
 		        langSelect.onchange = (e) => applyLanguage(e.target.value);
@@ -715,4 +721,5 @@
     </script>
 </body>
 </html>
+
 
