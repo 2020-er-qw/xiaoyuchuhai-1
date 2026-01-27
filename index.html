@@ -42,7 +42,9 @@
             <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="SwiftConvert | 100% Private & Local Image Tools">
 			<meta name="twitter:description" content="No upload required. Convert HEIC, WebP, and PDF locally in your browser for maximum security.">
 			<meta name="twitter:image" content="https://www.swiftconvert.ink/og-image.jpg">
-    
+		
+		<script src="js/i18n-data.js"></script>
+		<script src="js/main.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
     	<script type="application/ld+json">
     		{
@@ -58,117 +60,36 @@
     		}
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');       
-         #privacy-modal { display: none; }
-         #privacy-modal.active { display: flex; }
-         .modal-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-     
-         .nav-link {
-             position: relative;
-             font-size: 11px;
-             font-weight: 800;
-             text-transform: none;
-             letter-spacing: 0.15em;
-             color: #64748b;
-             transition: all 0.3s ease;
-         }
-         .nav-link:hover { color: #4f46e5; }
-         .nav-link::after {
-             content: '';
-             position: absolute;
-             bottom: -4px;
-             left: 0;
-             width: 0;
-             height: 2px;
-             background: #4f46e5;
-             transition: width 0.3s ease;
-             border-radius: 2px;
-         }
-         .nav-link:hover::after, .nav-active::after { width: 100%; }
-         .nav-active { color: #4f46e5 !important; }
-     
-         .brand-dot {
-             height: 4px; width: 4px;
-             background-color: #4f46e5;
-             border-radius: 50%;
-             display: inline-block;
-             margin-left: 2px;
-         }
+        /* 统一引入 Plus Jakarta Sans */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #fcfcfd; 
+            color: #1e293b;
+        }
+    
+        /* 移除所有强制大写和斜体，保持自然感 */
+        .font-brand { font-weight: 800; tracking: -0.02em; }
+        
+        /* 模拟 localconvert 的卡片悬停效果 */
+        .tool-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #4f46e5;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen pt-24 pb-12">
-   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
-       <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-           <div class="flex items-center space-x-3 md:space-x-12 flex-wrap">
-               <a href="/" class="flex items-center group">
-                   <span class="text-xl font-black ... hidden sm:inline">
-                     Swift<span class="text-indigo-600">Convert</span>
-                   </span>
-                   <span class="text-xl font-black sm:hidden">
-                     SC
-                   </span>
-               </a>
-               <div class="hidden md:flex items-center space-x-8">
-                   <a href="/" data-i18n="nav_home" class="nav-link nav-active">Home</a>
-                   <a href="converter" data-i18n="nav_converter" class="nav-link">Image Converter</a>
-				   <a href="editor" data-i18n="nav_editor" class="nav-link">Image Editor</a>
-                   <a href="document-converter" data-i18n="document_converter" class="nav-link">PDF Tools</a>
-                   <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
-               </div>
-   			<div class="flex md:hidden items-center space-x-4">
-   			    <a href="/"
-   			       data-i18n="nav_home"
-   			       class="text-xs font-black  text-slate-700">
-   			        Home
-   			    </a>
-				<a href="converter"
-				   data-i18n="nav_converter"
-				   class="text-xs font-black  text-slate-700">
-				    Image Converter
-				</a>
-				<a href="editor"
-				   data-i18n="nav_editor"
-				   class="text-xs font-black  text-slate-700">
-				    Image Editor
-				</a>
-   				 <a href="document-converter" 
-   					data-i18n="document_converter"
-   					class="text-xs font-black  text-slate-700">
-   				        PDF Tools
-   				    </a>
-   			    <a href="contact"
-   			       data-i18n="nav_about"
-   			       class="text-xs font-black  text-slate-700">
-   			        About
-   			    </a>
-   			</div>
-   
-           </div>
-   		
-   
-           <div class="flex items-center space-x-3 md:space-x-6 shrink-0">
-               <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black  tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
-                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                   <span id="lang-btn-text">中文</span>
-               </button>
-               
-               <select id="lang-select" class="md:hidden text-[10px] font-black border-slate-200 rounded-lg px-2 py-1 bg-slate-50">
-                   <option value="en">English</option>
-                   <option value="zh">中文</option>
-               </select>
-   
-               <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
-                   <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                   <span data-i18n="nav_private" class="text-[9px] font-black  tracking-widest text-emerald-700">100% Private</span>
-               </div>
-           </div>
-       </div>
-   </nav>
-   
+  
+  <div id="nav-placeholder"></div>
 
     <main class="max-w-6xl mx-auto px-6">
         <div class="max-w-3xl mb-16 mx-auto text-center">
-            <h1 id="hero-title" data-i18n="hero_title" class="text-5xl font-black text-slate-900 mb-6 leading-[1.1]  italic tracking-tighter"></h1>
+            <h1 id="hero-title" data-i18n="hero_title" class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tighter"></h1>
             <p id="hero-desc" data-i18n="hero_desc" class="text-slate-500 text-lg font-medium leading-relaxed"></p>
         </div>
 
@@ -237,155 +158,83 @@
             </a>
         </div>
 		
-		<footer class="mt-16 pb-12">
-		    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_local_title" class="text-[11px] font-black  text-slate-800 mb-1"><strong>Local Processing</strong></h4>
-		            <p data-i18n="feat_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
-		        </div>
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black  text-slate-800 mb-1">High Efficiency</h4>
-		            <p data-i18n="feat_efficient_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
-		        </div>
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_free_title" class="text-[11px] font-black  text-slate-800 mb-1">Free Usage</h4>
-		            <p data-i18n="feat_free_desc" class="text-[11px] text-slate-400">All features are, and will always be, free to use.</p>
+		<section class="mt-24 pt-16 border-t border-slate-100">
+		    <div class="max-w-4xl mx-auto">
+		        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6 text-center" data-i18n="section_why_title"></h2>
+		        <p class="text-slate-500 text-lg text-center mb-12" data-i18n="section_why_desc"></p>
+		        
+		        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+		            <div class="p-6 bg-slate-50 rounded-3xl">
+		                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="feature_1_title"></h3>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="feature_1_desc"></p>
+		            </div>
+		            <div class="p-6 bg-slate-50 rounded-3xl">
+		                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="feature_2_title"></h3>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="feature_2_desc"></p>
+		            </div>
+		            <div class="p-6 bg-slate-50 rounded-3xl">
+		                <h3 class="font-bold text-xl mb-3 text-slate-900" data-i18n="feature_3_title"></h3>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="feature_3_desc"></p>
+		            </div>
 		        </div>
 		    </div>
-		    <div class="flex flex-col items-center space-y-4">
-		        <div class="flex space-x-6">
-		            <a href="privacy" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
-		            <a href="terms" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
-					<a href="contact" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
+		</section>
+		
+<section class="mt-24">
+    <h2 class="text-3xl font-black text-center mb-12 text-slate-900" data-i18n="table_title"></h2>
+    
+    <div class="max-w-4xl mx-auto overflow-hidden rounded-3xl border border-slate-100 shadow-sm">
+        <table class="w-full text-left bg-white">
+            <thead class="bg-slate-900 text-white">
+                <tr>
+                    <th class="p-6" data-i18n="table_header_features"></th>
+                    <th class="p-6" data-i18n="table_header_swift"></th>
+                    <th class="p-6" data-i18n="table_header_others"></th>
+                </tr>
+            </thead>
+            <tbody class="text-slate-600">
+                <tr class="border-b border-slate-50">
+                    <td class="p-6 font-bold" data-i18n="table_row_privacy"></td>
+                    <td class="p-6 text-emerald-600 font-bold" data-i18n="table_swift_privacy"></td>
+                    <td class="p-6" data-i18n="table_others_privacy"></td>
+                </tr>
+                <tr class="border-b border-slate-50">
+                    <td class="p-6 font-bold" data-i18n="table_row_speed"></td>
+                    <td class="p-6" data-i18n="table_swift_speed"></td>
+                    <td class="p-6" data-i18n="table_others_speed"></td>
+                </tr>
+                <tr>
+                    <td class="p-6 font-bold" data-i18n="table_row_security"></td>
+                    <td class="p-6 text-emerald-600 font-bold" data-i18n="table_swift_security"></td>
+                    <td class="p-6" data-i18n="table_others_security"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+		
+		<section class="mt-24 mb-20 bg-indigo-50/50 py-16 rounded-[3rem]">
+		    <div class="max-w-3xl mx-auto px-6">
+		        <h2 class="text-3xl font-black text-center mb-12 text-slate-900">FAQ</h2>
+		        <div class="space-y-6">
+		            <div class="bg-white p-8 rounded-2xl shadow-sm">
+		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_q1"></h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_a1"></p>
+		            </div>
+		            <div class="bg-white p-8 rounded-2xl shadow-sm">
+		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_q2"></h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_a2"></p>
+		            </div>
+					
+					<div class="bg-white p-8 rounded-2xl shadow-sm">
+					    <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_q3"></h4>
+					    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_a3"></p>
+					</div>
 		        </div>
-		        <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
 		    </div>
-		</footer>
+		</section>
 		
     </main>
-	
-
-    <script>
-        const i18n = {
-            zh: {
-				nav_home: '首页',nav_editor: '图片编辑',
-				nav_converter: '图片转换', document_converter: 'PDF 工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
-				feat_local_title: '本地处理',
-				feat_local_desc: '您的图片永远不会离开您的电脑，100% 隐私保护。',
-				feat_efficient_title: '极速转换',
-				feat_efficient_desc: '利用本地算力，数秒内完成大批量格式转换。',
-				feat_free_title: '免费使用',
-				feat_free_desc: '我们承诺所有功能免费使用。',
-				privacy: '隐私政策',
-				terms: '服务条款',
-				contact: '联系我们',
-				
-				
-                hero_title: '免费隐私的 <br><span class="text-indigo-600">全能媒体工具箱</span>',
-                hero_desc: "100% 浏览器本地处理，隐私、高效、免费。您的文件永远不会离开您的电脑。",
-                lang_btn: "English",
-                tool_heic_jpg: "HEIC 转 JPG", desc_heic_jpg: "将苹果手机照片转为通用 JPG。",
-                tool_webp_jpg: "WebP 转 JPG", desc_webp_jpg: "将 WebP 图片转为标准 JPG 格式。",
-                tool_img_pdf: "图片转 PDF", desc_img_pdf: "将多张图片一键合并为 PDF 文档。",
-                task1_title: "图片修改尺寸", task1_desc: "精确调整图片的像素宽度和高度。",
-                task2_title: "裁剪图片", task2_desc: "自由裁剪或按比例剪切图片内容。",
-                task3_title: "旋转图片", task3_desc: "旋转角度或水平/垂直翻转图片。",
-                task4_title: "图片压缩", task4_desc: "减小文件体积并保持高清画质。",
-                tool_pdf_merge: "PDF 合并", desc_pdf_merge: "将多个 PDF 文件按顺序合并。",
-                tool_pdf_split: "PDF 拆分", desc_pdf_split: "从 PDF 中提取特定页面或拆分。"
-            },
-            en: {
-				nav_home: 'Home',nav_editor: 'Image Editor',
-				nav_converter: 'Image Converter', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
-				feat_local_title: 'Local Processing',
-				feat_local_desc: 'Your images never leave your computer,100% Private',
-				feat_efficient_title: 'High Efficiency',
-				feat_efficient_desc: 'Batch convert HEIC/WebP in seconds.',
-				feat_free_title: 'Free Usage',
-				feat_free_desc: 'All features are, and will always be, free to use.',
-				privacy: 'Privacy Policy',
-				terms: 'Terms of Service',
-				contact: 'Contact Us',
-				
-
-                hero_title: 'Free & Private <br><span class="text-indigo-600">Media Toolkit</span>',
-                hero_desc: "100% local browser processing. Private, fast, and free. Your files never leave your device.",
-                lang_btn: "中文",
-                tool_heic_jpg: "HEIC to JPG", desc_heic_jpg: "Convert Apple HEIC photos to standard JPG.",
-                tool_webp_jpg: "WebP to JPG", desc_webp_jpg: "Convert WebP images to compatible JPG.",
-                tool_img_pdf: "Image to PDF", desc_img_pdf: "Combine images into a single PDF document.",
-                task1_title: "Image Resize Image", task1_desc: "Adjust pixel dimensions (width/height) accurately.",
-                task2_title: "Crop Image", task2_desc: "Crop images freely or with aspect ratios.",
-                task3_title: "Rotate Photo", task3_desc: "Rotate 90° or flip images horizontally/vertically.",
-                task4_title: "Compress Image", task4_desc: "Reduce file size without losing visual quality.",
-                tool_pdf_merge: "Merge PDF", desc_pdf_merge: "Combine multiple PDF files together.",
-                tool_pdf_split: "Split PDF", desc_pdf_split: "Extract pages or split a PDF file."
-            }
-        };
-
-        
-
-        function applyLanguage(lang) {
-		    currentLang = lang;
-		    document.documentElement.lang = lang;
-		    
-		    // 1. 翻译所有带有 data-i18n 的元素
-		    document.querySelectorAll('[data-i18n]').forEach(el => {
-		        const key = el.dataset.i18n;
-		        if (i18n[lang] && i18n[lang][key]) {
-		            el.innerHTML = i18n[lang][key]; // 使用 innerHTML 以支持带有标签的翻译
-		        }
-		    });
-		
-		    // 2. 同步桌面端按钮文字：显示“另一种”语言
-		    const langBtnText = document.getElementById('lang-btn-text');
-		    if (langBtnText) {
-		        langBtnText.innerText = lang === 'en' ? '中文' : 'English';
-		    }
-		
-		    // 3. 同步移动端下拉框选中的值
-		    const langSelect = document.getElementById('lang-select');
-		    if (langSelect) {
-		        langSelect.value = lang;
-		    }
-		
-		    // 4. 更新页面上其他动态状态文字（如果有）
-		    if (typeof updateStatusText === "function") updateStatusText();
-		
-		    // 5. 保存设置
-		    localStorage.setItem('swiftconvert_lang', lang);
-		}
-
-        document.addEventListener('DOMContentLoaded', () => {
-		    // 1. 获取初始语言：优先 URL 参数 -> 其次本地存储 -> 最后浏览器默认
-		    const urlParams = new URLSearchParams(window.location.search);
-		    const langParam = urlParams.get('lang');
-		    
-		    if (langParam && i18n[langParam]) {
-		        currentLang = langParam;
-		    } else {
-		        currentLang = localStorage.getItem('swiftconvert_lang') || 
-		                      (navigator.language.startsWith('zh') ? 'zh' : 'en');
-		    }
-		
-		    // 2. 执行首次语言应用
-		    applyLanguage(currentLang);
-		
-		    // 3. 绑定桌面端点击事件
-		    const langToggle = document.getElementById('lang-toggle');
-		    if (langToggle) {
-		        langToggle.onclick = (e) => {
-		            e.preventDefault();
-		            applyLanguage(currentLang === 'en' ? 'zh' : 'en');
-		        };
-		    }
-		
-		    // 4. 绑定移动端下拉框切换事件
-		    const langSelect = document.getElementById('lang-select');
-		    if (langSelect) {
-		        langSelect.onchange = (e) => applyLanguage(e.target.value);
-		    }
-		});
-    </script>
+	<div id="footer-placeholder"></div>
 </body>
 </html>
