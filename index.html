@@ -320,44 +320,69 @@
             }
         };
 
-        let currentLang = localStorage.getItem('swiftconvert_lang') || 'en';
+        
 
         function applyLanguage(lang) {
-            currentLang = lang;
-            const t = i18n[lang];
-            
-            // 核心修复：更新所有 data-i18n 属性
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) {
-                    if (key === 'hero_title') el.innerHTML = t[key];
-                    else el.textContent = t[key];
-                }
-            });
-
-            // 更新切换按钮文字
-            const btnText = document.getElementById('lang-btn-text');
-            if (btnText) btnText.textContent = t.lang_btn;
-
-            // 同步下拉框
-            const select = document.getElementById('lang-select');
-            if (select) select.value = lang;
-
-            document.documentElement.lang = lang;
-            localStorage.setItem('swiftconvert_lang', lang);
-        }
+		    currentLang = lang;
+		    document.documentElement.lang = lang;
+		    
+		    // 1. 翻译所有带有 data-i18n 的元素
+		    document.querySelectorAll('[data-i18n]').forEach(el => {
+		        const key = el.dataset.i18n;
+		        if (i18n[lang] && i18n[lang][key]) {
+		            el.innerHTML = i18n[lang][key]; // 使用 innerHTML 以支持带有标签的翻译
+		        }
+		    });
+		
+		    // 2. 同步桌面端按钮文字：显示“另一种”语言
+		    const langBtnText = document.getElementById('lang-btn-text');
+		    if (langBtnText) {
+		        langBtnText.innerText = lang === 'en' ? '中文' : 'English';
+		    }
+		
+		    // 3. 同步移动端下拉框选中的值
+		    const langSelect = document.getElementById('lang-select');
+		    if (langSelect) {
+		        langSelect.value = lang;
+		    }
+		
+		    // 4. 更新页面上其他动态状态文字（如果有）
+		    if (typeof updateStatusText === "function") updateStatusText();
+		
+		    // 5. 保存设置
+		    localStorage.setItem('swiftconvert_lang', lang);
+		}
 
         document.addEventListener('DOMContentLoaded', () => {
-            applyLanguage(currentLang);
-
-            document.getElementById('lang-toggle').onclick = () => {
-                applyLanguage(currentLang === 'en' ? 'zh' : 'en');
-            };
-
-            document.getElementById('lang-select').onchange = (e) => {
-                applyLanguage(e.target.value);
-            };
-        });
+		    // 1. 获取初始语言：优先 URL 参数 -> 其次本地存储 -> 最后浏览器默认
+		    const urlParams = new URLSearchParams(window.location.search);
+		    const langParam = urlParams.get('lang');
+		    
+		    if (langParam && i18n[langParam]) {
+		        currentLang = langParam;
+		    } else {
+		        currentLang = localStorage.getItem('swiftconvert_lang') || 
+		                      (navigator.language.startsWith('zh') ? 'zh' : 'en');
+		    }
+		
+		    // 2. 执行首次语言应用
+		    applyLanguage(currentLang);
+		
+		    // 3. 绑定桌面端点击事件
+		    const langToggle = document.getElementById('lang-toggle');
+		    if (langToggle) {
+		        langToggle.onclick = (e) => {
+		            e.preventDefault();
+		            applyLanguage(currentLang === 'en' ? 'zh' : 'en');
+		        };
+		    }
+		
+		    // 4. 绑定移动端下拉框切换事件
+		    const langSelect = document.getElementById('lang-select');
+		    if (langSelect) {
+		        langSelect.onchange = (e) => applyLanguage(e.target.value);
+		    }
+		});
     </script>
 </body>
 </html>
