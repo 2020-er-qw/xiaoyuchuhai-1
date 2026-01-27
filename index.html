@@ -9,10 +9,12 @@
         gtag('config', 'G-JKW589EGYQ');
     </script>
     <meta charset="UTF-8">
+	<link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Free Online HEIC to JPG, PDF Tools & Image Editor</title>
-    <meta name="description" content="Fast, free, and 100% private online media toolkit. Convert HEIC/WebP to JPG, merge or split PDFs, and edit images locally in your browser. No file uploads, maximum security.">
-    <meta name="keywords" content="HEIC to JPG, WebP to JPG, PDF Merge, Image Editor, Privacy Converter, Offline PDF tools">
+    <title>SwiftConvert | 100% Private Online Image & PDF Tools (No Upload)</title>
+    <meta name="description" content="Fast, free, and 100% private. Convert HEIC/WebP to JPG, edit images, and manage PDFs locally in your browser. No file uploads, no server storage.">
+    <meta name="keywords" content="Privacy-focused converter, HEIC to JPG without uploading, Safe PDF tools, Offline image editor online">
     <link rel="canonical" href="https://www.swiftconvert.ink" />
         	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     		<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -31,17 +33,14 @@
         
             <meta property="og:type" content="website">
             <meta property="og:url" content="https://www.swiftconvert.ink">
-            <meta property="og:title" content="SwiftConvert - Convert Images Locally & Privately">
-            <meta property="og:description" content="Protect your privacy. Convert HEIC and WebP files to JPG right in your browser. No server required.">
-            <meta property="og:image" content="https://www.swiftconvert.ink/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
-            <meta property="twitter:url" content="https://www.swiftconvert.ink">
-            <meta property="twitter:title" content="SwiftConvert | Secure Image Converter">
-            <meta property="twitter:description" content="Local browser-based image conversion for HEIC, WebP, and PNG. 100% Secure.">
+            <meta property="og:title" content="SwiftConvert - Private & Local Image Converter">
+		    <meta property="og:description" content="Your files never leave your device. Securely convert and edit images/PDFs in your browser.">
+		    <meta property="og:image" content="https://www.swiftconvert.ink/og-image.jpg">
+            <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="SwiftConvert | 100% Private & Local Image Tools">
+			<meta name="twitter:description" content="No upload required. Convert HEIC, WebP, and PDF locally in your browser for maximum security.">
+			<meta name="twitter:image" content="https://www.swiftconvert.ink/og-image.jpg">
     
         <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     	<script type="application/ld+json">
     		{
     		  "@context": "https://schema.org",
@@ -55,7 +54,6 @@
     		  }
     		}
     </script>
-	<script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');       
          #privacy-modal { display: none; }
@@ -115,7 +113,7 @@
                    <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
                </div>
    			<div class="flex md:hidden items-center space-x-4">
-   			    <a href="index"
+   			    <a href="/"
    			       data-i18n="nav_home"
    			       class="text-xs font-black  text-slate-700">
    			        Home
@@ -176,63 +174,63 @@
                 <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_heic_jpg"></h3><p class="text-slate-400 text-sm" data-i18n="desc_heic_jpg"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_heic_jpg"></h2><p class="text-slate-400 text-sm" data-i18n="desc_heic_jpg"></p></div>
             </a>
 
             <a href="converter" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_webp_jpg"></h3><p class="text-slate-400 text-sm" data-i18n="desc_webp_jpg"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_webp_jpg"></h2><p class="text-slate-400 text-sm" data-i18n="desc_webp_jpg"></p></div>
             </a>
 
             <a href="document-converter" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_img_pdf"></h3><p class="text-slate-400 text-sm" data-i18n="desc_img_pdf"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_img_pdf"></h2><p class="text-slate-400 text-sm" data-i18n="desc_img_pdf"></p></div>
             </a>
 
             <a href="resize" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="task1_title"></h3><p class="text-slate-400 text-sm" data-i18n="task1_desc"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="task1_title"></h2><p class="text-slate-400 text-sm" data-i18n="task1_desc"></p></div>
             </a>
 
             <a href="crop" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center group-hover:bg-cyan-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="task2_title"></h3><p class="text-slate-400 text-sm" data-i18n="task2_desc"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="task2_title"></h2><p class="text-slate-400 text-sm" data-i18n="task2_desc"></p></div>
             </a>
 
             <a href="rotate" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="task3_title"></h3><p class="text-slate-400 text-sm" data-i18n="task3_desc"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="task3_title"></h2><p class="text-slate-400 text-sm" data-i18n="task3_desc"></p></div>
             </a>
 
             <a href="compress" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="task4_title"></h3><p class="text-slate-400 text-sm" data-i18n="task4_desc"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="task4_title"></h2><p class="text-slate-400 text-sm" data-i18n="task4_desc"></p></div>
             </a>
 
             <a href="document-converter" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_pdf_merge"></h3><p class="text-slate-400 text-sm" data-i18n="desc_pdf_merge"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_pdf_merge"></h2><p class="text-slate-400 text-sm" data-i18n="desc_pdf_merge"></p></div>
             </a>
 
             <a href="document-converter" class="tool-card group bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col gap-6">
                 <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758L5 19m0-14l4.121 4.121" /></svg>
                 </div>
-                <div><h3 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_pdf_split"></h3><p class="text-slate-400 text-sm" data-i18n="desc_pdf_split"></p></div>
+                <div><h2 class="text-xl font-black text-slate-900 mb-2" data-i18n="tool_pdf_split"></h2><p class="text-slate-400 text-sm" data-i18n="desc_pdf_split"></p></div>
             </a>
         </div>
 		
