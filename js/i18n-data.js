@@ -75,7 +75,103 @@ const i18nData = {
 						faq_converter_q1: '使用 SwiftConvert 安全吗？',
 						faq_converter_a1: '非常安全。所有处理均在您的浏览器本地完成，文件永远不会上传到服务器。',
 						faq_converter_q2: '支持批量转换吗？',
-						faq_converter_a2: '支持，您可以一次性选择多张图片并在本地完成批量转换。'
+						faq_converter_a2: '支持，您可以一次性选择多张图片并在本地完成批量转换。',
+						
+						//editor
+						hero_title: '专业的图像 <br><span class="text-indigo-600">在线编辑工具</span>',
+						hero_desc: '无需上传服务器，所有操作均在您的浏览器本地完成。隐私、高效、简单。',
+						lang_btn: 'English',
+						task1_title: '图片尺寸修改',
+						task1_desc: '精确调整图片的像素宽度和高度，支持保持比例或自由拉伸。',
+						task2_title: '图片精准剪切',
+						task2_desc: '提供自由裁剪和固定比例剪切功能，快速构图，去除多余部分。',
+						task3_title: '图片方向旋转',
+						task3_desc: '一键实现 90° 顺时针或逆时针旋转，同时支持水平和垂直翻转。',
+						task4_title: '智能图片压缩',
+						task4_desc: '在保持视觉清晰度的前提下，大幅度减小图片文件体积，方便分享。',
+						// FAQ 模块
+						    faq_title: "常见问题",
+						    faq_editor_q1: "在这里编辑照片安全吗？",
+						    faq_editor_a1: "绝对安全。SwiftConvert 采用 100% 本地浏览器处理技术。您的照片在内存中处理，一旦关闭标签页，数据就会消失。文件永远不会上传到我们的服务器。",
+						    faq_editor_q2: "图片处理后质量会变差吗？",
+						    faq_editor_a2: "不会。我们的本地处理算法在确保隐私的同时，能最大限度保留原图画质。您可以根据需要手动调节压缩率和尺寸。",
+						    faq_editor_q3: "支持哪些格式？",
+						    faq_editor_a3: "我们支持 JPG, PNG等主流图片格式的本地编辑与保存。",
+							//pdf-converter
+							deep_pdf_title: '为什么选择 SwiftConvert 处理 PDF？100% 隐私与本地性能',
+							deep_pdf_p1: 'PDF (Portable Document Format) 是全球通用的文档标准，但在合并、拆分或将图片转换为 PDF 时，大多数在线工具会要求您上传文件。SwiftConvert 改变了这一现状，我们利用先进的浏览器 WebAssembly 技术，将专业的 PDF 处理引擎直接运行在您的浏览器本地内存中。',
+							deep_pdf_p2: '我们的“零上传”技术确保您的合同、发票和个人照片永远不会离开您的设备。当您进行 PDF 合并或图片转 PDF 操作时，所有的计算和合成都在本地 CPU 上完成。这不仅消除了服务器端数据泄露的风险，还绕过了因上传大文件而产生的速度限制。',
+							deep_pdf_p3: 'SwiftConvert 致力于提供极简且高效的文档工作流。无论是在没有网络的环境下，还是处理高度机密的商务文档，您都可以信赖我们的本地 PDF 工具箱。我们不存储、不查看、也不收集您的任何文档数据，为您提供真正的数据主权。',
+							card_heic: '合并 PDF', card_webp: '拆分 PDF', card_pdf: '图片转 PDF', card_offline: '100% 离线',
+							merge_name: '合并 PDF', merge_desc: '将多个 PDF 文件合并为一个单份文档。', merge_btn: '选择 PDF 文件',
+							split_name: 'PDF 拆分', split_desc: '提取页面或将 PDF 拆分为独立文件。', split_btn: '选择 PDF 文件',
+							img_pdf_name: '图片转 PDF', img_pdf_desc: '将多张照片合并并转换为高品质 PDF。', img_pdf_btn: '上传图片',
+							faq_title: '常见问题解答', faq_cat_privacy: '隐私与安全', faq_safety_title: '我的文件安全吗？', faq_safety_desc: '非常安全。所有处理 100% 在本地完成，不上传服务器。',
+							faq_cat_limit: '文件限制', faq_limit_title: '有大小限制吗？', faq_limit_desc: '没有数量限制，仅取决于您设备的内存。',
+							modal_confirm: '我知道了',
+
+							faq_cat_multi: '工作流',
+							        faq_multi_title: '我可以将 PDF 拆分为独立页面吗？',
+							        faq_multi_desc: '可以。我们的拆分工具会提取每一页，并自动打包成一个 ZIP 压缩包供您一键下载。',
+							        faq_cat_batch: '性能',
+							        faq_batch_title: '一次可以合并多少个文件？',
+							        faq_batch_desc: '技术上没有限制。只要您的浏览器内存足够，您可以一次性合并几十个 PDF 文件。',
+									feat_pdf_local_title: '本地安全处理',
+									        feat_pdf_local_desc: '您的 PDF 文档永远不会上传。所有的合并、拆分操作均在浏览器本地完成。',
+									        feat_pdf_eff_title: '极致处理效率',
+									        feat_pdf_eff_desc: '瞬间处理大型 PDF 文件。无论是合并几十份文档还是拆分页面，都能快速完成。',
+									        feat_pdf_conv_title: '图片转 PDF',
+									        feat_pdf_conv_desc: '支持将批量照片（JPG/PNG/WebP）一键转换为高品质的 PDF 文档。',
+											about_content: `
+											            <div class="space-y-4">
+											                <div class="border-l-4 border-indigo-600 pl-4 py-1">
+											                    <h4 class="text-slate-900 font-black  text-xs tracking-wider">本地化处理的革新</h4>
+											                    <p class="text-slate-500 text-[10px] mt-1">速度与隐私的完美契合</p>
+											                </div>
+											                <p>SwiftConvert 是一款现代化的图像工具，旨在解决“安全与便捷”之间的矛盾。传统转换器需要将文件上传到云端服务器，这让您的私人照片面临泄露风险。</p>
+											                <div class="grid grid-cols-2 gap-4 my-6">
+											                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+											                        <span class="text-indigo-600 font-bold text-[10px] block mb-1 ">技术核心</span>
+											                        <p class="text-[11px] leading-tight">基于 WebAssembly 技术，直接在您的浏览器内存中处理图片。</p>
+											                    </div>
+											                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+											                        <span class="text-emerald-600 font-bold text-[10px] block mb-1 ">隐私承诺</span>
+											                        <p class="text-[11px] leading-tight">零服务器架构。您的数据永远不会离开您的个人设备。</p>
+											                    </div>
+											                </div>
+											                <p>我们的使命是提供一个专业、免费且无广告的工具，在提升效率的同时，绝对尊重您的数据所有权。</p>
+											            </div>`,
+											privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">零上传政策</h4><p>我们绝不会查看或存储您的图片。所有转换过程 100% 在您浏览器的沙箱环境中本地完成。除了基本的数据分析，我们不使用 Cookie 或任何跟踪技术。</p></section>',
+											terms_content: '<p>SwiftConvert 按“原样”免费提供个人使用。使用此工具即表示您同意您的文件仍为您个人所有，我们不对转换过程中产生的任何问题负责。</p>',
+											contact_content: `
+											            <div class="space-y-4">
+											                <p>有任何问题或建议？欢迎随时联系我们。</p>
+											                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+											                    <p class="font-black text-indigo-600  text-[10px] mb-1">邮件支持</p>
+											                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
+											                </div>
+											                <p class="text-[11px] italic">我们通常会在 24 小时内回复您的邮件。</p>
+											            </div>
+											        `,
+													 
+													        status_complete: '完成',
+													       
+													        // PDF 专属卡片文案
+													        feat_pdf_local_title: '本地安全处理',
+													        feat_pdf_local_desc: '您的 PDF 文档永远不会离开您的浏览器。',
+													        feat_pdf_eff_title: '极致处理效率',
+													        feat_pdf_eff_desc: '数秒内即可完成大型 PDF 的合并或拆分。',
+													        feat_pdf_conv_title: '图片转 PDF',
+													        feat_pdf_conv_desc: '支持批量将照片转换为高品质 PDF 文档。',
+															queue_status: '处理队列',
+															        status_merging: '正在合并 PDF...',
+															        status_converting: '正在转换图片...',
+															        status_splitting: '正在拆分页面...',
+															        status_split_done: '拆分完成',
+															        btn_download: '下载文件',
+															        btn_error: '处理失败',
+																	clear: '清空列表'
+						
 				
             },
             en: {
@@ -171,7 +267,100 @@ const i18nData = {
 						faq_converter_q1:'Is it safe to use SwiftConvert?',
 						faq_converter_a1:'Yes. All processing is done locally in your browser. Files are never uploaded.',
 						faq_converter_q2:'Does it support bulk conversion?',
-						faq_converter_a2:'Yes, you can select multiple images and convert them all at once locally.'
+						faq_converter_a2:'Yes, you can select multiple images and convert them all at once locally.',
+						//editor
+						hero_title: 'Professional Image <br><span class="text-indigo-600">Online Editor</span>',
+						hero_desc: 'No server uploads. All operations are processed locally in your browser. Private, fast, and secure.',
+						task1_title: 'Image Resizer',
+						task1_desc: 'Accurately adjust pixel width and height, support aspect ratio locking.',
+						task2_title: 'Image Cropper',
+						task2_desc: 'Crop with custom or fixed ratios (16:9, 1:1) to recompose.',
+						task3_title: 'Image Rotator',
+						task3_desc: 'Rotate 90° clockwise/counter-clockwise and flip images.',
+						task4_title: 'Image Optimizer',
+						task4_desc: 'Significantly reduce file size while maintaining optimal quality.',
+						faq_title: "Frequently Asked Questions",
+						    faq_editor_q1: "Is it safe to edit my photos here?",
+						    faq_editor_a1: "Absolutely. SwiftConvert uses 100% browser-based local processing. Your photos are processed in your RAM and vanish once the tab is closed. Your files are never uploaded to any server.",
+						    faq_editor_q2: "Will the image quality decrease after processing?",
+						    faq_editor_a2: "No. Our local processing algorithms are designed to preserve maximum quality while ensuring your privacy. You can also manually adjust compression and dimensions as needed.",
+						    faq_editor_q3: "Which formats are supported?",
+						    faq_editor_a3: "We support major image formats including JPG, PNG, WebP, and HEIC for local editing and saving.",
+							//pdf-converter
+							
+							deep_pdf_title: 'Why Choose SwiftConvert for PDF? 100% Privacy & Local Performance',
+							deep_pdf_p1: 'PDF (Portable Document Format) is the global standard for documents, but most online tools require you to upload files for merging, splitting, or converting images to PDF. SwiftConvert changes this by leveraging advanced WebAssembly technology to run a professional PDF processing engine directly within your browser\'s local memory.',
+							deep_pdf_p2: 'By merging, splitting, or converting images to PDF locally, you bypass server wait times and upload limits. It is the fastest and most secure way to handle professional document workflows without any risk of data leakage.',
+							deep_pdf_p3: 'Our tools are designed for security-conscious users. Whether you are working on a confidential project or simply want to save bandwidth, our "Zero-Upload" engine provides high-performance PDF synthesis entirely offline.',
+							nav_converter: 'Image Converter', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
+							card_heic: 'Merge PDF', card_webp: 'Split PDF', card_pdf: 'Img to PDF', card_offline: '100% Offline',
+							merge_name: 'Merge PDF', merge_desc: 'Combine multiple PDF files into one.', merge_btn: 'Select PDFs',
+							split_name: 'Split PDF', split_desc: 'Extract pages from PDF file.', split_btn: 'Select PDF',
+							img_pdf_name: 'Images to PDF', img_pdf_desc: 'Convert multiple photos into a PDF.', img_pdf_btn: 'Upload Images',
+							faq_title: 'Frequently Asked Questions', faq_cat_privacy: 'Privacy & Safety', faq_safety_title: 'Are my PDF files safe?', faq_safety_desc: 'Yes. SwiftConvert processes PDFs 100% locally. Your files never touch any server.',
+							faq_cat_limit: 'File Limits', faq_limit_title: 'Is there a limit?', faq_limit_desc: 'No count limits, restricted only by device memory.',
+							modal_confirm: 'I Understand', privacy: 'Privacy Policy', terms: 'Terms of Service',
+							about: 'About SwiftConvert',
+							faq_cat_multi: 'Workflow',
+							        faq_multi_title: 'Can I split a PDF into separate pages?',
+							        faq_multi_desc: 'Yes. Our split tool extracts every page and packages them into a single ZIP file for easy download.',
+							        faq_cat_batch: 'Performance',
+							        faq_batch_title: 'How many files can I merge at once?',
+							        faq_batch_desc: 'Technically unlimited. As long as your browser has enough memory, you can merge dozens of PDFs instantly.',
+									feat_pdf_local_title: 'Local Processing',
+									        feat_pdf_local_desc: 'Your PDF documents never touch our servers. All merging and splitting happens locally.',
+									        feat_pdf_eff_title: 'High Efficiency',
+									        feat_pdf_eff_desc: 'Instantly process large PDF files. Merge dozens of documents or split pages in a flash.',
+									        feat_pdf_conv_title: 'Images to PDF',
+									        feat_pdf_conv_desc: 'Convert batch photos (JPG/PNG/WebP) into a single, high-quality PDF document.',
+											contact: 'Contact Us',
+											about_content: `
+												<div class="space-y-4">
+													<div class="border-l-4 border-indigo-600 pl-4 py-1">
+														<h4 class="text-slate-900 font-black  text-xs tracking-wider">The Local-First Revolution</h4>
+														<p class="text-slate-500 text-xs mt-1">Speed meets absolute privacy.</p>
+													</div>
+													<p>SwiftConvert is a modern image utility designed to solve the dilemma of "Security vs. Convenience". Traditionally, converting HEIC or WebP required uploading files to a cloud server—exposing your private photos to potential risks.</p>
+													<div class="grid grid-cols-2 gap-4 my-6">
+														<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+															<span class="text-indigo-600 font-bold text-[10px] block mb-1 ">Technology</span>
+															<p class="text-[11px] leading-tight">Powered by WASM, processing images directly in your browser's RAM.</p>
+														</div>
+														<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+															<span class="text-emerald-600 font-bold text-[10px] block mb-1 ">Privacy</span>
+															<p class="text-[11px] leading-tight">Zero-Server Architecture. Your data never leaves your device.</p>
+														</div>
+													</div>
+													<p>Our mission is to provide a professional-grade tool that is 100% free, without ads, and without compromise on your data sovereignty.</p>
+												</div>`,
+											privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">Zero Upload Policy</h4><p>We never see or store your images. All conversion processes happen 100% locally in your browser\'s sandbox. We do not use cookies or tracking beyond basic analytics.</p></section>',
+											terms_content: '<p>SwiftConvert is provided "as is" for free personal use. By using this tool, you agree that your files remain your own property, and we are not responsible for any issues arising from image conversion.</p>',
+											contact_content: `
+											            <div class="space-y-4">
+											                <p>Have questions or suggestions? We'd love to hear from you.</p>
+											                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+											                    <p class="font-black text-indigo-600  text-[10px] mb-1">Email Support</p>
+											                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
+											                </div>
+											                <p class="text-[11px] italic">We typically respond within 24 hours.</p>
+											            </div>
+											        `,
+											status_complete: 'Complete',
+													        // PDF 专属卡片文案
+													        feat_pdf_local_title: 'Local Security',
+													        feat_pdf_local_desc: 'Your PDF documents never touch our servers.',
+													        feat_pdf_eff_title: 'Fast Processing',
+													        feat_pdf_eff_desc: 'Merge or split large PDFs in seconds.',
+													        feat_pdf_conv_title: 'Images to PDF',
+													        feat_pdf_conv_desc: 'Batch convert photos into a clean PDF.',
+															queue_status: 'Processing Queue',
+															        status_merging: 'Merging PDF...',
+															        status_converting: 'Converting Images...',
+															        status_splitting: 'Splitting PDF...',
+															        status_split_done: 'Split Complete',
+															        btn_download: 'Download',
+															        btn_error: 'Error',
+																	clear: 'Clear'
             }
         };
 
