@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <title>Crop Image Online - Free & Private Photo Cropper | SwiftConvert</title>
    <meta name="description" content="Easily crop your photos to any aspect ratio. Free, online, and local processing ensures your images never leave your computer.">
-   <link rel="canonical" href="https://www.swiftconvert.ink/crop" />
+   <link rel="canonical" href="https://www.swiftconvert.ink/" />
    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
@@ -26,6 +26,9 @@
        
    <!-- Android / PWA -->
    <link rel="manifest" href="/site.webmanifest">
+   <link rel="canonical" href="https://www.swiftconvert.ink/crop" />
+   <link rel="alternate" hreflang="en" href="https://www.swiftconvert.ink/crop" />
+   <link rel="alternate" hreflang="zh" href="https://www.swiftconvert.ink/crop?lang=zh" />
         
        
    <meta property="og:type" content="website">
@@ -37,12 +40,13 @@
    <meta property="twitter:title" content="SwiftConvert | Secure Image Converter">
    <meta property="twitter:description" content="Local browser-based image conversion for HEIC, WebP, and PNG. 100% Secure.">
    
+	<script src="js/i18n-data.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        /* 统一引入 Plus Jakarta Sans */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         
-        .font-black-italic { font-weight: 900; font-style: italic; text-transform: none; letter-spacing: -0.05em; }
         .cropper-container { max-width: 100%; } /* 确保裁剪容器响应式 */
         .img-container {
             width: 100%;
@@ -60,89 +64,35 @@
             max-width: 100%;
             display: block;
         }
-		#privacy-modal { display: none; }
-		#privacy-modal.active { display: flex; }
-		.modal-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-				
-		.nav-link {
-		    position: relative;
-		    font-size: 11px;
-		    font-weight: 800;
-		    text-transform: none;
-		    letter-spacing: 0.15em;
-		    color: #64748b;
-		    transition: all 0.3s ease;
-		}
-		.nav-link:hover { color: #4f46e5; }
-		.nav-link::after {
-		    content: '';
-		    position: absolute;
-		    bottom: -4px;
-		    left: 0;
-		    width: 0;
-		    height: 2px;
-		    background: #4f46e5;
-		    transition: width 0.3s ease;
-		    border-radius: 2px;
-		}
-		.nav-link:hover::after, .nav-active::after { width: 100%; }
-		.nav-active { color: #4f46e5 !important; }
-				
-		.brand-dot {
-		    height: 4px; width: 4px;
-		    background-color: #4f46e5;
-		    border-radius: 50%;
-		    display: inline-block;
-		    margin-left: 2px;
-		}
+		body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #fcfcfd; 
+            color: #1e293b;
+        }
+            
+        /* 移除所有强制大写和斜体，保持自然感 */
+        .font-brand { font-weight: 800; tracking: -0.02em; }
+        
+        /* 模拟 localconvert 的卡片悬停效果 */
+        .tool-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #4f46e5;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen pt-24 pb-12">
-	<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
-	       <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-	           <div class="flex items-center space-x-3 md:space-x-12 flex-wrap">
-	               <a href="/" class="flex items-center group">
-	                   <span class="text-xl font-black hidden sm:inline">
-	                     Swift<span class="text-indigo-600">Convert</span>
-	                   </span>
-	                   <span class="text-xl font-black sm:hidden">SC</span>
-	               </a>
-	               <div class="hidden md:flex items-center space-x-8">
-						<a href="/" data-i18n="nav_home" class="nav-link">Home</a>
-	                   <a href="converter" data-i18n="nav_converter" class="nav-link">Image Converter</a>
-						<a href="editor" data-i18n="nav_editor" class="nav-link nav-active">Image Editor</a>
-	                   <a href="document-converter" data-i18n="document_converter" class="nav-link">PDF Tools</a>
-	                   <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
-	               </div>
-	           </div>
-	
-	           <div class="flex items-center space-x-3 md:space-x-6 shrink-0">
-	               <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
-	                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-	                   <span id="lang-btn-text">中文</span>
-	               </button>
-	               
-	               <select id="lang-select" class="md:hidden text-[10px] font-black border-slate-200 rounded-lg px-2 py-1 bg-slate-50">
-	                   <option value="en">EN</option>
-	                   <option value="zh">CN</option>
-	               </select>
-	
-	               <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
-	                   <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-	                   <span data-i18n="nav_private" class="text-[9px] font-black tracking-widest text-emerald-700 ">100% Private</span>
-	               </div>
-	           </div>
-	       </div>
-	   </nav>
-	
 
-    
-	
+<div id="nav-placeholder"></div> 
 	<main class="max-w-5xl mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center mb-12">
-            <h1 data-i18n="crop_title" class="text-4xl md:text-5xl font-black-italic text-slate-900 mb-4">Crop Image</h1>
-            <p data-i18n="crop_desc" class="text-slate-500 font-medium text-lg">Precisely cut and reframe your photos locally.</p>
-        </div>
+
+		<div class="text-center mb-12">
+		    <h1 data-i18n="crop_title" class="text-4xl font-black text-slate-900 mb-4 tracking-tight"> <span class="text-indigo-600"></span></h1>
+		    <p data-i18n="crop_desc" class="text-slate-500"></p>
+		</div>
 
         <div class="bg-white rounded-[2.5rem] border border-slate-100 p-8 shadow-sm">
             <div id="drop-zone" class="border-2 border-dashed border-slate-200 rounded-[2rem] p-12 text-center transition-all cursor-pointer hover:border-indigo-400 group">
@@ -186,101 +136,160 @@
                 </button>
             </div>
         </div>
-		
-		<footer class="mt-16 pb-12">
-		    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_local_title" class="text-[11px] font-black  text-slate-800 mb-1"><strong>Local Processing</strong></h4>
-		            <p data-i18n="feat_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
-		        </div>
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_efficient_title" class="text-[11px] font-black  text-slate-800 mb-1">High Efficiency</h4>
-		            <p data-i18n="feat_efficient_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
-		        </div>
-		        <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-		            <h4 data-i18n="feat_free_title" class="text-[11px] font-black  text-slate-800 mb-1">Free Usage</h4>
-		            <p data-i18n="feat_free_desc" class="text-[11px] text-slate-400">All features are, and will always be, free to use.</p>
-		        </div>
-		    </div>
-		    <div class="flex flex-col items-center space-y-4">
-		        <div class="flex space-x-6">
-		            <a href="privacy" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
-		            <a href="terms" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
-					<a href="contact" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
-		        </div>
-		        <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
-		    </div>
-		</footer>
-		
-		
+			<section class="mt-24 mb-20 bg-indigo-50/50 py-16 rounded-[3rem]">
+			    <div class="max-w-3xl mx-auto px-6 text-center">
+			        <h2 class="text-3xl font-black mb-12 text-slate-900" data-i18n="faq_title">FAQ</h2>
+			        <div class="space-y-6 text-left">
+			            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+			                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_crop_q1"></h4>
+			                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_crop_a1"></p>
+			            </div>
+						<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+						    <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_crop_q2"></h4>
+						    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_crop_a2"></p>
+						</div>
+						<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+						    <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_crop_q3"></h4>
+						    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_crop_a3"></p>
+						</div>
+			        </div>
+			    </div>
+			</section>
     </main>
+
+<div id="footer-placeholder"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <script>
-        const i18n = {
-            en: {
-				nav_home: 'Home', nav_converter: 'Image Converter', nav_editor:'Image Editor', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
-				feat_local_title: 'Local Processing',
-				feat_local_desc: 'Your images never leave your computer,100% Private',
-				feat_efficient_title: 'High Efficiency',
-				feat_efficient_desc: 'Batch convert HEIC/WebP in seconds.',
-				feat_free_title: 'Free Usage',
-				feat_free_desc: 'All features are, and will always be, free to use.',
-				privacy: 'Privacy Policy',
-				terms: 'Terms of Service',
-				contact: 'Contact Us',
-				
-
-                crop_title: "Crop Image", crop_desc: "Precisely cut and reframe your photos locally.",
-                drop_text: "Click or Drop Image Here", format_support: "Supports JPG, PNG",
-                rotate_left: "Rotate Left", rotate_right: "Rotate Right",
-                flip_h: "Flip Horiz.", flip_v: "Flip Vert.",
-                download_btn: "Download Cropped Image", reset_btn: "Upload Another Image",
-                lang_btn: "中文"
-            },
-            zh: {
-				
-				nav_home: '首页', nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
-				feat_local_title: '本地处理',
-				feat_local_desc: '您的图片永远不会离开您的电脑，100% 隐私保护。',
-				feat_efficient_title: '极速转换',
-				feat_efficient_desc: '利用本地算力，数秒内完成大批量格式转换。',
-				feat_free_title: '免费使用',
-				feat_free_desc: '我们承诺所有功能免费使用。',
-				privacy: '隐私政策',
-				terms: '服务条款',
-				contact: '联系我们',
-
-
-                crop_title: "裁剪图片", crop_desc: "精确剪裁，在浏览器本地完成图片处理。",
-                drop_text: "点击或拖拽图片到此处", format_support: "支持 JPG, PNG格式",
-                rotate_left: "向左旋转", rotate_right: "向右旋转",
-                flip_h: "水平翻转", flip_v: "垂直翻转",
-                download_btn: "下载裁剪后的图片", reset_btn: "重新上传图片",
-                lang_btn: "English"
-            }
-        };
-
-        let currentLang = localStorage.getItem('swiftconvert_lang') || 'en';
         let cropper; // Cropper.js 实例
 
-        function applyLanguage(lang) {
-            currentLang = lang;
-            const t = i18n[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (t[key]) {
-                    // 对于按钮，我们只更新 span 里的文本，因为 svg 是图标
-                    if (el.tagName === 'BUTTON' && el.querySelector('span')) {
-                        el.querySelector('span').textContent = t[key];
-                    } else {
-                        el.textContent = t[key];
-                    }
-                }
-            });
-            document.getElementById('lang-btn-text').textContent = t.lang_btn;
-            localStorage.setItem('swiftconvert_lang', lang);
-        }
+		// 1. 初始化当前语言 (增强版)
+		let currentLang = (() => {
+		    const urlParams = new URLSearchParams(window.location.search);
+		    const langParam = urlParams.get('lang');
+		    if (langParam && i18nData[langParam]) return langParam;
+		
+		    const savedLang = localStorage.getItem('swiftconvert_lang');
+		    if (savedLang && i18nData[savedLang]) return savedLang;
+		
+		    // 浏览器语言检测
+		    const browserLangs = navigator.languages || [navigator.language];
+		    console.log("Browser languages found:", browserLangs); // 调试用
+		
+		    for (let lang of browserLangs) {
+		        // 尝试完整匹配 (zh-CN)
+		        if (i18nData[lang]) return lang;
+		        
+		        // 尝试短码匹配 (zh)
+		        const short = lang.split('-')[0];
+		        if (i18nData[short]) return short;
+		    }
+		
+		    return 'en';
+		})();
+		
+		
+		// 翻译辅助工具
+		function t(key) {
+		    return i18nData?.[currentLang]?.[key] || key;
+		}
+		
+		// 应用/切换语言
+		function applyLanguage(lang) {
+		    currentLang = lang;
+		    document.documentElement.lang = lang;
+		    
+		    // A. 静态元素翻译
+		    document.querySelectorAll('[data-i18n]').forEach(el => {
+		        const key = el.dataset.i18n;
+		        if (i18nData[lang] && i18nData[lang][key]) el.innerHTML = i18nData[lang][key];
+		    });
+		
+		    // B. 动态任务文字翻译 (包含状态 + 动作名称 + 文件名)
+		    document.querySelectorAll('[data-task-key]').forEach(el => {
+		        updateTaskText(el);
+		    });
+		
+		    // C. 动态按钮翻译
+		    document.querySelectorAll('.btn-download-dynamic').forEach(el => {
+		        el.innerText = t('btn_download');
+		    });
+		
+		    // D. UI 控件状态同步
+		    const langBtnText = document.getElementById('lang-btn-text');
+		    if (langBtnText) langBtnText.innerText = lang === 'en' ? '中文' : 'English';
+		    
+		    const langSelectMobile = document.getElementById('lang-select-mobile');
+		    if (langSelectMobile) langSelectMobile.value = lang;
+		
+		    localStorage.setItem('swiftconvert_lang', lang);
+		}
+		
+		/**
+		 * 3. 异步组件加载 (Nav/Footer)
+		 */
+		async function initSite() {
+		    const containers = [
+		        { id: 'nav-placeholder', path: 'nav.html' },
+		        { id: 'footer-placeholder', path: 'footer.html' }
+		    ];
+		
+		    await Promise.all(containers.map(async (item) => {
+		        const el = document.getElementById(item.id);
+		        if (el) {
+		            try {
+		                const res = await fetch(item.path);
+		                if (res.ok) el.innerHTML = await res.text();
+		            } catch (err) { console.error(`Load failed: ${item.path}`, err); }
+		        }
+		    }));
+		
+		    // 初始化页面语言
+		    applyLanguage(currentLang);
+		
+		    // --- 3. 移动端菜单开关逻辑 ---
+		    const menuBtn = document.getElementById('mobile-menu-btn');
+		    const mobileMenu = document.getElementById('mobile-menu');
+		    const menuPath = document.getElementById('menu-path');
+		    
+		    if (menuBtn && mobileMenu) {
+		        menuBtn.onclick = () => {
+		            const isHidden = mobileMenu.classList.toggle('hidden');
+		            if (!isHidden) {
+		                menuPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+		            } else {
+		                menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+		            }
+		        };
+		    }
+		    
+		    // --- 4. 移动端语言下拉框逻辑 ---
+		    const langSelectMobile = document.getElementById('lang-select-mobile');
+		    if (langSelectMobile) {
+		        langSelectMobile.onchange = (e) => {
+		            applyLanguage(e.target.value);
+		            
+		            // 切换后自动平滑收起菜单
+		            if (mobileMenu) mobileMenu.classList.add('hidden');
+		            if (menuPath) menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+		        };
+		    }
+		    
+		    // --- 5. 桌面端语言切换按钮逻辑 ---
+		    // 因为 nav.html 是动态加载的，必须在 initSite 内部重新寻找并绑定
+		    const langToggle = document.getElementById('lang-toggle');
+		    if (langToggle) {
+		        langToggle.onclick = (e) => {
+		            e.preventDefault();
+		            // 切换语言
+		            const newLang = currentLang === 'en' ? 'zh' : 'en';
+		            applyLanguage(newLang);
+		        };
+		    }
+		}
+		
+		
+
 
         const dropZone = document.getElementById('drop-zone');
         const fileInput = document.getElementById('file-input');
@@ -363,12 +372,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        document.getElementById('lang-toggle').onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            applyLanguage(currentLang);
-        });
+// --- 4. 启动启动 ---
+document.addEventListener('DOMContentLoaded', () => {
+    initSite();          // 加载 Nav/Footer/i18n
+});
     </script>
 </body>
 </html>
-
