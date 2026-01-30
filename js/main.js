@@ -1,18 +1,26 @@
-// 1. 初始化当前语言
+// 1. 初始化当前语言 (增强版)
 let currentLang = (() => {
+    // A. 检查 URL 参数 (?lang=zh)
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
-    
-    if (langParam && i18nData[langParam]) {
-        return langParam;
-    }
-    
+    if (langParam && i18nData[langParam]) return langParam;
+
+    // B. 检查本地存储
     const savedLang = localStorage.getItem('swiftconvert_lang');
-    if (savedLang && i18nData[savedLang]) {
-        return savedLang;
+    if (savedLang && i18nData[savedLang]) return savedLang;
+
+    // C. 【新增】检查浏览器默认设置
+    // navigator.languages 获取的是一个数组，按优先级排列
+    const browserLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+    for (let lang of browserLangs) {
+        const shortLang = lang.split('-')[0]; // 处理 zh-CN 或 en-US
+        if (i18nData[shortLang]) {
+            return shortLang;
+        }
     }
-    
-    return navigator.language.startsWith('zh') ? 'zh' : 'en';
+
+    // D. 最终保底：英语
+    return 'en';
 })();
 
 /**
