@@ -170,10 +170,33 @@ const i18nData = {
 															        status_split_done: '拆分完成',
 															        btn_download: '下载文件',
 															        btn_error: '处理失败',
-																	clear: '清空列表'
+																	clear: '清空列表',
+																	status_done: '完成',
+																	faq_format_title: "图片转 PDF 支持什么格式？",
+																	faq_format_desc: "我们支持 JPG、PNG、WebP、BMP 以及 GIF 格式。得益于本地浏览器处理技术，转换过程无需上传，极速且私密。",
 						
-				
-            },
+				//关于部分
+				contact_title: '联系我们',
+				contact_desc: '对 SwiftConvert 有任何疑问？无论是关于技术问题还是功能建议，我们都非常期待您的反馈。',
+				support_title: '官方支持',
+				support_time: '我们的团队通常会在 24-48 小时内回复邮件。',
+				why_1_t: '反馈错误',
+				why_1_d: '报告关于本地转换引擎或浏览器兼容性的问题。',
+				why_2_t: '功能建议',
+				why_2_d: '告诉我们您希望在 SwiftConvert 上看到哪些新功能。',
+				footer_privacy: '隐私政策',
+				footer_terms: '服务条款',
+				footer_contact: '联系我们',
+				about_title: '强大处理，无需上传。',
+				                    about_desc_1: 'SwiftConvert 的核心原则是：您的文件永远不应离开您的电脑。我们提供完全在浏览器本地运行的专业级工具。',
+				                    about_why_1: '100%隐私保护',
+									about_feature_1: '所有处理均在本地 CPU/GPU 完成，无任何隐私泄露风险。',
+				                    about_why_2: '高速处理',
+									about_feature_2: '无需等待上传下载，处理速度取决于您的硬件性能。'
+            
+			
+			
+			},
             en: {
 				//导航部分翻译
 				nav_home: 'Home',nav_editor: 'Image Editor',
@@ -360,7 +383,32 @@ const i18nData = {
 															        status_split_done: 'Split Complete',
 															        btn_download: 'Download',
 															        btn_error: 'Error',
-																	clear: 'Clear'
+																	clear: 'Clear',
+																	status_done: 'Complete',
+																	faq_format_title: "What image formats are supported?",
+																	faq_format_desc: "We support JPG, PNG, WebP, BMP, and GIF. Thanks to local browser processing, your images are converted instantly without being uploaded.",
+												//关于部分
+												contact_title: 'Contact Us',
+												    contact_desc: 'Have questions about SwiftConvert? Whether it is a technical issue or a feature suggestion, we are here to help.',
+												    support_title: 'Direct Support',
+												    support_time: 'Our team typically responds within 24-48 hours.',
+												    why_1_t: 'Report a Bug',
+												    why_1_d: 'Report issues regarding local conversion or browser compatibility.',
+												    why_2_t: 'Feature Suggestions',
+												    why_2_d: 'Tell us what tools you want to see next on SwiftConvert.',
+												    footer_privacy: 'Privacy Policy',
+												    footer_terms: 'Terms of Service',
+												    footer_contact: 'Contact Us',
+													
+													about_title: 'Pure Power. Zero Uploads.',
+													                    about_desc_1: 'SwiftConvert was built on a simple principle: your files should never leave your computer. We provide professional-grade media tools that run entirely in your browser.',
+													                    about_why_1: '100% Private',
+																		about_feature_1: 'Processing happens on your local CPU/GPU. Zero risk of data breaches.',
+													                    about_why_2: 'High Speed',
+																		about_feature_2: 'Skip the upload wait. Convert and edit at the speed of your hardware.'
+												
+												
+												
             }
         };
 
