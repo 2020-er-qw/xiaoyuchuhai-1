@@ -26,12 +26,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <style>
+        /* 统一引入 Plus Jakarta Sans */
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .tool-card:hover { transform: translateY(-5px); }
-        .badge { @apply inline-block px-2 py-1 bg-slate-100 text-slate-500 rounded text-[10px] font-bold mr-1 mb-1; }
-    </style>
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #fcfcfd; 
+            color: #1e293b;
+        }
+            
+        /* 移除所有强制大写和斜体，保持自然感 */
+        .font-brand { font-weight: 800; tracking: -0.02em; }
+        
+        /* 模拟 localconvert 的卡片悬停效果 */
+        .tool-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #4f46e5;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+        }
+	
+	</style>
 </head>
 
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900 pt-32 px-4">
@@ -453,3 +470,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
