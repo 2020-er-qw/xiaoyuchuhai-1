@@ -11,154 +11,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Free PDF Tools Online – Merge, Split & Image to PDF | SwiftConvert</title>
-	<meta name="description" content="Free online PDF tools to merge PDFs, split pages, and convert images to PDF. 100% private, offline processing in your browser. No upload required.">
-	
-	<link rel="canonical" href="https://www.swiftconvert.ink/document-converter" />
-	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-	
-	<!-- Favicon / Google Search / Browser -->
-	<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
-	    
-	<!-- Apple iOS -->
-	<link rel="apple-touch-icon" sizes="512x512" href="/favicon.png">
-	    
-	<!-- Android / PWA -->
-	<link rel="manifest" href="/site.webmanifest">
-	
+    <meta name="description" content="Free online PDF tools to merge PDFs, split pages, and convert images to PDF. 100% private, offline processing in your browser. No upload required.">
+    
+    <link rel="canonical" href="https://www.swiftconvert.ink/document-converter" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <script src="js/i18n-data.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <style>
-        #privacy-modal { display: none; }
-        #privacy-modal.active { display: flex; }
-        .modal-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-
-        .nav-link {
-            position: relative;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: none;
-            letter-spacing: 0.15em;
-            color: #64748b;
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover { color: #4f46e5; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #4f46e5;
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        .nav-link:hover::after, .nav-active::after { width: 100%; }
-        .nav-active { color: #4f46e5 !important; }
-
-        .brand-dot {
-            height: 4px; width: 4px;
-            background-color: #4f46e5;
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 2px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tool-card:hover { transform: translateY(-5px); }
+        .badge { @apply inline-block px-2 py-1 bg-slate-100 text-slate-500 rounded text-[10px] font-bold mr-1 mb-1; }
     </style>
-	
 </head>
 
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900 pt-32 px-4">
 
-   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100/50">
-       <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-           <div class="flex items-center space-x-3 md:space-x-12 flex-wrap">
-               <a href="/" class="flex items-center group">
-                   <span class="text-xl font-black ... hidden sm:inline">
-                     Swift<span class="text-indigo-600">Convert</span>
-                   </span>
-                   <span class="text-xl font-black sm:hidden">
-                     SC
-                   </span>
-               </a>
-               <div class="hidden md:flex items-center space-x-8">
-                   <a href="/" data-i18n="nav_home" class="nav-link">Home</a>
-                   <a href="converter" data-i18n="nav_converter" class="nav-link">Image Converter</a>
-				   <a href="editor" data-i18n="nav_editor" class="nav-link">Image Editor</a>
-                   <a href="document-converter" data-i18n="document_converter" class="nav-link nav-active">PDF Tools</a>
-                   <a href="contact" data-i18n="nav_about" class="nav-link">About</a>
-               </div>
-   			<div class="flex md:hidden items-center space-x-4">
-   			    <a href="/"
-   			       data-i18n="nav_home"
-   			       class="text-xs font-black  text-slate-700">
-   			        Home
-   			    </a>
-				<a href="converter"
-				   data-i18n="nav_converter"
-				   class="text-xs font-black  text-slate-700">
-				    Image Converter
-				</a>
-				<a href="editor"
-				   data-i18n="nav_editor"
-				   class="text-xs font-black  text-slate-700">
-				    Image Editor
-				</a>
-   				 <a href="document-converter" 
-   					data-i18n="document_converter"
-   					class="text-xs font-black  text-slate-700">
-   				        PDF Tools
-   				    </a>
-   			    <a href="contact"
-   			       data-i18n="nav_about"
-   			       class="text-xs font-black  text-slate-700">
-   			        About
-   			    </a>
-   			</div>
-   
-           </div>
-   		
-   
-           <div class="flex items-center space-x-3 md:space-x-6 shrink-0">
-               <button id="lang-toggle" class="hidden md:flex items-center space-x-2 text-[10px] font-black  tracking-widest text-slate-500 hover:text-indigo-600 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm transition-all active:scale-95">
-                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                   <span id="lang-btn-text">中文</span>
-               </button>
-               
-               <select id="lang-select" class="md:hidden text-[10px] font-black border-slate-200 rounded-lg px-2 py-1 bg-slate-50">
-                   <option value="en">English</option>
-                   <option value="zh">中文</option>
-               </select>
-   
-               <div class="hidden sm:flex items-center space-x-2 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
-                   <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                   <span data-i18n="nav_private" class="text-[9px] font-black  tracking-widest text-emerald-700">100% Private</span>
-               </div>
-           </div>
-       </div>
-   </nav>
-   
+    <div id="nav-placeholder"></div>
+
     <main class="max-w-4xl mx-auto">
-		<h1 class="sr-only">
-		  Free Online PDF Tools – Merge, Split & Image to PDF
-		</h1>
+        <h1 class="sr-only">Free Online PDF Tools – Merge, Split & Image to PDF</h1>
+        
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                <div class="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg></div>
-                <span data-i18n="card_heic" class="text-[10px] font-black ">Merge PDF</span>
+                <div class="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                </div>
+                <span data-i18n="card_heic" class="text-[10px] font-black">Merge PDF</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                <div class="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center text-rose-600 mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758L5 19"></path></svg></div>
-                <span data-i18n="card_webp" class="text-[10px] font-black ">Split PDF</span>
+                <div class="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center text-rose-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758L5 19"></path></svg>
+                </div>
+                <span data-i18n="card_webp" class="text-[10px] font-black">Split PDF</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
-                <span data-i18n="card_pdf" class="text-[10px] font-black ">Img to PDF</span>
+                <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <span data-i18n="card_pdf" class="text-[10px] font-black">Img to PDF</span>
             </div>
             <div class="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center text-center">
-                <div class="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
-                <span data-i18n="card_offline" class="text-[10px] font-black ">100% Offline</span>
+                <div class="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <span data-i18n="card_offline" class="text-[10px] font-black">100% Offline</span>
             </div>
         </div>
 
@@ -168,7 +74,7 @@
                 <h2 data-i18n="merge_name" class="text-lg font-black text-slate-800 mb-2 italic">Merge PDF</h2>
                 <p data-i18n="merge_desc" class="text-slate-400 text-[10px] mb-8 leading-relaxed">Combine multiple PDFs into one.</p>
                 <input type="file" id="merge-input" multiple accept=".pdf" class="hidden">
-                <button onclick="document.getElementById('merge-input').click()" data-i18n="merge_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px]  tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-lg">Select PDFs</button>
+                <button onclick="document.getElementById('merge-input').click()" data-i18n="merge_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px] tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-lg">Select PDFs</button>
             </div>
 
             <div class="tool-card bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/40 flex flex-col items-center text-center">
@@ -176,7 +82,7 @@
                 <h2 data-i18n="split_name" class="text-lg font-black text-slate-800 mb-2 italic">Split PDF</h2>
                 <p data-i18n="split_desc" class="text-slate-400 text-[10px] mb-8 leading-relaxed">Extract pages into separate files.</p>
                 <input type="file" id="split-input" accept=".pdf" class="hidden">
-                <button onclick="document.getElementById('split-input').click()" data-i18n="split_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px]  tracking-[0.2em] hover:bg-rose-600 transition-all shadow-lg">Select PDF</button>
+                <button onclick="document.getElementById('split-input').click()" data-i18n="split_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px] tracking-[0.2em] hover:bg-rose-600 transition-all shadow-lg">Select PDF</button>
             </div>
 
             <div class="tool-card bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-2xl shadow-slate-200/40 flex flex-col items-center text-center">
@@ -184,438 +90,346 @@
                 <h2 data-i18n="img_pdf_name" class="text-lg font-black text-slate-800 mb-2 italic">Images to PDF</h2>
                 <p data-i18n="img_pdf_desc" class="text-slate-400 text-[10px] mb-8 leading-relaxed">Convert photos to high-quality PDF.</p>
                 <input type="file" id="img-to-pdf-input" multiple accept="image/*" class="hidden">
-                <button onclick="document.getElementById('img-to-pdf-input').click()" data-i18n="img_pdf_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px]  tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-lg">Upload Images</button>
+                <button onclick="document.getElementById('img-to-pdf-input').click()" data-i18n="img_pdf_btn" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl text-[9px] tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-lg">Upload Images</button>
             </div>
-			
         </div>
 
-       <section id="status-container" class="bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden hidden mb-20">
-           <div class="p-6 bg-slate-50/50 border-b border-slate-100 flex justify-between items-center">
-               <span data-i18n="queue_status" class="font-black text-slate-400 tracking-widest text-[10px] uppercase">Queue Status</span>
-               
-               <button id="clear-all" class="flex items-center space-x-1.5 px-3 py-1 rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-all duration-200 group">
-                   <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                   </svg>
-                   <span data-i18n="clear" class="font-bold text-[10px]">Clear</span>
-               </button>
-           </div>
-           
-           <ul id="task-list" class="divide-y divide-slate-50"></ul>
-       </section>
-
-        <section class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 mb-20">
-            <h2 data-i18n="faq_title" class="text-2xl font-black text-slate-900 mb-8 tracking-tight">FAQ</h2>
-            <div class="grid gap-10 md:grid-cols-2">
-                <div>
-                    <h3 data-i18n="faq_cat_privacy" class="font-black text-[11px]  text-indigo-600 tracking-widest mb-3">Privacy & Safety</h3>
-                    <h4 data-i18n="faq_safety_title" class="font-bold text-slate-800 mb-2">Are my PDF files safe?</h4>
-                    <p data-i18n="faq_safety_desc" class="text-sm text-slate-500 leading-relaxed italic">Yes. SwiftConvert processes PDF 100% locally. Your documents never touch any server.</p>
-                </div>
-                <div>
-                    <h3 data-i18n="faq_cat_limit" class="font-black text-[11px]  text-emerald-600 tracking-widest mb-3">Limits</h3>
-                    <h4 data-i18n="faq_limit_title" class="font-bold text-slate-800 mb-2">Is there a size limit?</h4>
-                    <p data-i18n="faq_limit_desc" class="text-sm text-slate-500 leading-relaxed italic">No count limits. Process as many as you want, restricted only by device memory.</p>
-                </div>
-				<div>
-				    <h3 data-i18n="faq_cat_multi" class="font-black text-[11px]  text-purple-600 tracking-widest mb-3">Workflow</h3>
-				    <h4 data-i18n="faq_multi_title" class="font-bold text-slate-800 mb-2">Can I split a PDF into separate pages?</h4>
-				    <p data-i18n="faq_multi_desc" class="text-sm text-slate-500 leading-relaxed italic">Yes. Our split tool extracts every page and packages them into a single ZIP file for easy download.</p>
-				</div>
-				<div>
-				    <h3 data-i18n="faq_cat_batch" class="font-black text-[11px]  text-blue-600 tracking-widest mb-3">Performance</h3>
-				    <h4 data-i18n="faq_batch_title" class="font-bold text-slate-800 mb-2">How many files can I merge at once?</h4>
-				    <p data-i18n="faq_batch_desc" class="text-sm text-slate-500 leading-relaxed italic">Technically unlimited. As long as your browser has enough memory, you can merge dozens of PDFs instantly.</p>
-				</div>
+        <section id="status-container" class="bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden hidden mb-20">
+            <div class="p-6 bg-slate-50/50 border-b border-slate-100 flex justify-between items-center">
+                <span data-i18n="queue_status" class="font-black text-slate-400 tracking-widest text-[10px]">Queue Status</span>
+                <button id="clear-all" class="flex items-center space-x-1.5 px-3 py-1 rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-all duration-200 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                    <span data-i18n="clear" class="font-bold text-[10px]">Clear</span>
+                </button>
             </div>
-			<section class="mt-16 text-slate-600">
-			    <h2 data-i18n="deep_pdf_title" class="text-xl font-black text-slate-800 mb-6"></h2>
-			    <div class="space-y-4 text-sm leading-relaxed">
-			        <p data-i18n="deep_pdf_p1"></p>
-			        <p data-i18n="deep_pdf_p2"></p>
-			        <p data-i18n="deep_pdf_p3"></p>
-			    </div>
-			</section>
-			
+            <ul id="task-list" class="divide-y divide-slate-50"></ul>
         </section>
-		
-
-        <footer class="pb-12 text-center">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-			    <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-			        <h3 data-i18n="feat_pdf_local_title" class="text-[11px] font-black  text-slate-800 mb-1"><strong>Local Processing</strong></h3>
-			        <p data-i18n="feat_pdf_local_desc" class="text-[11px] text-slate-400">Images never leave your computer.</p>
-			    </div>
-			    <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-			        <h3 data-i18n="feat_pdf_eff_title" class="text-[11px] font-black  text-slate-800 mb-1">High Efficiency</h3>
-			        <p data-i18n="feat_pdf_eff_desc" class="text-[11px] text-slate-400">Batch convert in seconds.</p>
-			    </div>
-			    <div class="bg-white/60 p-6 rounded-[2rem] border border-white shadow-sm text-center">
-			        <h3 data-i18n="feat_pdf_conv_title" class="text-[11px] font-black  text-slate-800 mb-1">PDF Merge</h3>
-			        <p data-i18n="feat_pdf_conv_desc" class="text-[11px] text-slate-400">Combine photos into one document.</p>
-			    </div>
-			</div>
-			
-            <div class="flex flex-col items-center space-y-4">
-                <div class="flex space-x-6">
-                    <a href="privacy" data-i18n="privacy" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Privacy Policy</a>
-                    <a href="terms" data-i18n="terms" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Terms of Service</a>
-                	<a href="contact" data-i18n="contact" class="text-[10px] font-black text-slate-300  hover:text-indigo-600">Contact Us</a>
-                </div>
-                <p class="text-[9px] font-black text-slate-300  tracking-[0.4em]">&copy;2026 SwiftConvert. All rights reserved.</p>
-            </div>
-        </footer>
+		<section class="mt-24 mb-20 bg-indigo-50/50 py-16 rounded-[3rem]">
+		    <div class="max-w-3xl mx-auto px-6 text-center">
+		        <h2 class="text-3xl font-black mb-12 text-slate-900" data-i18n="faq_title">FAQ</h2>
+		        <div class="space-y-6 text-left">
+		            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_safety_title"></h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_safety_desc"></p>
+		            </div>
+					<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+					    <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_format_title"></h4>
+					    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_format_desc"></p>
+					</div>
+					<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+					    <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_limit_title"></h4>
+					    <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_limit_desc"></p>
+					</div>
+		        </div>
+		    </div>
+		</section>
     </main>
 
-    <div id="privacy-modal" class="fixed inset-0 z-[100] items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-        <div class="modal-glass w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white">
-                <h2 id="modal-title" class="font-black  tracking-widest text-xs text-slate-800">Title</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
-            </div>
-            <div id="modal-body" class="p-10 overflow-y-auto text-sm text-slate-600 leading-relaxed bg-white"></div>
-            <div class="p-6 bg-slate-50 border-t border-slate-100 text-center">
-                <button onclick="closeModal()" data-i18n="modal_confirm" class="bg-indigo-600 text-white font-black px-8 py-3 rounded-xl text-[10px]  tracking-widest">I Understand</button>
-            </div>
-        </div>
-    </div>
+    <div id="footer-placeholder"></div>
 
 <script>
-	
+/**
+ * 1. 语言初始化逻辑 (包含浏览器检测)
+ */
+// 1. 初始化当前语言 (增强版)
+let currentLang = (() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam && i18nData[langParam]) return langParam;
 
-    // 2. 完整语言包
-    const i18n = {
-        en: {
-			nav_home:'Home',
-			nav_editor: 'Image Editor',
-			deep_pdf_title: 'Why Choose SwiftConvert for PDF? 100% Privacy & Local Performance',
-			deep_pdf_p1: 'PDF (Portable Document Format) is the global standard for documents, but most online tools require you to upload files for merging, splitting, or converting images to PDF. SwiftConvert changes this by leveraging advanced WebAssembly technology to run a professional PDF processing engine directly within your browser\'s local memory.',
-			deep_pdf_p2: 'By merging, splitting, or converting images to PDF locally, you bypass server wait times and upload limits. It is the fastest and most secure way to handle professional document workflows without any risk of data leakage.',
-			deep_pdf_p3: 'Our tools are designed for security-conscious users. Whether you are working on a confidential project or simply want to save bandwidth, our "Zero-Upload" engine provides high-performance PDF synthesis entirely offline.',
-            nav_converter: 'Image Converter', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
-            card_heic: 'Merge PDF', card_webp: 'Split PDF', card_pdf: 'Img to PDF', card_offline: '100% Offline',
-            merge_name: 'Merge PDF', merge_desc: 'Combine multiple PDF files into one.', merge_btn: 'Select PDFs',
-            split_name: 'Split PDF', split_desc: 'Extract pages from PDF file.', split_btn: 'Select PDF',
-            img_pdf_name: 'Images to PDF', img_pdf_desc: 'Convert multiple photos into a PDF.', img_pdf_btn: 'Upload Images',
-            faq_title: 'Frequently Asked Questions', faq_cat_privacy: 'Privacy & Safety', faq_safety_title: 'Are my PDF files safe?', faq_safety_desc: 'Yes. SwiftConvert processes PDFs 100% locally. Your files never touch any server.',
-            faq_cat_limit: 'File Limits', faq_limit_title: 'Is there a limit?', faq_limit_desc: 'No count limits, restricted only by device memory.',
-            modal_confirm: 'I Understand', privacy: 'Privacy Policy', terms: 'Terms of Service',
-            about: 'About SwiftConvert',
-			faq_cat_multi: 'Workflow',
-			        faq_multi_title: 'Can I split a PDF into separate pages?',
-			        faq_multi_desc: 'Yes. Our split tool extracts every page and packages them into a single ZIP file for easy download.',
-			        faq_cat_batch: 'Performance',
-			        faq_batch_title: 'How many files can I merge at once?',
-			        faq_batch_desc: 'Technically unlimited. As long as your browser has enough memory, you can merge dozens of PDFs instantly.',
-					feat_pdf_local_title: 'Local Processing',
-					        feat_pdf_local_desc: 'Your PDF documents never touch our servers. All merging and splitting happens locally.',
-					        feat_pdf_eff_title: 'High Efficiency',
-					        feat_pdf_eff_desc: 'Instantly process large PDF files. Merge dozens of documents or split pages in a flash.',
-					        feat_pdf_conv_title: 'Images to PDF',
-					        feat_pdf_conv_desc: 'Convert batch photos (JPG/PNG/WebP) into a single, high-quality PDF document.',
-							contact: 'Contact Us',
-							about_content: `
-								<div class="space-y-4">
-									<div class="border-l-4 border-indigo-600 pl-4 py-1">
-										<h4 class="text-slate-900 font-black  text-xs tracking-wider">The Local-First Revolution</h4>
-										<p class="text-slate-500 text-xs mt-1">Speed meets absolute privacy.</p>
-									</div>
-									<p>SwiftConvert is a modern image utility designed to solve the dilemma of "Security vs. Convenience". Traditionally, converting HEIC or WebP required uploading files to a cloud server—exposing your private photos to potential risks.</p>
-									<div class="grid grid-cols-2 gap-4 my-6">
-										<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-											<span class="text-indigo-600 font-bold text-[10px] block mb-1 ">Technology</span>
-											<p class="text-[11px] leading-tight">Powered by WASM, processing images directly in your browser's RAM.</p>
-										</div>
-										<div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-											<span class="text-emerald-600 font-bold text-[10px] block mb-1 ">Privacy</span>
-											<p class="text-[11px] leading-tight">Zero-Server Architecture. Your data never leaves your device.</p>
-										</div>
-									</div>
-									<p>Our mission is to provide a professional-grade tool that is 100% free, without ads, and without compromise on your data sovereignty.</p>
-								</div>`,
-							privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">Zero Upload Policy</h4><p>We never see or store your images. All conversion processes happen 100% locally in your browser\'s sandbox. We do not use cookies or tracking beyond basic analytics.</p></section>',
-							terms_content: '<p>SwiftConvert is provided "as is" for free personal use. By using this tool, you agree that your files remain your own property, and we are not responsible for any issues arising from image conversion.</p>',
-							contact_content: `
-							            <div class="space-y-4">
-							                <p>Have questions or suggestions? We'd love to hear from you.</p>
-							                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-							                    <p class="font-black text-indigo-600  text-[10px] mb-1">Email Support</p>
-							                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
-							                </div>
-							                <p class="text-[11px] italic">We typically respond within 24 hours.</p>
-							            </div>
-							        `,
-							status_complete: 'Complete',
-									        // PDF 专属卡片文案
-									        feat_pdf_local_title: 'Local Security',
-									        feat_pdf_local_desc: 'Your PDF documents never touch our servers.',
-									        feat_pdf_eff_title: 'Fast Processing',
-									        feat_pdf_eff_desc: 'Merge or split large PDFs in seconds.',
-									        feat_pdf_conv_title: 'Images to PDF',
-									        feat_pdf_conv_desc: 'Batch convert photos into a clean PDF.',
-											queue_status: 'Processing Queue',
-											        status_merging: 'Merging PDF...',
-											        status_converting: 'Converting Images...',
-											        status_splitting: 'Splitting PDF...',
-											        status_split_done: 'Split Complete',
-											        btn_download: 'Download',
-											        btn_error: 'Error',
-													clear: 'Clear'
-        },
-        zh: {
-			nav_home:"首页",
-			deep_pdf_title: '为什么选择 SwiftConvert 处理 PDF？100% 隐私与本地性能',
-			deep_pdf_p1: 'PDF (Portable Document Format) 是全球通用的文档标准，但在合并、拆分或将图片转换为 PDF 时，大多数在线工具会要求您上传文件。SwiftConvert 改变了这一现状，我们利用先进的浏览器 WebAssembly 技术，将专业的 PDF 处理引擎直接运行在您的浏览器本地内存中。',
-			deep_pdf_p2: '我们的“零上传”技术确保您的合同、发票和个人照片永远不会离开您的设备。当您进行 PDF 合并或图片转 PDF 操作时，所有的计算和合成都在本地 CPU 上完成。这不仅消除了服务器端数据泄露的风险，还绕过了因上传大文件而产生的速度限制。',
-			deep_pdf_p3: 'SwiftConvert 致力于提供极简且高效的文档工作流。无论是在没有网络的环境下，还是处理高度机密的商务文档，您都可以信赖我们的本地 PDF 工具箱。我们不存储、不查看、也不收集您的任何文档数据，为您提供真正的数据主权。',
-			
-            nav_converter: '图片转换', nav_editor: '图片编辑', document_converter: 'PDF 工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
-            card_heic: '合并 PDF', card_webp: '拆分 PDF', card_pdf: '图片转 PDF', card_offline: '100% 离线',
-            merge_name: '合并 PDF', merge_desc: '将多个 PDF 文件合并为一个单份文档。', merge_btn: '选择 PDF 文件',
-            split_name: 'PDF 拆分', split_desc: '提取页面或将 PDF 拆分为独立文件。', split_btn: '选择 PDF 文件',
-            img_pdf_name: '图片转 PDF', img_pdf_desc: '将多张照片合并并转换为高品质 PDF。', img_pdf_btn: '上传图片',
-            faq_title: '常见问题解答', faq_cat_privacy: '隐私与安全', faq_safety_title: '我的文件安全吗？', faq_safety_desc: '非常安全。所有处理 100% 在本地完成，不上传服务器。',
-            faq_cat_limit: '文件限制', faq_limit_title: '有大小限制吗？', faq_limit_desc: '没有数量限制，仅取决于您设备的内存。',
-            modal_confirm: '我知道了', privacy: '隐私政策', terms: '服务条款',contact: '联系我们',
-            about: '关于 SwiftConvert',
-			faq_cat_multi: '工作流',
-			        faq_multi_title: '我可以将 PDF 拆分为独立页面吗？',
-			        faq_multi_desc: '可以。我们的拆分工具会提取每一页，并自动打包成一个 ZIP 压缩包供您一键下载。',
-			        faq_cat_batch: '性能',
-			        faq_batch_title: '一次可以合并多少个文件？',
-			        faq_batch_desc: '技术上没有限制。只要您的浏览器内存足够，您可以一次性合并几十个 PDF 文件。',
-					feat_pdf_local_title: '本地安全处理',
-					        feat_pdf_local_desc: '您的 PDF 文档永远不会上传。所有的合并、拆分操作均在浏览器本地完成。',
-					        feat_pdf_eff_title: '极致处理效率',
-					        feat_pdf_eff_desc: '瞬间处理大型 PDF 文件。无论是合并几十份文档还是拆分页面，都能快速完成。',
-					        feat_pdf_conv_title: '图片转 PDF',
-					        feat_pdf_conv_desc: '支持将批量照片（JPG/PNG/WebP）一键转换为高品质的 PDF 文档。',
-							about_content: `
-							            <div class="space-y-4">
-							                <div class="border-l-4 border-indigo-600 pl-4 py-1">
-							                    <h4 class="text-slate-900 font-black  text-xs tracking-wider">本地化处理的革新</h4>
-							                    <p class="text-slate-500 text-[10px] mt-1">速度与隐私的完美契合</p>
-							                </div>
-							                <p>SwiftConvert 是一款现代化的图像工具，旨在解决“安全与便捷”之间的矛盾。传统转换器需要将文件上传到云端服务器，这让您的私人照片面临泄露风险。</p>
-							                <div class="grid grid-cols-2 gap-4 my-6">
-							                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-							                        <span class="text-indigo-600 font-bold text-[10px] block mb-1 ">技术核心</span>
-							                        <p class="text-[11px] leading-tight">基于 WebAssembly 技术，直接在您的浏览器内存中处理图片。</p>
-							                    </div>
-							                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-							                        <span class="text-emerald-600 font-bold text-[10px] block mb-1 ">隐私承诺</span>
-							                        <p class="text-[11px] leading-tight">零服务器架构。您的数据永远不会离开您的个人设备。</p>
-							                    </div>
-							                </div>
-							                <p>我们的使命是提供一个专业、免费且无广告的工具，在提升效率的同时，绝对尊重您的数据所有权。</p>
-							            </div>`,
-							privacy_content: '<section><h4 class="font-black text-slate-900  text-[11px] mb-2 tracking-wide">零上传政策</h4><p>我们绝不会查看或存储您的图片。所有转换过程 100% 在您浏览器的沙箱环境中本地完成。除了基本的数据分析，我们不使用 Cookie 或任何跟踪技术。</p></section>',
-							terms_content: '<p>SwiftConvert 按“原样”免费提供个人使用。使用此工具即表示您同意您的文件仍为您个人所有，我们不对转换过程中产生的任何问题负责。</p>',
-							contact_content: `
-							            <div class="space-y-4">
-							                <p>有任何问题或建议？欢迎随时联系我们。</p>
-							                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-							                    <p class="font-black text-indigo-600  text-[10px] mb-1">邮件支持</p>
-							                    <h class="text-slate-800 font-bold hover:text-indigo-600 transition-colors">yuerkang175@gmail.com</h>
-							                </div>
-							                <p class="text-[11px] italic">我们通常会在 24 小时内回复您的邮件。</p>
-							            </div>
-							        `,
-									
-									        
-									       
-									        status_complete: '完成',
-									       
-									        // PDF 专属卡片文案
-									        feat_pdf_local_title: '本地安全处理',
-									        feat_pdf_local_desc: '您的 PDF 文档永远不会离开您的浏览器。',
-									        feat_pdf_eff_title: '极致处理效率',
-									        feat_pdf_eff_desc: '数秒内即可完成大型 PDF 的合并或拆分。',
-									        feat_pdf_conv_title: '图片转 PDF',
-									        feat_pdf_conv_desc: '支持批量将照片转换为高品质 PDF 文档。',
-											queue_status: '处理队列',
-											        status_merging: '正在合并 PDF...',
-											        status_converting: '正在转换图片...',
-											        status_splitting: '正在拆分页面...',
-											        status_split_done: '拆分完成',
-											        btn_download: '下载文件',
-											        btn_error: '处理失败',
-													clear: '清空列表'
-							
-        }
-    };
+    const savedLang = localStorage.getItem('swiftconvert_lang');
+    if (savedLang && i18nData[savedLang]) return savedLang;
 
-    // 2. 状态变量与核心函数
-        let currentLang = localStorage.getItem('swiftconvert_lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
-        const t = (k) => i18n[currentLang][k] || k;
+    // 浏览器语言检测
+    const browserLangs = navigator.languages || [navigator.language];
+    console.log("Browser languages found:", browserLangs); // 调试用
+
+    for (let lang of browserLangs) {
+        // 尝试完整匹配 (zh-CN)
+        if (i18nData[lang]) return lang;
+        
+        // 尝试短码匹配 (zh)
+        const short = lang.split('-')[0];
+        if (i18nData[short]) return short;
+    }
+
+    return 'en';
+})();
+
+/**
+ * 2. 核心辅助函数
+ */
+// 翻译函数
+function t(key) {
+    return (i18nData[currentLang] && i18nData[currentLang][key]) || key;
+}
+
+// 拼接任务文字的公共逻辑
+function updateTaskText(el) {
+    const statusKey = el.getAttribute('data-task-key');
+    const extraKey = el.getAttribute('data-extra-key');
+    const fileName = el.getAttribute('data-file-name');
     
-        function applyLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            localStorage.setItem('swiftconvert_lang', lang);
+    let text = t(statusKey); 
+    if (extraKey) text += ` (${t(extraKey)})`; 
+    if (fileName) text += ` - ${fileName}`; 
     
-            // A. 翻译静态 data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
+    el.innerText = text;
+}
+
+// 应用/切换语言
+function applyLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
     
-            // B. 翻译处理中的任务 (包含功能区分后缀)
-            document.querySelectorAll('[data-task-key]').forEach(el => {
-                const key = el.getAttribute('data-task-key');
-                const extra = el.getAttribute('data-extra') || '';
-                el.innerText = t(key) + extra;
-            });
+    // A. 静态元素翻译
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18nData[lang] && i18nData[lang][key]) el.innerHTML = i18nData[lang][key];
+    });
+
+    // B. 动态任务文字翻译 (包含状态 + 动作名称 + 文件名)
+    document.querySelectorAll('[data-task-key]').forEach(el => {
+        updateTaskText(el);
+    });
+
+    // C. 动态按钮翻译
+    document.querySelectorAll('.btn-download-dynamic').forEach(el => {
+        el.innerText = t('btn_download');
+    });
+
+    // D. UI 控件状态同步
+    const langBtnText = document.getElementById('lang-btn-text');
+    if (langBtnText) langBtnText.innerText = lang === 'en' ? '中文' : 'English';
     
-            // C. 翻译下载按钮
-            document.querySelectorAll('.btn-download-dynamic').forEach(el => {
-                el.innerText = t('btn_download');
-            });
-    
-            // D. 更新切换按钮文字与下拉框
-            const langBtnText = document.getElementById('lang-btn-text');
-            if (langBtnText) langBtnText.innerText = lang === 'en' ? '中文' : 'English';
-            const langSelect = document.getElementById('lang-select');
-            if (langSelect) langSelect.value = lang;
+    const langSelectMobile = document.getElementById('lang-select-mobile');
+    if (langSelectMobile) langSelectMobile.value = lang;
+
+    localStorage.setItem('swiftconvert_lang', lang);
+}
+
+/**
+ * 3. 异步组件加载 (Nav/Footer)
+ */
+async function initSite() {
+    const containers = [
+        { id: 'nav-placeholder', path: 'nav.html' },
+        { id: 'footer-placeholder', path: 'footer.html' }
+    ];
+
+    await Promise.all(containers.map(async (item) => {
+        const el = document.getElementById(item.id);
+        if (el) {
+            try {
+                const res = await fetch(item.path);
+                if (res.ok) el.innerHTML = await res.text();
+            } catch (err) { console.error(`Load failed: ${item.path}`, err); }
         }
+    }));
+
+    // 初始化页面语言
+    applyLanguage(currentLang);
+
+    // --- 3. 移动端菜单开关逻辑 ---
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuPath = document.getElementById('menu-path');
     
-        // 3. UI 交互函数
-        function createQueueItem(msgKey) {
-            const container = document.getElementById('status-container');
-            if (container) container.classList.remove('hidden');
+    if (menuBtn && mobileMenu) {
+        menuBtn.onclick = () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            if (!isHidden) {
+                menuPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        };
+    }
     
-            const li = document.createElement('li');
-            li.className = "bg-slate-50 p-6 rounded-2xl flex items-center justify-between border border-slate-100 mb-3";
-            li.innerHTML = `
-                <div class="flex items-center space-x-4">
-                    <div class="status-indicator w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></div>
-                    <span class="status-text text-slate-700 text-xs font-bold tracking-wider" data-task-key="${msgKey}">${t(msgKey)}</span>
-                </div>
-                <div class="action-area"></div>`;
-            document.getElementById('task-list').prepend(li);
-            return li;
-        }
-    
-        function finishTask(li, blob, name, typeKey) {
-            const url = URL.createObjectURL(blob);
-            const indicator = li.querySelector('.status-indicator');
-            if (indicator) indicator.className = "status-indicator w-3 h-3 bg-emerald-500 rounded-full";
+    // --- 4. 移动端语言下拉框逻辑 ---
+    const langSelectMobile = document.getElementById('lang-select-mobile');
+    if (langSelectMobile) {
+        langSelectMobile.onchange = (e) => {
+            applyLanguage(e.target.value);
             
-            // 生成下载按钮并标记类名以便翻译
-            li.querySelector('.action-area').innerHTML = 
-                `<a href="${url}" download="${name}" class="btn-download-dynamic bg-indigo-600 text-white px-8 py-3 rounded-xl text-[10px] font-black shadow-lg hover:bg-indigo-700 transition-all">${t('btn_download')}</a>`;
-            
-            const textEl = li.querySelector('.status-text');
-            if (textEl) {
-                const typeLabel = t(typeKey); // 例如 "Merge PDF" 或 "合并 PDF"
-                textEl.setAttribute('data-task-key', 'status_complete');
-                textEl.setAttribute('data-extra', ` (${typeLabel})`); // 将后缀保存在 data-extra 中
-                textEl.innerText = t('status_complete') + ` (${typeLabel})`;
-            }
-        }
-    
-        function failTask(li) {
-            const indicator = li.querySelector('.status-indicator');
-            if (indicator) indicator.className = "status-indicator w-3 h-3 bg-red-500 rounded-full";
-            const textEl = li.querySelector('.status-text');
-            if (textEl) {
-                textEl.setAttribute('data-task-key', 'btn_error');
-                textEl.innerText = t('btn_error');
-            }
-        }
-    
-        // 4. PDF 核心逻辑
-        const { PDFDocument } = PDFLib;
-    
-        document.getElementById('merge-input').onchange = async (e) => {
-            const files = Array.from(e.target.files);
-            if (files.length === 0) return;
-            const ui = createQueueItem('status_merging');
-            try {
-                const mergedPdf = await PDFDocument.create();
-                for (const file of files) {
-                    const doc = await PDFDocument.load(await file.arrayBuffer());
-                    const pages = await mergedPdf.copyPages(doc, doc.getPageIndices());
-                    pages.forEach(p => mergedPdf.addPage(p));
-                }
-                const pdfBytes = await mergedPdf.save();
-                finishTask(ui, new Blob([pdfBytes], {type:'application/pdf'}), "merged.pdf", 'merge_name');
-            } catch (err) { failTask(ui); }
+            // 切换后自动平滑收起菜单
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+            if (menuPath) menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
         };
+    }
     
-        document.getElementById('split-input').onchange = async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const ui = createQueueItem('status_splitting');
-            try {
-                const zip = new JSZip();
-                const doc = await PDFDocument.load(await file.arrayBuffer());
-                const count = doc.getPageCount();
-                for (let i = 0; i < count; i++) {
-                    const subDoc = await PDFDocument.create();
-                    const [page] = await subDoc.copyPages(doc, [i]);
-                    subDoc.addPage(page);
-                    const bytes = await subDoc.save();
-                    zip.file(`page_${i+1}.pdf`, bytes);
-                }
-                const content = await zip.generateAsync({type:"blob"});
-                finishTask(ui, content, "split_pages.zip", 'split_name');
-            } catch (err) { failTask(ui); }
+    // --- 5. 桌面端语言切换按钮逻辑 ---
+    // 因为 nav.html 是动态加载的，必须在 initSite 内部重新寻找并绑定
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+        langToggle.onclick = (e) => {
+            e.preventDefault();
+            // 切换语言
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            applyLanguage(newLang);
         };
+    }
+}
+
+/**
+ * 4. UI 任务队列控制
+ */
+function createQueueItem(msgKey) {
+    const container = document.getElementById('status-container');
+    if (container) container.classList.remove('hidden');
+
+    const li = document.createElement('li');
+    li.className = "bg-slate-50 p-6 rounded-2xl flex items-center justify-between border border-slate-100 mb-3";
+    li.innerHTML = `
+        <div class="flex items-center space-x-4">
+            <div class="status-indicator w-3 h-3 bg-indigo-600 rounded-full animate-pulse"></div>
+            <span class="status-text text-slate-700 text-xs font-bold tracking-wider" 
+                  data-task-key="${msgKey}">${t(msgKey)}</span>
+        </div>
+        <div class="action-area"></div>`;
+    document.getElementById('task-list').prepend(li);
+    return li;
+}
+
+function finishTask(li, blob, downloadName, typeNameKey, originalName = "") {
+    const url = URL.createObjectURL(blob);
+    const indicator = li.querySelector('.status-indicator');
+    if (indicator) indicator.className = "status-indicator w-3 h-3 bg-emerald-500 rounded-full";
     
-        document.getElementById('img-to-pdf-input').onchange = async (e) => {
-            const files = Array.from(e.target.files);
-            if (files.length === 0) return;
-            const ui = createQueueItem('status_converting');
-            try {
-                const pdfDoc = await PDFDocument.create();
-                for (const file of files) {
-                    const bytes = await file.arrayBuffer();
-                    let img = file.type.includes('png') ? await pdfDoc.embedPng(bytes) : await pdfDoc.embedJpg(bytes);
-                    const page = pdfDoc.addPage([img.width, img.height]);
-                    page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
-                }
-                const pdfBytes = await pdfDoc.save();
-                finishTask(ui, new Blob([pdfBytes], {type: 'application/pdf'}), "images.pdf", 'img_pdf_name');
-            } catch (err) { failTask(ui); }
+    li.querySelector('.action-area').innerHTML = 
+        `<a href="${url}" download="${downloadName}" 
+            class="btn-download-dynamic bg-indigo-600 text-white px-8 py-3 rounded-xl text-[10px] font-black shadow-lg hover:bg-indigo-700 transition-all">
+            ${t('btn_download')}
+         </a>`;
+    
+    const textEl = li.querySelector('.status-text');
+    if (textEl) {
+        textEl.setAttribute('data-task-key', 'status_done'); 
+        textEl.setAttribute('data-extra-key', typeNameKey); 
+        if (originalName) textEl.setAttribute('data-file-name', originalName);
+        updateTaskText(textEl);
+    }
+}
+
+function failTask(li) {
+    const indicator = li.querySelector('.status-indicator');
+    if (indicator) indicator.className = "status-indicator w-3 h-3 bg-red-500 rounded-full";
+    const textEl = li.querySelector('.status-text');
+    if (textEl) {
+        textEl.setAttribute('data-task-key', 'status_error');
+        textEl.innerText = t('status_error');
+    }
+}
+
+/**
+ * 5. 业务逻辑：图片预处理 (Canvas)
+ */
+async function processImageToJpg(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff'; // 白色背景处理透明图
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob((blob) => {
+                    blob.arrayBuffer().then(resolve);
+                }, 'image/jpeg', 0.9);
+            };
+            img.onerror = reject;
+            img.src = e.target.result;
         };
-    
-        // 5. 页面初始化与全局事件
-        document.addEventListener('DOMContentLoaded', () => {
-            // A. 初始化语言
-            applyLanguage(currentLang);
-    
-            // B. 绑定切换按钮
-            document.getElementById('lang-toggle').onclick = () => applyLanguage(currentLang === 'en' ? 'zh' : 'en');
-            const langSelect = document.getElementById('lang-select');
-            if (langSelect) langSelect.onchange = (e) => applyLanguage(e.target.value);
-    
-            // C. 绑定清空按钮
-            const clearBtn = document.getElementById('clear-all');
-            if (clearBtn) {
-                clearBtn.onclick = () => {
-                    const taskList = document.getElementById('task-list');
-                    if (taskList) taskList.innerHTML = '';
-                    document.getElementById('status-container').classList.add('hidden');
-                    ['merge-input', 'split-input', 'img-to-pdf-input'].forEach(id => {
-                        document.getElementById(id).value = '';
-                    });
-                };
-            }
-        });
-    
-        // 弹窗逻辑
-        function openModal(type) {
-            document.getElementById('modal-title').innerText = t(type);
-            document.getElementById('modal-body').innerHTML = t(type + '_content') || 'Coming soon...';
-            document.getElementById('privacy-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
+/**
+ * 6. 业务逻辑绑定 (Merge/Split/Convert)
+ */
+const { PDFDocument } = PDFLib;
+
+// 合并 PDF
+document.getElementById('merge-input').onchange = async (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    const ui = createQueueItem('status_merging');
+    try {
+        const mergedPdf = await PDFDocument.create();
+        for (const file of files) {
+            const doc = await PDFDocument.load(await file.arrayBuffer());
+            const pages = await mergedPdf.copyPages(doc, doc.getPageIndices());
+            pages.forEach(p => mergedPdf.addPage(p));
         }
-        function closeModal() {
-            document.getElementById('privacy-modal').classList.remove('active');
-            document.body.style.overflow = '';
+        const pdfBytes = await mergedPdf.save();
+        const info = files.length + " files";
+        finishTask(ui, new Blob([pdfBytes], {type:'application/pdf'}), "merged.pdf", 'merge_name', info);
+    } catch (err) { failTask(ui); }
+};
+
+// 拆分 PDF
+document.getElementById('split-input').onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const ui = createQueueItem('status_splitting');
+    try {
+        const zip = new JSZip();
+        const doc = await PDFDocument.load(await file.arrayBuffer());
+        const count = doc.getPageCount();
+        for (let i = 0; i < count; i++) {
+            const subDoc = await PDFDocument.create();
+            const [page] = await subDoc.copyPages(doc, [i]);
+            subDoc.addPage(page);
+            const bytes = await subDoc.save();
+            zip.file(`page_${i+1}.pdf`, bytes);
         }
+        const content = await zip.generateAsync({type:"blob"});
+        finishTask(ui, content, "split_pages.zip", 'split_name', file.name);
+    } catch (err) { failTask(ui); }
+};
+
+// 图片转 PDF (支持 WebP/PNG/JPG)
+document.getElementById('img-to-pdf-input').onchange = async (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    const ui = createQueueItem('status_converting');
+    try {
+        const pdfDoc = await PDFDocument.create();
+        for (const file of files) {
+            const bytes = await processImageToJpg(file); // 使用 Canvas 预处理
+            const img = await pdfDoc.embedJpg(bytes);
+            const page = pdfDoc.addPage([img.width, img.height]);
+            page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
+        }
+        const pdfBytes = await pdfDoc.save();
+        const info = files.length === 1 ? files[0].name : files.length + " images";
+        finishTask(ui, new Blob([pdfBytes], {type: 'application/pdf'}), "images.pdf", 'img_pdf_name', info);
+    } catch (err) { failTask(ui); }
+};
+
+// 初始化启动
+document.addEventListener('DOMContentLoaded', () => {
+    initSite();
+    
+    // 清空列表
+    const clearBtn = document.getElementById('clear-all');
+    if (clearBtn) {
+        clearBtn.onclick = () => {
+            document.getElementById('task-list').innerHTML = '';
+            document.getElementById('status-container').classList.add('hidden');
+            ['merge-input', 'split-input', 'img-to-pdf-input'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+        };
+    }
+});
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -628,16 +442,14 @@
       "text": "Yes. SwiftConvert processes PDF files 100% locally in your browser. No files are uploaded to any server."
     }
   },{
-    "@type": "Question",
-    "name": "Is there a size limit?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "There is no file count limit. Processing depends only on your device memory."
-    }
-  }]
+  "@type": "Question",
+  "name": "Which image formats can I convert to PDF?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "SwiftConvert supports a wide range of formats including JPG, PNG, WebP, and BMP. All conversions happen locally in your browser for maximum privacy."
+  }
+}]
 }
 </script>
-
 </body>
 </html>
-
