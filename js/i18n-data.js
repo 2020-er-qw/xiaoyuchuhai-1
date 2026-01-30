@@ -192,7 +192,63 @@ const i18nData = {
 				                    about_why_1: '100%隐私保护',
 									about_feature_1: '所有处理均在本地 CPU/GPU 完成，无任何隐私泄露风险。',
 				                    about_why_2: '高速处理',
-									about_feature_2: '无需等待上传下载，处理速度取决于您的硬件性能。'
+									about_feature_2: '无需等待上传下载，处理速度取决于您的硬件性能。',
+				//compress
+				feat_local_title: '本地处理',
+				feat_local_desc: '您的图片永远不会离开您的电脑，100% 隐私保护。',
+				feat_efficient_title: '极速转换',
+				feat_efficient_desc: '利用本地算力，数秒内完成大批量格式转换。',
+				feat_free_title: '免费使用',
+				feat_free_desc: '我们承诺所有功能免费使用。',
+				compress_title: "压缩图片", compress_desc: "在保持画质的同时减小体积，100% 本地处理。",
+				drop_text: "点击或拖拽图片到此处", format_support: "支持 JPG, PNG，Webp格式",
+				quality_label: "压缩质量", original_size: "原始大小",
+				new_size: "压缩后 (预估)", download_btn: "下载图片",
+				reset_btn: "重新上传",
+				faq_compress_q1: "支持什么图片格式？",
+				faq_compress_a1: "我们支持 JPG、PNG 和 WebP 格式。所有压缩过程均在本地完成，确保您的高清照片获得最高规格的隐私保护。",
+				faq_compress_q2: "用到了什么技术？",
+				faq_compress_a2: "SwiftConvert 采用浏览器原生的 Canvas API 进行智能重新编码。这使我们能够在不上传任何数据到服务器的情况下，大幅缩小文件体积。",
+				faq_compress_q3: "是否支持批量压缩？",
+				faq_compress_a3: "目前我们专注于单张图片的精确压缩，以确保最佳的画质与体积比。",
+				//crop
+				crop_title: "裁剪图片", crop_desc: "精确剪裁，在浏览器本地完成图片处理。",
+				drop_text: "点击或拖拽图片到此处", format_support: "支持 JPG, PNG格式",
+				rotate_left: "向左旋转", rotate_right: "向右旋转",
+				flip_h: "水平翻转", flip_v: "垂直翻转",
+				download_btn: "下载裁剪后的图片", reset_btn: "重新上传图片",
+				faq_crop_q1: "在这里裁剪我的私密照片安全吗？",
+				faq_crop_a1: "绝对安全。SwiftConvert 采用客户端技术，这意味着您的图片完全在浏览器中处理。它们永远不会被上传到任何服务器，100% 保护您的隐私。",
+				faq_crop_q2: "我可以按照特定比例裁剪吗？",
+				faq_crop_a2: "可以！我们的工具默认支持自由裁剪，您可以轻松拖动边角以匹配社交媒体尺寸或保持原始比例。我们还提供旋转和镜像翻转工具，让您全面掌控。",
+				faq_crop_q3: "裁剪会降低图片的清晰度吗？",
+				faq_crop_a3: "不会。我们默认使用高质量的 JPEG 编码（90% 质量）导出裁剪后的图片，确保您的照片在编辑后依然清晰锐利。",
+				//resize
+				resize_title: "修改图片尺寸", resize_desc: "100% 浏览器本地处理，不损画质。",
+				drop_text: "点击或拖拽图片到此处", format_support: "支持 JPG, PNG，Webp格式",
+				width_label: "宽度 (像素)", height_label: "高度 (像素)",
+				keep_ratio: "保持纵横比", download_btn: "下载修改后的图片",
+				reset_btn: "重新上传图片",
+				faq_resize_q1: "调整尺寸会使我的图片拉伸或变形吗？",
+				faq_resize_a1: "完全不会。我们默认开启了“保持宽高比”功能。这确保了当您更改宽度时，高度会自动调整，以保持图片的自然比例，不会产生任何变形。",
+				faq_resize_q2: "我的照片会上传到服务器进行缩放吗？",
+				faq_resize_a2: "不会。SwiftConvert 的所有处理均在您的浏览器本地完成。您的文件永远不会离开您的设备，是处理敏感文档或私密照片最安全的方式之一。",
+				faq_resize_q3: "我可以设置精确的像素尺寸吗？",
+				faq_resize_a3: "可以！您可以手动输入精确的像素宽度和高度。缩放完成后，我们使用高质量的 JPEG 编码导出图片，确保缩放后的照片依然清晰锐利。",
+				//rotate
+				rotate_title: "旋转图片", rotate_desc: "100% 本地处理，支持旋转与镜像翻转。",
+				drop_text: "点击或拖拽图片到此处",
+				format_support: "支持 JPG, PNG，Webp格式",
+				rotate_left: "向左旋转 90°", rotate_right: "向右旋转 90°",
+				flip_h: "水平翻转", flip_v: "垂直翻转",
+				download_btn: "下载图片", reset_btn: "重新上传", 
+				faq_rotate_q1: "旋转时图片尺寸会发生变化吗？",
+				faq_rotate_a1: "当您向左或向右旋转 90° 时，图片的宽度和高度会互换。我们的智能画布会自动调整尺寸，确保整张照片完整显示，不会有任何部分被裁剪。",
+				faq_rotate_q2: "水平翻转和垂直翻转有什么区别？",
+				faq_rotate_a2: "水平翻转会产生“镜像”效果，左右对调，非常适合修复镜像自拍。垂直翻转则是将图片上下颠倒。您可以结合 90° 旋转来达到任何想要的方向。",
+				faq_rotate_q3: "旋转处理过程安全吗？",
+				faq_rotate_a3: "非常安全。所有的旋转和翻转操作都在浏览器的本地内存中完成，您的图片永远不会被发送到服务器。这不仅保证了 100% 的隐私，还无需消耗上传流量。"
+				
             
 			
 			
@@ -405,8 +461,66 @@ const i18nData = {
 													                    about_why_1: '100% Private',
 																		about_feature_1: 'Processing happens on your local CPU/GPU. Zero risk of data breaches.',
 													                    about_why_2: 'High Speed',
-																		about_feature_2: 'Skip the upload wait. Convert and edit at the speed of your hardware.'
-												
+																		about_feature_2: 'Skip the upload wait. Convert and edit at the speed of your hardware.',
+													//compress页面
+													//本页
+													feat_local_title: 'Local Processing',
+													feat_local_desc: 'Your images never leave your computer,100% Private',
+													feat_efficient_title: 'High Efficiency',
+													feat_efficient_desc: 'Batch convert HEIC/WebP in seconds.',
+													feat_free_title: 'Free Usage',
+													feat_free_desc: 'All features are, and will always be, free to use.',
+													
+													
+													
+													compress_title: "Compress Image", compress_desc: "Reduce file size while keeping best quality locally.",
+													drop_text: "Click or Drop Image Here", format_support: "Supports JPG, PNG，Webp",
+													quality_label: "Compression Quality", original_size: "Original",
+													new_size: "Compressed (Est.)", download_btn: "Download Image",
+													reset_btn: "Upload Another",
+													faq_compress_q1: "What image formats are supported?",
+													faq_compress_a1: "We support JPG, PNG, and WebP. All processing happens locally, ensuring your high-resolution photos are handled with maximum privacy.",
+													faq_compress_q2: "What technology is used for compression?",
+													faq_compress_a2: "SwiftConvert uses the browser's native Canvas API for smart re-encoding. This allows us to reduce file size significantly without needing to upload your data to any server.",
+													faq_compress_q3: "Does it support batch compression?",
+													faq_compress_a3: "Currently, we focus on precision compression for single images to ensure the best quality-to-size ratio.",
+					//crop
+					crop_title: "Crop Image", crop_desc: "Precisely cut and reframe your photos locally.",
+					drop_text: "Click or Drop Image Here", format_support: "Supports JPG, PNG",
+					rotate_left: "Rotate Left", rotate_right: "Rotate Right",
+					flip_h: "Flip Horiz.", flip_v: "Flip Vert.",
+					download_btn: "Download Cropped Image", reset_btn: "Upload Another Image",
+					faq_crop_q1: "Is it safe to crop my private photos here?",
+					faq_crop_a1: "Absolutely. SwiftConvert uses client-side technology, meaning your images are processed entirely within your browser. They are never uploaded to any server, keeping your privacy 100% intact.",
+					faq_crop_q2: "Can I crop to a specific aspect ratio?",
+					faq_crop_a2: "Yes! Our tool allows for free-form cropping by default, but you can easily drag the corners to match common social media dimensions or keep your original proportions. We also provide rotate and flip tools for full control.",
+					faq_crop_q3: "Will cropping reduce the quality of my image?",
+					faq_crop_a3: "No. We export your cropped image using high-quality JPEG encoding (90% quality) by default, ensuring that your photos stay sharp and clear after the edit.",
+					//resize
+					resize_title: "Resize Image", resize_desc: "Adjust dimensions locally in your browser.",
+					drop_text: "Click or Drop Image Here", format_support: "Supports JPG, PNG，Webp",
+					width_label: "Width (px)", height_label: "Height (px)",
+					keep_ratio: "Maintain Aspect Ratio", download_btn: "Download Resized Image",
+					reset_btn: "Upload Another Image",
+					faq_resize_q1: "Will resizing stretch or distort my image?",
+					faq_resize_a1: "Not at all. By default, our 'Maintain Aspect Ratio' feature is enabled. This ensures that when you change the width, the height adjusts automatically to keep your image looking perfectly natural without any distortion.",
+					faq_resize_q2: "Are my photos uploaded to a server for resizing?",
+					faq_resize_a2: "No. SwiftConvert processes everything locally in your browser. Your files never leave your device, making it one of the most secure ways to resize sensitive documents or private photos.",
+					faq_resize_q3: "Can I set the exact pixel dimensions?",
+					faq_resize_a3: "Yes! You can manually enter the exact width and height in pixels. After resizing, we export the image using a high-quality JPEG encoder to ensure your resized photo remains crisp and clear.",
+					//rotate
+					rotate_title: "Rotate Image", rotate_desc: "Flip or rotate images locally in your browser.",
+					drop_text: "Click or Drop Image Here",
+					format_support: "Supports JPG, PNG，Webp",
+					rotate_left: "Rotate -90°", rotate_right: "Rotate +90°",
+					flip_h: "Flip Horizontal", flip_v: "Flip Vertical",
+					download_btn: "Download Image", reset_btn: "Upload Another",
+					faq_rotate_q1: "What happens to the image size when rotating?",
+					faq_rotate_a1: "When you rotate 90° left or right, the width and height of your image will swap. Our smart canvas automatically adjusts its dimensions to ensure your entire photo remains visible without any parts being cut off.",
+					faq_rotate_q2: "What is the difference between Horizontal and Vertical Flip?",
+					faq_rotate_a2: "Horizontal Flip creates a 'mirror' effect, moving the left side to the right—perfect for fixing mirror-image selfies. Vertical Flip turns the image upside down. You can combine these with 90° rotations to achieve any orientation.",
+					faq_rotate_q3: "Is the rotation processed securely?",
+					faq_rotate_a3: "Yes. Since all rotations and flips are performed using your browser's local memory, your images are never sent to a server. This ensures 100% privacy and zero data usage for uploading files."
 												
 												
             }
