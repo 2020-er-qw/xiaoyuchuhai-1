@@ -4,7 +4,10 @@ const i18nData = {
 				//导航部分翻译
 				nav_home: '首页',nav_editor: '图片编辑',
 				nav_converter: '图片转换', document_converter: 'PDF 工具', nav_about: '关于我们', nav_private: '100% 本地隐私',
-				nav_language: '语言',
+				nav_language: '语言',nav_blog: "使用指南",
+				nav_image_tools: '图片工具', nav_heictojpg: 'HEIC转JPG', nav_webptojpg: 'WebP转JPG', 
+				nav_editor : '编辑图片',nav_pdftool: 'PDF工具', nav_mergepdf: '合并PDF', nav_splitpdf:'拆分PDF',
+				nav_imagepdf: '图片转PDF',
 				
 				//底部部分翻译
 				footer_desc: '免费、快速且私密的转换工具。所有处理均在您的浏览器本地完成。',
@@ -249,6 +252,7 @@ const i18nData = {
 				faq_rotate_q3: "旋转处理过程安全吗？",
 				faq_rotate_a3: "非常安全。所有的旋转和翻转操作都在浏览器的本地内存中完成，您的图片永远不会被发送到服务器。这不仅保证了 100% 的隐私，还无需消耗上传流量。"
 				
+				
             
 			
 			
@@ -257,7 +261,10 @@ const i18nData = {
 				//导航部分翻译
 				nav_home: 'Home',nav_editor: 'Image Editor',
 				nav_converter: 'Image Converter', document_converter: 'PDF Tools', nav_about: 'About', nav_private: '100% Private',
-				nav_language: 'Language',
+				nav_language: 'Language',nav_blog: "Guides",
+				nav_image_tools: 'Image Tools', nav_heictojpg: 'HEIC to JPG', nav_webptojpg: 'WebP to JPG', 
+				nav_editor : 'Editor Image',nav_pdftool: 'PDF Tools', nav_mergepdf: 'Merge PDF', nav_splitpdf:'Split PDF',
+				nav_imagepdf: 'Image to PDF',
 				
 				//底部部分翻译
 				footer_desc: 'Free, fast, and private file conversion. All processing happens locally in your browser.',
