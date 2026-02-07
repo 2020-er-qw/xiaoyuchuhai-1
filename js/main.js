@@ -92,11 +92,7 @@ async function initSite() {
     if (menuBtn && mobileMenu) {
         menuBtn.onclick = () => {
             const isHidden = mobileMenu.classList.toggle('hidden');
-            if (!isHidden) {
-                menuPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-            } else {
-                menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            }
+            
         };
     }
 
