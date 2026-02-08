@@ -1,6 +1,52 @@
 // 统一管理全站翻译
 const i18nData = {
             zh: {
+				
+				//heic-to-jpg-guide
+				
+				  "post_heic_combine_title": "🛠️ 配合这些工具，效率翻倍",
+				  "post_heic_tool_compress": "图片压缩 (Image Compressor)",
+				  "post_heic_tool_compress_desc": "转换完成后，立即本地压缩 JPG 体积。",
+				  "post_heic_tool_webp": "WebP 转换器",
+				  "post_heic_tool_webp_desc": "同样支持本地将 WebP 格式转换为 JPG。",
+					"posthrictojpg": "HEIC 转 JPG：高保真，零上传。",
+				  "cat_image": "影像技巧",
+				  "post_heic_title": "如何批量将 HEIC 转换为 JPG：2026 终极隐私保护指南",
+				  "post_heic_intro": "HEIC (High Efficiency Image Format) 是由 MPEG 组织开发的图像格式，自 iOS 11 起成为 iPhone 的标准。虽然它在画质与体积的平衡上表现卓越，但在 Windows 系统或办公软件中却经常遭遇“无法打开”的尴尬。更重要的是，普通在线转换工具往往会窃取您的照片隐私。本文将教您如何利用 SwiftConvert 的本地 WebAssembly 技术，在毫秒内完成安全转换。",
+				  "post_heic_h1": "深度对比：HEIC 与 JPG 的本质区别",
+				  "post_heic_p1": "HEIC 采用了更高效的 HEVC (H.265) 压缩算法。相比 30 年前诞生的 JPG 格式，它支持高达 16 位的深度色彩。然而，这种复杂性导致其在跨平台传输时极度依赖特定的解码器。通过 SwiftConvert 转换，我们是在本地进行高保真重解码，确保 100% 的兼容性。",
+				  "post_heic_h2": "为什么选择“本地处理”而非“在线云转换”？",
+				  "post_heic_p2": "当您在搜索框输入“HEIC 转换”时，大多数结果是云端工具。这些工具隐藏着巨大的隐私隐患：您的每张照片都包含 EXIF 信息（地理位置、拍摄日期、相机型号）。上传到服务器意味着您失去了对这些数据的控制。SwiftConvert 让您的浏览器直接执行转换逻辑，数据留在内存，不产生任何上传流量。",
+				  "post_heic_accent_title": "SwiftConvert 核心优势：100% 离线处理",
+				  "post_heic_p3_extra": "我们的工具完全利用您浏览器的内部算力处理图像。您的照片始终保留在您的电脑上，这使其成为目前最快、最安全的文件处理方式。",
+				  "post_heic_step_guide_title": "HEIC 批量转换分步指南",
+				  "post_heic_step1_t": "第一步：访问 SwiftConvert 核心工具箱",
+				  "post_heic_step1_d": "在首页选择“HEIC to JPG”选项。由于采用本地处理方案，页面加载和功能响应几乎是瞬时的。",
+				  "post_heic_step2_t": "第二步：利用多核批量处理功能",
+				  "post_heic_step2_d": "您可以一次性拖入数十张照片。SwiftConvert 能够调用您 CPU 的多核性能，在多核处理器上体验并行转换带来的极致速度。",
+				  "post_heic_step3_t": "第三步：结合其他工具实现流畅工作流",
+				  "post_heic_step3_d": "转换完成后，您可以直接配合使用“图片压缩”或“调整尺寸”功能。所有操作都在同一个安全沙盒内完成，无需重复上传下载。",
+				  "post_heic_h4": "技术背后的黑科技：WebAssembly 赋能",
+				  "post_heic_p4": "我们之所以能在浏览器中实现原生级别的转换效率，是因为底层集成了 C++ 解码库并编译为 WebAssembly。这种“去中心化”的处理方式不仅更快，也更符合未来互联网对隐私保护的严苛要求。",
+				  "post_heic_cta": "准备好体验安全转换了吗？",
+				  "post_heic_cta_desc": "不需要注册，不需要上传。立即使用 SwiftConvert 的本地工具处理您的图片。",
+				  "post_heic_cta_text": "前往转换器",
+				
+				  
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				//blog/privacy-local
 				
 				  "post_privacy_meta_title": "深度解析：为什么浏览器本地处理技术是保护隐私的最佳方案？ | SwiftConvert",
@@ -303,6 +349,41 @@ const i18nData = {
 			
 			},
             en: {
+				//heic-to-jpg-guide
+				
+				  "post_heic_combine_title": "🛠️ Combine with These Tools",
+				  "post_heic_tool_compress": "Image Compressor",
+				  "post_heic_tool_compress_desc": "Reduce JPG size instantly after conversion.",
+				  "post_heic_tool_webp": "WebP Converter",
+				  "post_heic_tool_webp_desc": "Convert modern WebP images to JPG locally.",
+				
+				"posthrictojpg": "HEIC to JPG: High Quality, Zero Uploads.",
+				  "cat_image": "Image Tips",
+				  "post_heic_title": "How to Batch Convert HEIC to JPG: The Ultimate Privacy-First Guide 2026",
+				  "post_heic_intro": "HEIC (High Efficiency Image Format) has been the default standard for iPhone photos since iOS 11. While it excels at balancing quality with file size, it often triggers 'incompatible format' errors on Windows and legacy software. More importantly, common online converters often compromise your privacy. In this guide, you'll learn how to use SwiftConvert’s local WebAssembly technology to convert photos in milliseconds—safely and privately.",
+				  "post_heic_h1": "Deep Dive: HEIC vs. JPG - What's the Real Difference?",
+				  "post_heic_p1": "HEIC utilizes the advanced HEVC (H.265) compression algorithm. Compared to the 30-year-old JPG format, it supports up to 16-bit color depth. However, this complexity requires specific decoders that many platforms lack. SwiftConvert performs a local, high-fidelity re-decoding to ensure 100% compatibility across all your devices.",
+				  "post_heic_h2": "Why Local Processing Beats Traditional Cloud Conversion",
+				  "post_heic_p2": "When you search for 'HEIC converter,' most results are cloud-based tools. These pose a massive privacy risk: every photo contains EXIF metadata—GPS coordinates, precise timestamps, and camera settings. Uploading means losing control. SwiftConvert allows your browser to execute the logic directly in your RAM. Your data stays on your device, and zero bandwidth is wasted on uploads.",
+				  "post_heic_accent_title": "The SwiftConvert Way: 100% Offline",
+				  "post_heic_p3_extra": "Our tool uses your browser's internal power to process images. Your photos stay on your computer, making it the fastest and most secure method available today.",
+				  "post_heic_step_guide_title": "Step-by-Step Guide to Batch Conversion",
+				  "post_heic_step1_t": "Step 1: Access the SwiftConvert Local Toolkit",
+				  "post_heic_step1_d": "Select the 'HEIC to JPG' tool on our homepage. You'll notice near-instant loading because there are no heavy backend API handshakes involved.",
+				  "post_heic_step2_t": "Step 2: Utilize Multi-Core Batch Processing",
+				  "post_heic_step2_d": "Drag and drop dozens of photos at once. SwiftConvert is optimized for multi-core CPUs, providing blazing-fast parallel processing.",
+				  "post_heic_step3_t": "Step 3: Seamless Workflow with Built-in Tools",
+				  "post_heic_step3_d": "After conversion, you can immediately use our Compressor or Resizer. Everything happens within the same secure browser sandbox—no secondary downloads needed.",
+				  "post_heic_h4": "The Technology: Powered by WebAssembly (Wasm)",
+				  "post_heic_p4": "Our efficiency comes from integrating high-performance C++ decoding libraries via WebAssembly. By moving computation from the 'Cloud' to your device, we provide a faster, safer, and more sustainable tool for everyone.",
+				  "post_heic_cta": "Ready for a Secure Conversion?",
+				  "post_heic_cta_desc": "No registration, no upload. Start processing your images with SwiftConvert today.",
+				  "post_heic_cta_text": "Go to Converter",
+				
+				
+				
+				
+				
 				//blog/privacy-local
 				  "post_privacy_meta_title": "In-depth: Why Browser-based Local Processing is the Ultimate for Privacy | SwiftConvert",
 				  "post_privacy_title": "Why 'Local Processing' is the Best Solution for Privacy Protection",
