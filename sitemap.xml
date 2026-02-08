@@ -2,75 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.swiftconvert.ink</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/converter</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/editor</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/document-converter</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+    <url>
+      <loc>https://www.swiftconvert.ink/blog</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/resize</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/crop</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/rotate</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.swiftconvert.ink/compress</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+    <url>
+      <loc>https://www.swiftconvert.ink/how-to-compress-images</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  
+    <url>
+      <loc>https://www.swiftconvert.ink/how-to-merge-and-split-pdf-locally</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  
+    <url>
+      <loc>https://www.swiftconvert.ink/heic-to-jpg-guide</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  
+    <url>
+      <loc>https://www.swiftconvert.ink/why-local-conversion-is-safer</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+    
+    <url>
+      <loc>https://www.swiftconvert.ink/privacy-local</loc>
+      <lastmod>2026-02-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  
 
   <url>
     <loc>https://www.swiftconvert.ink/contact</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.swiftconvert.ink/privacy</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.swiftconvert.ink/terms</loc>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
