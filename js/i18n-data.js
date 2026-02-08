@@ -2,6 +2,35 @@
 const i18nData = {
             zh: {
 				
+				//compress
+				  "post_comp_title": "如何本地压缩图片：在不损失画质的情况下减小文件体积",
+				  "post_comp_hero_hint": "“更小的文件，更强的隐私，极速处理。”",
+				  "post_comp_intro": "无论是为了加快网站加载速度，还是为了节省手机存储空间，图片压缩都是必不可少的。然而，大多数在线工具要求您上传文件，这不仅慢，还存在泄露隐私的风险。SwiftConvert 提供的本地压缩工具，让您在浏览器内就能完成高质量优化。",
+				  "post_comp_h1": "为什么本地压缩至关重要？",
+				  "post_comp_p1": "传统的在线压缩工具会将您的照片发送到他们的服务器进行处理。而使用 SwiftConvert，压缩逻辑直接运行在您的浏览器内存中。这意味着即使是包含个人信息的证件照或私密照片，也可以安全地进行优化，因为文件从未离开过您的设备。",
+				  "post_comp_h2": "支持的格式：JPG, PNG 和 WebP",
+				  "post_comp_p2": "我们的工具全面支持目前主流的图像格式。无论您是需要大幅减小体积的 JPG 照片，还是需要保持透明度的 PNG 图标，或者是为了提升网页 SEO 的 WebP 格式，SwiftConvert 都能轻松应对。",
+				  "post_comp_accent_title": "100% 客户端优化",
+				  "post_comp_accent_p": "我们利用现代浏览器的性能进行实时重编码。您可以直观地看到原始大小与压缩后预计大小的对比，所有操作都在毫秒级完成，且无需消耗您的上传流量。",
+				  "post_comp_step_title": "如何使用 SwiftConvert 压缩器",
+				  "post_comp_step1_t": "第一步：上传您的图片",
+				  "post_comp_step1_d": "点击上传区域或将 JPG/PNG/WebP 文件拖入其中。预览图会立即加载。",
+				  "post_comp_step2_t": "第二步：调整压缩质量",
+				  "post_comp_step2_d": "拖动“压缩质量”滑块。通常 70%-80% 可以在肉眼看不出差异的情况下显著减小 50% 以上的体积。",
+				  "post_comp_step3_t": "第三步：下载并保存",
+				  "post_comp_step3_d": "点击下载按钮。处理后的图片会立即保存到您的电脑，全程无延迟。",
+				  "post_comp_h3": "寻找画质与体积的完美平衡",
+				  "post_comp_p3": "在 SwiftConvert 中，滑块的默认值设为 80%。这是图像处理领域的‘黄金平衡点’——在此设置下，您可以获得大幅的体积压缩，同时保留大部分细节。如果您是为了网页加载速度，可以尝试降低到 60%。",
+				  "post_comp_combine_title": "🛠️ 联动工具推荐",
+				  "post_comp_cta": "准备好为您的图片“瘦身”了吗？",
+				  "post_comp_cta_desc": "无需排队，无需上传，纯粹的极速体验。",
+				  "post_comp_cta_text": "开始压缩图片",
+				    "post_comp_tool_heic": "HEIC 转 JPG",
+				    "post_comp_tool_heic_desc": "先将 iPhone 照片转换为通用格式，再进行压缩。",
+				    "post_comp_tool_webp": "WebP 转换器",
+				    "post_comp_tool_webp_desc": "本地转换格式，实现更好的网页兼容性。",
+				
+				
 				//heic-to-jpg-guide
 				
 				  "post_heic_combine_title": "🛠️ 配合这些工具，效率翻倍",
@@ -81,6 +110,10 @@ const i18nData = {
 				
 				
 				//blog
+				  "cat_image": "影像技巧",
+				  "post_comp_title": "如何本地压缩图片体积",
+				  "post_comp_excerpt": "在几秒钟内缩减 JPG、PNG 和 WebP 图片。学习如何在不损失画质且不泄露隐私的前提下，在本地完成图片瘦身。",
+				  "read_more": "阅读更多",
 				  "blog_hero_title": "使用指南与技术博文",
 				  "blog_hero_subtitle": "探索关于图像转换、PDF 处理及数据隐私的专业指南。",
 				  "cat_image": "图片技巧",
@@ -349,6 +382,35 @@ const i18nData = {
 			
 			},
             en: {
+				//compress
+				  "post_comp_title": "How to Compress Images Locally: Reduce Size Without Losing Quality",
+				  "post_comp_hero_hint": "“Smaller Files, Better Privacy, Instant Speed.”",
+				  "post_comp_intro": "Whether it's for speeding up website loading or saving phone storage, image compression is essential. However, most online tools require uploads, which are slow and risky. SwiftConvert provides a local compression tool that lets you perform high-quality optimization right in your browser.",
+				  "post_comp_h1": "Why Local Compression Matters",
+				  "post_comp_p1": "Traditional online compressors send your photos to their servers. With SwiftConvert, the logic runs in your browser's memory. This means even sensitive documents or private photos are safe because the file never leaves your device.",
+				  "post_comp_h2": "Supported Formats: JPG, PNG, and WebP",
+				  "post_comp_p2": "Our tool supports all major image formats. Whether you need to shrink JPG photos, optimize PNG icons with transparency, or use WebP for better web SEO, SwiftConvert handles it all effortlessly.",
+				  "post_comp_accent_title": "100% Client-Side Optimization",
+				  "post_comp_accent_p": "We leverage modern browser performance for real-time re-encoding. You can instantly see the comparison between original and estimated sizes, all occurring in milliseconds without using your upload bandwidth.",
+				  "post_comp_step_title": "How to Use the SwiftConvert Compressor",
+				  "post_comp_step1_t": "Step 1: Upload Your Image",
+				  "post_comp_step1_d": "Click the upload area or drag a JPG/PNG/WebP file in. The preview will load instantly.",
+				  "post_comp_step2_t": "Step 2: Adjust Quality",
+				  "post_comp_step2_d": "Drag the 'Compression Quality' slider. Usually, 70%-80% reduces file size by over 50% without visible quality loss.",
+				  "post_comp_step3_t": "Step 3: Download and Save",
+				  "post_comp_step3_d": "Click the download button. The optimized image is saved instantly to your computer with zero delay.",
+				  "post_comp_h3": "The Sweet Spot: Quality vs. Size",
+				  "post_comp_p3": "In SwiftConvert, the default is 80%. This is the 'Golden Balance'—it offers significant compression while preserving most details. For web performance, you might even try dropping to 60%.",
+				  "post_comp_combine_title": "🛠️ Synergy with Other Tools",
+				  "post_comp_cta": "Ready to Shrink Your Images?",
+				  "post_comp_cta_desc": "No queue, no upload, just pure speed.",
+				  "post_comp_cta_text": "Start Compressing",
+				    "post_comp_tool_heic": "HEIC to JPG",
+				    "post_comp_tool_heic_desc": "Convert iPhone photos first, then compress them here.",
+				    "post_comp_tool_webp": "WebP Converter",
+				    "post_comp_tool_webp_desc": "Change formats locally for better web compatibility.",
+				
+				
 				//heic-to-jpg-guide
 				
 				  "post_heic_combine_title": "🛠️ Combine with These Tools",
@@ -417,6 +479,10 @@ const i18nData = {
 				
 				
 				//blog
+				  "cat_image": "IMAGE TIPS",
+				  "post_comp_title": "How to Compress Images Locally",
+				  "post_comp_excerpt": "Shrink JPG, PNG, and WebP images in seconds. Learn how to reduce file size locally without losing quality or risking your privacy.",
+				  "read_more": "Read More",
 				  "blog_hero_title": "Guides & Resources",
 				  "blog_hero_subtitle": "Explore professional guides on image conversion, PDF handling, and data privacy.",
 				  "cat_image": "IMAGE TIPS",
