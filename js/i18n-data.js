@@ -2,6 +2,35 @@
 const i18nData = {
             zh: {
 				//
+				"cloud_conv_title": "传统云端转换器",
+				"cloud_risk_1": "文件需上传至远程服务器",
+				"cloud_risk_2": "存在潜在的数据日志记录",
+				"cloud_risk_3": "处理速度受限于网络带宽",
+				"local_conv_title": "SwiftConvert (本地处理)",
+				"local_benefit_1": "0 上传 - 100% 隐私保护",
+				"local_benefit_2": "在您的浏览器内存 (RAM) 中运行",
+				"local_benefit_3": "页面加载后即可离线工作",
+				  "post_privacy_title_rich": "拒绝上传数据：本地转换的强大优势",
+				  "post_privacy_intro": "在处理包含个人信息的文档时，‘云端处理’可能是一个隐私陷阱。了解为什么将文件处理保留在本地浏览器中是目前最安全的选择。",
+				  "post_privacy_h1": "云端 vs 本地：不可见的风险",
+				  "post_privacy_p1": "大多数在线转换器会将您的文件上传到远程服务器。即使他们承诺会自动删除，数据在传输和存储过程中依然面临被拦截或泄露的风险。",
+				  "post_privacy_h2": "技术原理：SwiftConvert 背后的科技",
+				  "post_privacy_p2": "我们利用 WebAssembly (WASM) 技术。当您放入文件时，浏览器会直接作为处理中心，在内部完成所有计算，不向云端发送任何字节。",
+				  "post_privacy_accent_title": "无服务器，无日志，无泄露",
+				  "post_privacy_accent_p": "隐私是我们的核心。通过消除‘服务器’这一环节，我们从根源上解决了数据安全的隐患。",
+				  "post_privacy_h3": "本地处理的四大核心优势",
+				  "benefit_1": "为法律和财务文档提供绝对的隐私保护（数据不离端）。",
+				  "benefit_2": "极速处理响应 - 无需经历漫长的上传和下载等待队列。",
+				  "benefit_3": "强大的离线能力 - 只要页面加载过，断网状态也能正常转换。",
+				  "benefit_4": "无订阅限制 - 摆脱云端服务器昂贵的会员费与文件大小限制。",
+				  "post_privacy_cta": "体验真正的隐私保护",
+				  "post_privacy_cta_desc": "立即开始本地处理您的文件。",
+				  "post_privacy_cta_btn": "浏览所有工具",
+				  "post_privacy_excerpt": "停止上传您的敏感数据。了解为什么基于浏览器的本地转换技术比传统云端工具更安全、更私密。",
+				
+				
+				
+				//
 				"post_pdf_excerpt": "保护文档隐私。学习如何使用我们安全的离线工具，完全在浏览器内合并、拆分或提取 PDF 页面，数据永不上传服务器。",
 		"cat_pdf": "PDF 工具",
         "author_role_sec": "安全专家",
@@ -394,6 +423,33 @@ const i18nData = {
 			
 			},
             en: {
+				//
+				"cloud_conv_title": "Cloud Converters",
+				"cloud_risk_1": "Uploads to remote servers",
+				"cloud_risk_2": "Potential data logging",
+				"cloud_risk_3": "Dependent on internet speed",
+				"local_conv_title": "SwiftConvert (Local)",
+				"local_benefit_1": "0 uploads - 100% Private",
+				"local_benefit_2": "Runs in your browser RAM",
+				"local_benefit_3": "Works offline once loaded",
+				  "post_privacy_title_rich": "Stop Uploading Your Data: The Power of Local Conversion",
+				  "post_privacy_intro": "When handling documents with personal info, 'Cloud Processing' can be a privacy trap. Learn why keeping file processing in your local browser is the safest choice.",
+				  "post_privacy_h1": "Cloud vs. Local: The Invisible Risk",
+				  "post_privacy_p1": "Most online converters upload your files. Even with delete promises, your data is vulnerable during transit and storage.",
+				  "post_privacy_h2": "How It Works: Technology Behind SwiftConvert",
+				  "post_privacy_p2": "We leverage WebAssembly (WASM). When you drop a file, your browser acts as the workstation, converting files internally without sending a single byte to the cloud.",
+				  "post_privacy_accent_title": "No Servers, No Logs, No Leaks",
+				  "post_privacy_accent_p": "Privacy is at our core. By eliminating the 'server' from the equation, we remove the primary point of failure for data security.",
+				  "post_privacy_h3": "Four Core Benefits of Local Processing",
+				  "benefit_1": "Absolute privacy for legal and financial documents (Data stays on device).",
+				  "benefit_2": "Faster processing - no waiting for upload/download queues.",
+				  "benefit_3": "Offline capability - works without an active internet connection once loaded.",
+				  "benefit_4": "No subscription fees or file size limits imposed by cloud servers.",
+				  "post_privacy_cta": "Experience True Privacy",
+				  "post_privacy_cta_desc": "Start processing your files locally today.",
+				  "post_privacy_cta_btn": "Explore Our Tools",
+				  "post_privacy_excerpt": "Stop uploading your data. Discover why browser-based local conversion is more secure, faster, and private than cloud-based tools.",
+				
 				//
 				"post_pdf_excerpt": "Keep your documents private. Learn how to combine or extract PDF pages entirely within your browser using our secure offline tools.",
 "cat_pdf": "PDF Tools",
