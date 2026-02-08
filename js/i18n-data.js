@@ -1,6 +1,33 @@
 // 统一管理全站翻译
 const i18nData = {
             zh: {
+				//
+				"post_pdf_excerpt": "保护文档隐私。学习如何使用我们安全的离线工具，完全在浏览器内合并、拆分或提取 PDF 页面，数据永不上传服务器。",
+		"cat_pdf": "PDF 工具",
+        "author_role_sec": "安全专家",
+        "post_pdf_title_rich": "PDF 合并与拆分终极指南",
+        "post_pdf_hero": "“安全、离线、极速的文档管理体验。”",
+        "post_pdf_intro_p": "与需要将文件上传到远程服务器的传统工具不同，SwiftConvert 使用 WebAssembly (WASM) 技术直接在浏览器中处理 PDF。这意味着您的敏感文档永不离开您的计算机，确保 100% 的隐私。",
+        "post_pdf_h1_rich": "为什么本地 PDF 处理至关重要",
+        "post_pdf_p_tech": "本地处理 PDF 意味着您的敏感文档永不离开您的电脑，确保 100% 的隐私，零泄露风险。",
+        "post_pdf_h2_1": "常见应用场景",
+        "merge_name": "合并 PDF",
+        "post_pdf_merge_desc": "将扫描件、收据或报告合并为一个完整的文档。",
+        "split_name": "PDF 拆分",
+        "post_pdf_split_desc": "提取特定页面或将大型 PDF 拆分为独立文件。",
+        "post_pdf_accent_title": "100% 客户端加密",
+        "post_pdf_accent_p": "您的文件在本地内存中处理。我们没有存储数据的服务器，处理法律或财务文档最安全。",
+        "post_pdf_h2_how": "操作步骤详解",
+        "post_pdf_step1_t": "选择模式",
+        "post_pdf_step1_d": "根据需求选择“合并 PDF”或“拆分 PDF”。",
+        "post_pdf_step2_t": "上传并处理",
+        "post_pdf_step2_d": "拖入您的 PDF。我们的本地引擎会立即读取页面结构。",
+        "post_pdf_step3_t": "立即下载",
+        "post_pdf_step3_d": "点击下载按钮。处理后的文件将在毫秒内准备就绪。",
+        "post_pdf_cta": "立即优化您的工作流",
+        "post_pdf_cta_desc": "快速、离线、且 100% 隐私安全的 PDF 工具。",
+        "post_pdf_cta_btn": "前往 PDF 工具",
+				
 				
 				//compress
 				  "post_comp_title": "如何本地压缩图片：在不损失画质的情况下减小文件体积",
@@ -60,22 +87,7 @@ const i18nData = {
 				  "post_heic_cta": "准备好体验安全转换了吗？",
 				  "post_heic_cta_desc": "不需要注册，不需要上传。立即使用 SwiftConvert 的本地工具处理您的图片。",
 				  "post_heic_cta_text": "前往转换器",
-				
-				  
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+
 				//blog/privacy-local
 				
 				  "post_privacy_meta_title": "深度解析：为什么浏览器本地处理技术是保护隐私的最佳方案？ | SwiftConvert",
@@ -382,6 +394,34 @@ const i18nData = {
 			
 			},
             en: {
+				//
+				"post_pdf_excerpt": "Keep your documents private. Learn how to combine or extract PDF pages entirely within your browser using our secure offline tools.",
+"cat_pdf": "PDF Tools",
+        "author_role_sec": "Security Specialist",
+        "post_pdf_title_rich": "The Ultimate Guide to Local PDF Merging and Splitting",
+        "post_pdf_hero": "\"Secure, Offline, and Instant Document Management.\"",
+        "post_pdf_intro_p": "Unlike traditional tools that upload your files to remote servers, SwiftConvert uses WebAssembly (WASM) to process PDFs directly in your browser. This means your sensitive documents never leave your computer, ensuring 100% privacy.",
+        "post_pdf_h1_rich": "Why Local PDF Processing Matters",
+        "post_pdf_p_tech": "Processing PDFs locally means your sensitive documents never leave your computer, ensuring 100% privacy and zero risk of data leaks.",
+        "post_pdf_h2_1": "Common Use Cases",
+        "merge_name": "Merge PDF",
+        "post_pdf_merge_desc": "Combine scans, receipts, or reports into one single document.",
+        "split_name": "Split PDF",
+        "post_pdf_split_desc": "Extract specific pages or break large PDFs into individual files.",
+        "post_pdf_accent_title": "100% Client-Side Encryption",
+        "post_pdf_accent_p": "Your files are processed in your local RAM. We don't have servers that store your data.",
+        "post_pdf_h2_how": "Step-by-Step Guide",
+        "post_pdf_step1_t": "Choose Your Mode",
+        "post_pdf_step1_d": "Select \"Merge PDF\" for multiple files or \"Split PDF\" for a single document.",
+        "post_pdf_step2_t": "Upload and Process",
+        "post_pdf_step2_d": "Drag and drop your PDFs. Our local engine will read the page structure instantly.",
+        "post_pdf_step3_t": "Instant Download",
+        "post_pdf_step3_d": "Click the download button. Your organized PDF is ready in milliseconds.",
+        "post_pdf_cta": "Secure Your Workflow Today",
+        "post_pdf_cta_desc": "Fast, offline, and 100% private PDF tools.",
+        "post_pdf_cta_btn": "Go to PDF Tools",
+
+				
 				//compress
 				  "post_comp_title": "How to Compress Images Locally: Reduce Size Without Losing Quality",
 				  "post_comp_hero_hint": "“Smaller Files, Better Privacy, Instant Speed.”",
