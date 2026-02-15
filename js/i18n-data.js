@@ -2,6 +2,24 @@
 const i18nData = {
             zh: {
 				//
+				"post_crop_title_rich": "掌握图片裁剪：更私密、更专业的方法",
+				"post_crop_intro": "裁剪不仅仅是切掉边缘，它是关于视觉焦点和隐私保护。传统的在线裁剪工具需要将照片发送到服务器，而我们认为，您的记忆应该留在自己的电脑上。",
+				"post_crop_h1": "为什么本地裁剪是行业趋势？",
+				"post_crop_p1": "当您将个人照片上传到云端编辑器时，您就失去了对该数据的控制。SwiftConvert 裁剪引擎利用 JavaScript 在浏览器内存中运行。这意味着即使断开网络，工具依然可以正常工作。",
+				"post_crop_list_title": "我们的专业功能：",
+				"crop_feat_1": "自由裁剪模式，支持自定义任何尺寸。",
+				"crop_feat_2": "支持 90° 旋转以及水平/垂直镜像翻转。",
+				"crop_feat_3": "下载前支持高清无损预览。",
+				"post_crop_h2": "如何获得完美的裁剪效果",
+				"post_crop_p2": "为了获得最佳效果，请始终从高分辨率原图开始。我们的工具可以流畅处理大尺寸文件，因为无需等待上传。只需拖入照片，调整边框，点击下载即可。",
+				"post_crop_tip_title": "专业技巧：三分法构图",
+				"post_crop_tip_desc": "在裁剪时，尝试将主体放在网格的交叉点上，这能让画面看起来更加平衡和专业。",
+				"post_crop_cta": "准备好安全地编辑照片了吗？",
+				"post_crop_cta_btn": "打开图片裁剪工具",
+				"post_crop_excerpt": "学习如何完全在浏览器内裁剪照片。使用 SwiftConvert 离线裁剪工具，确保您的个人照片永不上传，保障隐私安全。",
+				"cat_tutorial": "教程指南",
+				
+				//
 				"cloud_conv_title": "传统云端转换器",
 				"cloud_risk_1": "文件需上传至远程服务器",
 				"cloud_risk_2": "存在潜在的数据日志记录",
@@ -423,6 +441,23 @@ const i18nData = {
 			
 			},
             en: {
+				//
+				"post_crop_title_rich": "Mastering Image Cropping: The Private & Professional Way",
+				"post_crop_intro": "Cropping is more than just cutting edges; it's about focus and privacy. Traditional online croppers upload photos; we keep them on your machine.",
+				"post_crop_h1": "Why Local Cropping is a Game Changer",
+				"post_crop_p1": "SwiftConvert's cropping engine runs inside your browser's RAM using JavaScript. No server required, even if you are offline.",
+				"post_crop_list_title": "Our Professional Features:",
+				"crop_feat_1": "Free-form cropping for custom dimensions.",
+				"crop_feat_2": "90° rotation and horizontal/vertical flipping.",
+				"crop_feat_3": "Lossless preview before you download.",
+				"post_crop_h2": "How to Crop Successfully",
+				"post_crop_p2": "Start with high-resolution. Our tool handles massive files smoothly without upload lag. Drag, adjust, and save.",
+				"post_crop_tip_title": "Pro Tip: The Rule of Thirds",
+				"post_crop_tip_desc": "Try to place your main subject on the grid intersections for a more professional look.",
+				"post_crop_cta": "Ready to edit your photos safely?",
+				"post_crop_cta_btn": "Open Image Cropper",
+				"post_crop_excerpt": "Learn how to crop photos and images entirely within your browser. Stay safe by keeping your personal photos offline with SwiftConvert's local cropping tool.",
+				"cat_tutorial": "TUTORIAL",
 				//
 				"cloud_conv_title": "Cloud Converters",
 				"cloud_risk_1": "Uploads to remote servers",
@@ -865,5 +900,3 @@ const i18nData = {
 												
             }
         };
-
-        
