@@ -208,6 +208,13 @@ const i18nData = {
 				footer_company: '关于',
 				
 				//index页面其他
+				"home_deep_title": "隐私新纪元：为什么我们坚持本地处理",
+				"home_deep_p1": "在 SwiftConvert，我们重新定义了在线转换的安全性。大多数平台将您的私密照片和敏感 PDF 上传到他们的云端服务器进行处理，这在传输过程中埋下了巨大的安全隐患。我们通过最前沿的浏览器技术，让您的文件在您的电脑本地完成所有计算。",
+				"home_deep_p2": "无论是转换复杂的 HEIC 图像，还是合并含有法律效力的 PDF，所有的处理逻辑都在您的浏览器内存中执行。这意味着您的数据永不触碰云端，实现了真正的 100% 隐私保护，同时也避免了漫长的上传等待。",
+				"home_tech_title": "底层技术支持",
+				"home_tech_1": "利用 WebAssembly (WASM) 技术，在浏览器中提供接近原生的处理速度。",
+				"home_tech_2": "基于浏览器 RAM 的隔离处理，确保转换后数据即刻从内存销毁。",
+				
 				section_why_title: '为什么选择 SwiftConvert?',
 				section_why_desc: '大多数在线转换器要求您将文件上传到他们的服务器，这存在巨大的隐私泄露风险。SwiftConvert 通过 100% 浏览器本地处理技术改变了这一现状。',     
 				feature_1_title: '🔒 100% 隐私保护',
@@ -650,6 +657,13 @@ const i18nData = {
 				footer_compress: 'Compress Image',
 				
 				//index
+				// --- Homepage New Sections (针对审核加固) ---
+				        "home_deep_title": "Next-Gen Privacy: Why We Built SwiftConvert",
+				        "home_deep_p1": "At SwiftConvert, we redefine online document security. Most platforms require you to upload private photos and sensitive PDFs to their cloud servers, creating significant security risks during transit. We use cutting-edge browser technology to ensure your files are processed locally on your device.",
+				        "home_deep_p2": "Whether converting complex HEIC images or merging legal PDFs, all processing logic happens within your browser's memory. This means your data never touches the cloud, achieving true 100% privacy and zero upload wait times.",
+				        "home_tech_title": "Technical Foundation",
+				        "home_tech_1": "WebAssembly (WASM) for near-native processing speed in the browser.",
+				        "home_tech_2": "RAM-based processing ensures data is wiped immediately after conversion.",
 				section_why_title: 'Why Choose SwiftConvert?',
 				section_why_desc: 'Most online converters require you to upload files to their servers, posing significant privacy risks. SwiftConvert changes this with 100% local browser-based processing.',
 				        
@@ -900,3 +914,5 @@ const i18nData = {
 												
             }
         };
+
+        
