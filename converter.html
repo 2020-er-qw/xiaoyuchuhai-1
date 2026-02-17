@@ -38,20 +38,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/i18n-data.js"></script>
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "SwiftConvert Image Converter",
-      "operatingSystem": "All",
-      "applicationCategory": "MultimediaApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "SoftwareApplication",
+	  "name": "SwiftConvert Image Converter",
+	  "operatingSystem": "All",
+	  "applicationCategory": "MultimediaApplication",
+	  "description": "Privacy-focused HEIC/WebP to JPG converter that works 100% locally in your browser.",
+	  "offers": {
+	    "@type": "Offer",
+	    "price": "0",
+	    "priceCurrency": "USD"
+	  }
+	}
+	</script>
     <style>
         /* 统一引入 Plus Jakarta Sans */
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -80,7 +81,7 @@
 
     <div id="nav-placeholder"></div>
 
-    <main class="max-w-4xl mx-auto py-12">
+    <main class="max-w-4xl mx-auto py-8">
         <div class="text-center mb-12">
             <h1 data-i18n="conv_title" class="text-4xl font-black text-slate-900 mb-4 tracking-tight">Image <span class="text-indigo-600">Converter</span></h1>
             <p data-i18n="conv_subtitle" class="text-slate-500">Fast, local, and 100% private.</p>
@@ -135,18 +136,53 @@
                 </div>
             </div>
         </div>
-		<section class="mt-24 mb-20 bg-indigo-50/50 py-16 rounded-[3rem]">
-		    <div class="max-w-3xl mx-auto px-6">
-		        <h2 class="text-3xl font-black text-center mb-12 text-slate-900">FAQ</h2>
-		        <div class="space-y-6">
-		            <div class="bg-white p-8 rounded-2xl shadow-sm">
-		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_converter_q1">Is it safe to use SwiftConvert?</h4>
-		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_converter_a1">Yes. All processing is done locally in your browser. Files are never uploaded.</p>
+
+		<section class="mt-12 mb-10 bg-indigo-50/50 py-8 rounded-[3rem]">
+		    <div class="max-w-3xl mx-auto px-6 text-center">
+		        <h2 class="text-3xl font-black mb-12 text-slate-900" data-i18n="faq_title">FAQ</h2>
+		        <div class="space-y-6 text-left">
+		            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_converter_q1"></h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_converter_a1"></p>
 		            </div>
-		            <div class="bg-white p-8 rounded-2xl shadow-sm">
-		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_converter_q2">Does it support bulk conversion?</h4>
-		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_converter_a2">Yes, you can select multiple images and convert them all at once locally.</p>
+		            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+		                <h4 class="font-bold text-lg text-slate-900 mb-2" data-i18n="faq_converter_q2"></h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="faq_converter_a2"></p>
 		            </div>
+		        </div>
+		    </div>
+		</section>
+		<section class="max-w-4xl mx-auto px-6 py-8 border-t border-slate-100">
+		    <div class="prose prose-slate max-w-none">
+		        <h2 class="text-3xl font-black text-slate-900 mb-8" data-i18n="conv_guide_title">How to Convert HEIC and WebP to JPG Locally</h2>
+		        
+		        <div class="grid md:grid-cols-2 gap-12 mb-12">
+		            <div>
+		                <h4 class="font-bold text-lg mb-4" data-i18n="conv_why_heic_t">Why convert HEIC to JPG?</h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="conv_why_heic_d">HEIC is the default format for iPhones, but many Windows and Android apps don't support it. Our tool converts them to high-quality JPGs so you can view them anywhere.</p>
+		            </div>
+		            <div>
+		                <h4 class="font-bold text-lg mb-4" data-i18n="conv_privacy_t">Is it safe to convert online?</h4>
+		                <p class="text-slate-500 text-sm leading-relaxed" data-i18n="conv_privacy_d">Most converters upload your photos to their servers. SwiftConvert is different: all processing happens in your browser. Your private photos never leave your device.</p>
+		            </div>
+		        </div>
+		
+		        <div class="bg-indigo-50 p-8 rounded-[2rem]">
+		            <h3 class="text-xl font-bold text-slate-900 mb-4" data-i18n="conv_steps_title">3 Simple Steps to Convert</h3>
+		            <ul class="space-y-4 text-slate-600 text-sm">
+		                <li class="flex items-center space-x-3">
+		                    <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs">1</span>
+		                    <span data-i18n="conv_step_1">Drag and drop your HEIC or WebP files into the box above.</span>
+		                </li>
+		                <li class="flex items-center space-x-3">
+		                    <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs">2</span>
+		                    <span data-i18n="conv_step_2">The conversion starts automatically in your browser's RAM.</span>
+		                </li>
+		                <li class="flex items-center space-x-3">
+		                    <span class="w-6 h-6 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xs">3</span>
+		                    <span data-i18n="conv_step_3">Click "Download All" to save your JPG files instantly.</span>
+		                </li>
+		            </ul>
 		        </div>
 		    </div>
 		</section>
