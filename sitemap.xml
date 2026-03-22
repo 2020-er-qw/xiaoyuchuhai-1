@@ -1,127 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.swiftconvert.ink</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.swiftconvert.ink/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.swiftconvert.ink/en</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://www.swiftconvert.ink/converter</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://www.swiftconvert.ink/img-compress</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/heic-to-jpg</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/webp-to-jpg</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/img-to-pdf</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-cutter</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-merge</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-compress</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/video-compress</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/video-to-mp3</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-ean8</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-ean13</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-gs1</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/qr-gen</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/url-shorten</loc><priority>0.9</priority></url>
 
-  <url>
-    <loc>https://www.swiftconvert.ink/editor</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://www.swiftconvert.ink/img-compress-en</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/heic-to-jpg-en</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/webp-to-jpg-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/img-to-pdf-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-cutter-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-merge-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/mp3-compress-en</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/video-compress-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/video-to-mp3-en</loc><priority>0.8</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-ean8-en</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-ean13-en</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/barcode-gs1-en</loc><priority>0.7</priority></url>
+  <url><loc>https://www.swiftconvert.ink/qr-gen-en</loc><priority>0.9</priority></url>
+  <url><loc>https://www.swiftconvert.ink/url-shorten-en</loc><priority>0.9</priority></url>
 
-  <url>
-    <loc>https://www.swiftconvert.ink/document-converter</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-    <url>
-      <loc>https://www.swiftconvert.ink/blog</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-    </url>
-
-  <url>
-    <loc>https://www.swiftconvert.ink/resize</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.swiftconvert.ink/crop</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.swiftconvert.ink/rotate</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.swiftconvert.ink/compress</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-    <url>
-      <loc>https://www.swiftconvert.ink/how-to-compress-images</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  
-    <url>
-      <loc>https://www.swiftconvert.ink/how-to-merge-and-split-pdf-locally</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  
-    <url>
-      <loc>https://www.swiftconvert.ink/heic-to-jpg-guide</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  
-    <url>
-      <loc>https://www.swiftconvert.ink/why-local-conversion-is-safer</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-    
-    <url>
-      <loc>https://www.swiftconvert.ink/privacy-local</loc>
-      <lastmod>2026-02-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-
-  <url>
-  <loc>https://www.swiftconvert.ink/how-to-crop-images-privately</loc>
-  <lastmod>2026-02-15</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.6</priority>
-</url>
-  
-
-  <url>
-    <loc>https://www.swiftconvert.ink/contact</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.swiftconvert.ink/privacy</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.swiftconvert.ink/terms</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <url><loc>https://www.swiftconvert.ink/about</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/about-en</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/privacy</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/privacy-en</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/terms</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/terms-en</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/support</loc><priority>0.5</priority></url>
+  <url><loc>https://www.swiftconvert.ink/support-en</loc><priority>0.5</priority></url>
 </urlset>
