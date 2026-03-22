@@ -34,8 +34,8 @@
         <h1 class="text-3xl md:text-5xl font-extrabold mb-6">让普通人也能轻松使用的在线工具</h1>
         <p class="mb-8 opacity-90 text-lg">无需下载，无需注册，所有处理均在您的电脑本地完成</p>
         <div class="max-w-2xl mx-auto relative">
-            <input type="text" placeholder="输入关键字，如：HEIC、条码、压缩..." class="w-full py-4 px-6 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300">
-            <button class="absolute right-3 top-2 bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700 transition font-bold">搜索</button>
+            <input id="search-input" type="text" placeholder="输入关键字，如：HEIC、条码、压缩..." class="w-full py-4 px-6 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300">
+            <button id="search-btn" class="absolute right-3 top-2 bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700 transition font-bold">搜索</button>
         </div>
     </section>
 
@@ -181,5 +181,45 @@
         }
         loadLayout();
     </script>
+    <script>
+const toolMap = {
+    "heic": "heic-to-jpg",
+    "jpg": "heic-to-jpg",
+    "webp": "webp-to-jpg",
+    "压缩": "img-compress",
+    "图片压缩": "img-compress",
+    "mp3": "mp3-cutter",
+    "音频": "mp3-cutter",
+    "合并": "mp3-merge",
+    "视频": "video-compress",
+    "视频转mp3": "video-to-mp3",
+    "条码": "barcode-ean13",
+    "二维码": "qr-gen",
+    "短链": "url-shorten"
+};
+
+function handleSearch() {
+    const keyword = document.getElementById('search-input').value.toLowerCase().trim();
+
+    if (!keyword) return;
+
+    for (let key in toolMap) {
+        if (keyword.includes(key)) {
+            window.location.href = toolMap[key];
+            return;
+        }
+    }
+
+    alert("未找到相关工具，试试其他关键词～");
+}
+
+// 点击按钮
+document.getElementById('search-btn').onclick = handleSearch;
+
+// 回车触发
+document.getElementById('search-input').addEventListener("keypress", function(e) {
+    if (e.key === "Enter") handleSearch();
+});
+</script>
 </body>
 </html>
