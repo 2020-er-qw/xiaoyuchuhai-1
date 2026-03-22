@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Online Image Compressor - 100% Private Local Compression | ToolHelper</title>
+    <meta name="description" content="ToolHelper provides a professional online image compressor supporting JPG, PNG, WebP, AVIF, and HEIC. 100% in-browser processing using WebAssembly. No file uploads, total privacy.">
+    <meta name="keywords" content="Image Compressor, PNG Optimizer, JPG Compression, AVIF Compressor, WebP Converter, HEIC to JPG, Private Image Tool, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/img-compress-en" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+        .format-tag { background: #f1f5f9; color: #64748b; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: bold; }
+        .loader { border-top-color: #667eea; animation: spinner 0.6s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">Ultimate Image Compressor</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed text-center">
+            Professional compression for all major formats. Powered by local Wasm engine. Your images never leave your browser.
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,image/heic,image/heif,image/bmp" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-images text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3">Click or Drag images here</p>
+                    <div class="flex flex-wrap justify-center gap-2 max-w-md">
+                        <span class="format-tag">JPG</span><span class="format-tag">PNG</span>
+                        <span class="format-tag">WEBP</span><span class="format-tag">AVIF</span>
+                        <span class="format-tag">HEIC</span><span class="format-tag">GIF</span>
+                        <span class="format-tag">BMP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex-grow w-full">
+                    <div class="flex justify-between mb-2 text-sm font-bold text-slate-600">
+                        <span>Compression Quality</span>
+                        <span id="quality-val" class="text-indigo-600 text-lg">80%</span>
+                    </div>
+                    <input type="range" id="quality-range" min="1" max="100" value="80" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12 text-left">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-camera text-blue-500"></i> Standard Formats
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>JPEG/JPG:</b> Optimized with smart quantization to keep rich colors in a tiny footprint.<br><br>
+                    <b>PNG:</b> Significantly reduce file size by optimizing indexed colors while maintaining transparency.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-bolt text-orange-500"></i> Modern Web Formats
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>WebP/AVIF:</b> Full support for Google's next-gen formats, saving up to 50% more space than standard JPGs.<br><br>
+                    <b>HEIC:</b> Directly process iOS photos without the need for external converters.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-tools text-purple-500"></i> Other Formats
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>GIF:</b> Reduce frame redundancy for faster animation loading.<br><br>
+                    <b>BMP/TIFF:</b> Quickly convert lossless heavy files into efficient high-quality web assets.
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-indigo-900 text-indigo-100 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">ToolHelper: Privacy & Technical Commitment</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed text-justify">
+                <div>
+                    <h4 class="text-white font-bold mb-2">1. Why Local Processing?</h4>
+                    <p>
+                        Most online tools upload your data to their servers, posing a massive privacy risk. <b>ToolHelper</b> brings the compression engine to your browser via WebAssembly. All calculations happen on your <b>local hardware</b>, and your files <b>never leave your computer</b>.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-2">2. Pro-Grade Algorithms</h4>
+                    <p>
+                        Our tool integrates advanced quantization and sub-sampling techniques. It doesn't just "lower resolution"—it analyzes image structures to remove redundancy while preserving visual fidelity. Perfect for improving website speed and SEO scores.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_en').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_en').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const range = document.getElementById('quality-range');
+        const valDisp = document.getElementById('quality-val');
+        const resultList = document.getElementById('result-list');
+
+        range.oninput = (e) => { valDisp.innerText = e.target.value + '%'; };
+
+        // Prevent Default Browser Behavior for Drag & Drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, () => dropZone.classList.remove('drag-over'));
+        });
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            if (files.length === 0) return;
+            const quality = range.value / 100;
+
+            for (let file of files) {
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 text-left";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400 italic">Processing...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    const options = {
+                        maxSizeMB: 5,
+                        maxWidthOrHeight: 2560,
+                        useWebWorker: true,
+                        initialQuality: quality
+                    };
+
+                    const compressedFile = await imageCompression(file, options);
+                    
+                    const oldSize = (file.size / 1024).toFixed(1);
+                    const newSize = (compressedFile.size / 1024).toFixed(1);
+                    const ratio = Math.round((1 - compressedFile.size / file.size) * 100);
+
+                    item.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-emerald-500"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                <span class="text-[10px] text-slate-400">${oldSize}KB → <b class="text-emerald-600">${newSize}KB</b></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold">-${ratio}%</span>
+                            <a href="${URL.createObjectURL(compressedFile)}" download="compressed_${file.name}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm">Download</a>
+                        </div>
+                    `;
+                } catch (error) {
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">Failed: ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

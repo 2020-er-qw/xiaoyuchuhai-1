@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Short Link Generator - Create Tiny URLs & QR Codes | ToolHelper</title>
+    <meta name="description" content="Free online URL shortener. Transform long Amazon or social media links into clean, short URLs. Includes automatic QR code generation for easy sharing.">
+    <meta name="keywords" content="URL Shortener, Shorten Link, Link Generator, Amazon Link Tool, QR Code Creator, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/url-shorten-en" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .tool-container { padding: 3.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        .tool-card { width: 100%; max-width: 850px; background: #fff; border-radius: 2rem; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s; }
+        .input-custom { width: 100%; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 1.25rem; outline: none; transition: all 0.3s; }
+        .input-custom:focus { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+        .loader { border: 2px solid #f3f3f3; border-top: 2px solid #fff; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            <div class="flex justify-between items-center mb-10 pb-6 border-b border-slate-50">
+                <div>
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">URL Shortener</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1.5 font-bold uppercase tracking-[0.2em]">Shorter Links, Better Sharing</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Paste Long URL (http/https)</label>
+                    <input type="url" id="long-url" placeholder="https://www.amazon.co.uk/dp/B0GHR8WGQN/..." class="input-custom">
+                </div>
+                
+                <button id="gen-btn" class="w-full btn-indigo text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 uppercase tracking-widest text-sm">
+                    <span id="btn-text">Generate Short Link</span>
+                </button>
+            </div>
+
+            <div id="result-area" class="mt-10 hidden space-y-6">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 relative">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">Your Short Link</span>
+                    <div class="flex items-center justify-between gap-4">
+                        <span id="short-url-text" class="text-lg font-bold text-indigo-600 break-all"></span>
+                        <button id="copy-btn" class="shrink-0 bg-white border border-slate-200 p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                            <i class="far fa-copy text-slate-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center p-6 bg-white border border-dashed border-slate-200 rounded-2xl">
+                    <div id="qrcode" class="mb-4"></div>
+                    <p class="text-[11px] text-slate-400 font-medium">Scan to visit short URL</p>
+                </div>
+            </div>
+
+            <p id="error-msg" class="text-[10px] text-red-400 mt-6 font-bold hidden italic text-center">Generation failed. Please check the URL format or try again later.</p>
+        </main>
+
+        <section class="w-full max-w-[850px] space-y-12 mt-16">
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-800 mb-2">Instant Generation</h3>
+                    <p class="text-[11px] text-slate-500">High-speed API processing with zero registration required.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-800 mb-2">Permanent Links</h3>
+                    <p class="text-[11px] text-slate-500">Based on industry standards. Links last as long as the source exists.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 text-center">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-800 mb-2">Built-in QR Code</h3>
+                    <p class="text-[11px] text-slate-500">Automatically generates HD QR codes for print or digital sharing.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm">
+                <h2 class="text-xl font-black text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-6 bg-indigo-500 rounded-full"></span>
+                    Why use Short Links?
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[13px] leading-relaxed text-slate-600">
+                    <div class="space-y-4">
+                        <p><strong>Professional Look:</strong> Clean URLs build more trust on platforms like Instagram and Twitter where space is limited.</p>
+                        <p><strong>Higher CTR:</strong> Shorter, branded-looking links typically see higher click-through rates compared to long parameter-heavy URLs.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <p><strong>Print Ready:</strong> Short links are easy to remember and type, making them ideal for product inserts or flyers.</p>
+                        <p><strong>Social Compliance:</strong> Avoid link flagging on strict platforms by using reputable shorteners.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-lg font-black text-slate-800 px-2 mb-4">FAQ</h2>
+                <div class="bg-white border border-slate-100 rounded-2xl p-6">
+                    <h4 class="text-sm font-bold text-slate-800 mb-1">Is this service free?</h4>
+                    <p class="text-[12px] text-slate-500">Yes, the ToolHelper URL shortener is 100% free and does not require account creation.</p>
+                </div>
+                <div class="bg-white border border-slate-100 rounded-2xl p-6">
+                    <h4 class="text-sm font-bold text-slate-800 mb-1">Do the links expire?</h4>
+                    <p class="text-[12px] text-slate-500">No. Once generated, the link is designed to be permanent unless it violates our platform safety policies.</p>
+                </div>
+            </div>
+
+            <div class="text-center text-[11px] text-slate-400 italic">
+                * Note: Misuse for phishing or illegal content will result in immediate link deactivation.
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        const longUrlInput = document.getElementById('long-url');
+        const genBtn = document.getElementById('gen-btn');
+        const btnText = document.getElementById('btn-text');
+        const resultArea = document.getElementById('result-area');
+        const shortUrlText = document.getElementById('short-url-text');
+        const qrcodeContainer = document.getElementById('qrcode');
+        const errorMsg = document.getElementById('error-msg');
+
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_en`).then(r => r.text()),
+                    fetch(`components/footer_en`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        genBtn.onclick = async () => {
+            const longUrl = longUrlInput.value.trim();
+            if (!longUrl) return;
+
+            errorMsg.classList.add('hidden');
+            btnText.innerHTML = '<span class="loader"></span> Generating via Node...';
+            genBtn.disabled = true;
+
+            try {
+                // REPLACE with your private Worker domain
+                const myApi = `https://link-api.yuerkang175.workers.dev?url=${encodeURIComponent(longUrl)}`;
+
+                const response = await fetch(myApi);
+                const data = await response.json();
+
+                if (data.shortUrl) {
+                    shortUrlText.innerText = data.shortUrl;
+                    resultArea.classList.remove('hidden');
+                    
+                    qrcodeContainer.innerHTML = "";
+                    new QRCode(qrcodeContainer, {
+                        text: data.shortUrl,
+                        width: 140,
+                        height: 140,
+                        colorDark : "#1e293b",
+                        colorLight : "#ffffff"
+                    });
+                } else {
+                    throw new Error();
+                }
+            } catch (err) {
+                errorMsg.classList.remove('hidden');
+            } finally {
+                btnText.innerText = 'Generate Short Link';
+                genBtn.disabled = false;
+            }
+        };
+
+        document.getElementById('copy-btn').onclick = () => {
+            navigator.clipboard.writeText(shortUrlText.innerText);
+            alert('Link Copied!');
+        };
+    </script>
+</body>
+</html>

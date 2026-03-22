@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Convert HEIC to JPG - Free Online iPhone Photo Converter | ToolHelper</title>
+    <meta name="description" content="ToolHelper provides a free HEIC to JPG/PNG converter. 100% in-browser processing. Your photos are never uploaded to our servers. Batch convert iPhone HEIC photos safely.">
+    <meta name="keywords" content="HEIC to JPG, HEIC Converter, iPhone Photo Converter, Online HEIC Converter, Private Image Tool, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/heic-to-jpg-en" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+        .loader { border-top-color: #667eea; animation: spinner 0.6s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">HEIC to JPG Converter</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Designed for iPhone users. Convert HEIC photos to universal JPG or PNG locally. 
+            No uploads required, total privacy for your personal memories.
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept=".heic" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-file-image text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3 text-center">Click or Drag HEIC files here</p>
+                    <p class="text-sm text-slate-400">Supports .heic files exported from iPhone or Mac</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-bold text-slate-600">Output Format:</span>
+                    <select id="format-select" class="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="image/jpeg">JPG (Recommended)</option>
+                        <option value="image/png">PNG (Lossless)</option>
+                    </select>
+                </div>
+                <div class="text-xs text-slate-400">
+                    <i class="fas fa-info-circle"></i> Converted files will maintain original resolution.
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12 text-left">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fab fa-apple text-gray-800"></i> What is HEIC?
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    HEIC (High Efficiency Image Container) is the standard format used by Apple since iOS 11. While it saves 50% more space than JPG, it lacks compatibility with Windows and older Android devices. <b>ToolHelper</b> allows you to bridge this gap instantly.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-shield text-emerald-500"></i> Privacy & Local Processing
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    Unlike other online converters, our engine runs directly in your browser. Your photos are <b>never uploaded to any server</b>. This client-side approach ensures your private data stays on your device while eliminating upload wait times.
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-slate-800 text-slate-300 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">HEIC Conversion Technology</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed text-justify">
+                <p>
+                    ToolHelper utilizes high-performance Libheif wrappers. When processing .heic files, the script identifies image sequences and extracts the primary frame. This process is pixel-accurate, preventing color shifts commonly found in lower-quality converters (such as Rec.709 to sRGB mapping issues).
+                </p>
+                <p>
+                    Our tool is optimized for batch processing. Whether you're moving a dozen travel photos to your PC or preparing assets for social media, you can drop them all at once. The system leverages browser-based asynchronous tasks to convert files in parallel, maximizing efficiency.
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        // 1. Load Components
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_en').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_en').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        // 2. Core Logic
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const formatSelect = document.getElementById('format-select');
+        const resultList = document.getElementById('result-list');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => dropZone.classList.remove('drag-over'));
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            const targetType = formatSelect.value;
+            const extension = targetType === 'image/jpeg' ? '.jpg' : '.png';
+
+            for (let file of files) {
+                if (!file.name.toLowerCase().endsWith('.heic')) continue;
+
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 animate-pulse";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 text-left">
+                        <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400">Decoding locally...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    // Actual Conversion
+                    const blob = await heic2any({
+                        blob: file,
+                        toType: targetType,
+                        quality: 0.8
+                    });
+
+                    const url = URL.createObjectURL(Array.isArray(blob) ? blob[0] : blob);
+                    const newName = file.name.replace(/\.[^/.]+$/, "") + extension;
+
+                    item.classList.remove('animate-pulse');
+                    item.innerHTML = `
+                        <div class="flex items-center gap-3 text-left">
+                            <i class="fas fa-check-circle text-emerald-500"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                <span class="text-[10px] text-slate-400">Converted to ${targetType.split('/')[1].toUpperCase()}</span>
+                            </div>
+                        </div>
+                        <a href="${url}" download="${newName}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm bg-indigo-50 px-4 py-2 rounded-lg">Download</a>
+                    `;
+                } catch (error) {
+                    console.error(error);
+                    item.classList.remove('animate-pulse');
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">Failed: ${file.name} (Corrupted or unsupported format)</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

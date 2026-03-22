@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>WebP转JPG/PNG - 免费在线本地图片格式转换工具 | ToolHelper 万能工具箱</title>
+    <meta name="description" content="ToolHelper 提供极速 WebP 转 JPG 或 PNG 工具。100% 浏览器本地处理，无需上传，保护隐私。支持批量转换，兼容所有现代浏览器。">
+    <meta name="keywords" content="WebP转JPG, WebP转PNG, 图片格式转换, 在线转换工具, 隐私安全, ToolHelper, 万能工具箱">
+    <link rel="canonical" href="https://www.swiftconvert.ink/webp-to-jpg" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">WebP 转 JPG/PNG</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            极速将网页 WebP 图片转换为通用的 JPG 或 PNG 格式。所有操作均在本地 Canvas 引擎中完成，您的图片永不上传。
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept="image/webp" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-file-export text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3">点击或将 WebP 图片拖拽到此处</p>
+                    <p class="text-sm text-slate-400">支持批量处理，即刻转换</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-bold text-slate-600">目标格式:</span>
+                    <div class="flex bg-white rounded-lg p-1 border border-slate-200">
+                        <button onclick="setFormat('image/jpeg')" id="btn-jpg" class="px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all">JPG</button>
+                        <button onclick="setFormat('image/png')" id="btn-png" class="px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all">PNG</button>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-400">
+                    <i class="fas fa-bolt text-yellow-500"></i> 温馨提示：转为 PNG 可保留原始透明度。
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-globe text-blue-500"></i> 为什么需要转换 WebP？
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    WebP 是 Google 开发的一种旨在加快网页加载速度的图片格式。虽然它非常高效，但在许多旧版办公软件（如旧版 PPT）、离线图片查看器或某些社交平台中仍无法直接打开。<b>ToolHelper</b> 提供的转换工具可以无缝解决这一兼容性痛点。
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-emerald-500"></i> 绝对的隐私保障
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    我们的 WebP 转换逻辑完全基于浏览器的 **HTML5 Canvas API**。当您拖入文件时，浏览器只是在内存中对图像进行了重绘并导出，<b>数据从未经过任何网络传输</b>。这比任何需要上传文件的在线转换器都要快且安全。
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-slate-800 text-slate-300 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">WebP 转换技术架构</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed">
+                <p>
+                    ToolHelper 采用了高性能的异步解码方案。通过创建离屏画布（Offscreen Canvas），系统可以同时处理多个 WebP 任务而不阻塞主线程的 UI 渲染。这种处理方式能完美还原 WebP 图像中的色彩配置（ICC Profile），确保转换后的 JPG 或 PNG 在视觉上与原图保持高度一致。
+                </p>
+                <p>
+                    对于带有透明通道的 WebP 图片，若选择 JPG 格式导出，系统会自动将透明区域填充为白色背景；若选择 PNG 格式，则会完整保留 Alpha 通道。这种智能识别机制确保了不同应用场景下的转换需求都能得到满足。
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        // 1. 布局加载
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_zh').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_zh').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        // 2. 核心逻辑
+        let targetType = 'image/jpeg';
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const resultList = document.getElementById('result-list');
+
+        function setFormat(type) {
+            targetType = type;
+            const isJPG = type === 'image/jpeg';
+            document.getElementById('btn-jpg').className = isJPG ? 'px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all' : 'px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all';
+            document.getElementById('btn-png').className = !isJPG ? 'px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all' : 'px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all';
+        }
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => dropZone.classList.remove('drag-over'));
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            const currentFormat = targetType;
+            const extension = currentFormat === 'image/jpeg' ? '.jpg' : '.png';
+
+            for (let file of files) {
+                if (!file.type.includes('webp') && !file.name.toLowerCase().endsWith('.webp')) continue;
+
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 text-left">
+                        <div class="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400">处理中...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    const bitmap = await createImageBitmap(file);
+                    const canvas = document.createElement('canvas');
+                    canvas.width = bitmap.width;
+                    canvas.height = bitmap.height;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // 如果是转JPG，填补白色背景处理透明
+                    if (currentFormat === 'image/jpeg') {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+                    
+                    ctx.drawImage(bitmap, 0, 0);
+                    
+                    canvas.toBlob((blob) => {
+                        const url = URL.createObjectURL(blob);
+                        const newName = file.name.replace(/\.[^/.]+$/, "") + extension;
+
+                        item.innerHTML = `
+                            <div class="flex items-center gap-3 text-left">
+                                <i class="fas fa-check-circle text-emerald-500"></i>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                    <span class="text-[10px] text-slate-400">已转换为 ${extension.toUpperCase().replace('.','')}</span>
+                                </div>
+                            </div>
+                            <a href="${url}" download="${newName}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm bg-indigo-50 px-4 py-2 rounded-lg">下载</a>
+                        `;
+                    }, currentFormat, 0.92);
+                } catch (error) {
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">转换失败: ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

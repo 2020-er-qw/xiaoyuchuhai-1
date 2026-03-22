@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>HEIC转JPG - 在线免费转换苹果手机照片格式 | ToolHelper 万能工具箱</title>
+    <meta name="description" content="万能工具箱提供免费的 HEIC 转 JPG/PNG 工具。100% 浏览器本地转换，照片不上传服务器，保护隐私。支持批量处理 iPhone HEIC 格式。">
+    <meta name="keywords" content="HEIC转JPG, HEIC转换器, iPhone图片转换, 在线HEIC转JPG, 隐私安全, ToolHelper, 万能工具箱">
+    <link rel="canonical" href="https://www.swiftconvert.ink/heic-to-jpg" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+        .loader { border-top-color: #667eea; animation: spinner 0.6s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">HEIC 转 JPG</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            专为 iPhone 用户设计。在本地将 HEIC 格式快速转换为通用的 JPG 或 PNG 格式，无需上传，保护您的私人照片。
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept=".heic" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-file-image text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3">点击或将 HEIC 图片拖拽到此处</p>
+                    <p class="text-sm text-slate-400">支持从 iPhone 或 Mac 导出的 .heic 文件</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-bold text-slate-600">目标格式:</span>
+                    <select id="format-select" class="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="image/jpeg">JPG (推荐)</option>
+                        <option value="image/png">PNG (无损)</option>
+                    </select>
+                </div>
+                <div class="text-xs text-slate-400">
+                    <i class="fas fa-info-circle"></i> 转换后的文件将保持原始分辨率
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-apple text-gray-800"></i> 什么是 HEIC 格式？
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    HEIC (High Efficiency Image Container) 是苹果在 iOS 11 之后采用的高效图像容器格式。相比 JPG，它能在相同画质下减少近 50% 的体积，但缺点是在 Windows 或旧版安卓设备上兼容性较差。使用 <b>ToolHelper</b>，您可以一键将其转回通用格式。
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-shield text-emerald-500"></i> 隐私与本地处理
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    不同于其他在线转换器，我们的转换引擎直接运行在您的浏览器中。您的照片<b>永远不会上传到我们的服务器</b>。这种基于 JS 端解构的技术不仅极大地提高了隐私安全性，也省去了大文件上传等待的时间。
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-slate-800 text-slate-300 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white">HEIC 转换技术解析</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed">
+                <p>
+                    万能工具箱采用了高性能的 Libheif 解码器封装。在处理 .heic 文件时，程序会自动识别图像序列并提取主图帧。这种转换过程是基于像素重构的，能最大程度避免由于格式跨度导致的色彩空间偏色问题（如 Rec.709 与 sRGB 之间的转换）。
+                </p>
+                <p>
+                    该工具同样支持批量处理。无论您是需要将数十张旅游照片备份到电脑，还是为社交媒体上传做准备，都可以一次性拖入，系统会利用浏览器的异步处理能力并行转换，显著提升效率。
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        // 1. 布局加载
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_zh').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_zh').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        // 2. 核心逻辑
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const formatSelect = document.getElementById('format-select');
+        const resultList = document.getElementById('result-list');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => dropZone.classList.remove('drag-over'));
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            const targetType = formatSelect.value;
+            const extension = targetType === 'image/jpeg' ? '.jpg' : '.png';
+
+            for (let file of files) {
+                if (!file.name.toLowerCase().endsWith('.heic')) continue;
+
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 animate-pulse";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3 text-left">
+                        <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400">正在本地解码...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    // 真正调用转换引擎
+                    const blob = await heic2any({
+                        blob: file,
+                        toType: targetType,
+                        quality: 0.8
+                    });
+
+                    const url = URL.createObjectURL(Array.isArray(blob) ? blob[0] : blob);
+                    const newName = file.name.replace(/\.[^/.]+$/, "") + extension;
+
+                    item.classList.remove('animate-pulse');
+                    item.innerHTML = `
+                        <div class="flex items-center gap-3 text-left">
+                            <i class="fas fa-check-circle text-emerald-500"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                <span class="text-[10px] text-slate-400">已成功转为 ${targetType.split('/')[1].toUpperCase()}</span>
+                            </div>
+                        </div>
+                        <a href="${url}" download="${newName}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm bg-indigo-50 px-4 py-2 rounded-lg">下载文件</a>
+                    `;
+                } catch (error) {
+                    console.error(error);
+                    item.classList.remove('animate-pulse');
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">转换失败 (HEIC格式不支持或损坏): ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

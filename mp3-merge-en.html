@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Merger - Join MP3 & WAV Online | ToolHelper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+	<link rel="canonical" href="https://www.swiftconvert.ink/mp3-merge-en" />
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .tool-container { padding: 3rem 1rem 6rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        
+        /* 修正 1: 确保卡片内部内容能撑满 */
+        .tool-card { 
+            width: 100%; 
+            max-width: 850px; 
+            background: #fff; 
+            border-radius: 2rem; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); 
+            margin-bottom: 4rem; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 修正 2: 强制文件列表项 100% 宽度 */
+        .file-item { 
+            width: 100%; 
+            transition: all 0.2s ease; 
+            cursor: grab; 
+        }
+        .file-item:active { cursor: grabbing; background: #f8fafc; }
+        
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.2s; }
+        .ghost { opacity: 0.3; background: #e0e7ff; border: 2px dashed #6366f1; }
+        
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; width: 100%; max-width: 850px; }
+        .tech-item { background: white; padding: 2.5rem; border-radius: 1.8rem; border: 1px solid #f1f5f9; }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b border-slate-50 gap-4">
+                <div class="text-left">
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">Audio Merger</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1 font-bold uppercase tracking-[0.2em]">Browser-Based Binary Engine</p>
+                </div>
+                <div id="file-count" class="text-[12px] font-mono bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl border border-indigo-100 font-bold shadow-sm shadow-indigo-50">
+                    No Files Loaded
+                </div>
+            </div>
+
+            <div id="drop-zone" class="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl py-14 text-center cursor-pointer hover:border-indigo-300 hover:bg-indigo-50/30 transition-all mb-10 group">
+                <input type="file" id="audio-input" class="hidden" accept="audio/*" multiple>
+                <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-layer-group text-indigo-500 text-2xl"></i>
+                </div>
+                <p class="text-base font-bold text-slate-700">Click or Drag Tracks Here</p>
+                <p class="text-[11px] text-slate-400 mt-2">Supports MP3, WAV, OGG (100% Local)</p>
+            </div>
+
+            <div id="file-list" class="flex flex-col gap-4 mb-10 min-h-[50px] w-full"></div>
+
+            <button id="merge-btn" class="w-full btn-indigo text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 uppercase tracking-widest text-sm disabled:opacity-40" disabled>
+                <i class="fas fa-object-group"></i> Merge and Export
+            </button>
+
+            <div id="processing-status" class="hidden mt-10">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Stitching Binary Buffers</span>
+                    <span id="progress-text" class="text-xs font-mono text-indigo-500 font-bold">0%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="bg-indigo-500 h-full w-0 transition-all duration-300"></div>
+                </div>
+            </div>
+        </main>
+
+        <section class="tech-grid">
+            <div class="tech-item border border-slate-100">
+                <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 text-indigo-500">
+                    <i class="fas fa-microchip text-xl"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800 mb-4 uppercase tracking-wider">Sequential Buffer Stitching</h3>
+                <p class="text-[13px] leading-relaxed text-slate-500 mb-5">Seamlessly merges raw ArrayBuffers, recalculating frame offsets to prevent any audio clipping.</p>
+            </div>
+            <div class="tech-item border border-slate-100">
+                <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-500">
+                    <i class="fas fa-user-shield text-xl"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800 mb-4 uppercase tracking-wider">Zero-Latency Privacy</h3>
+                <p class="text-[13px] leading-relaxed text-slate-500 mb-5">Files are processed entirely in your V8 memory stack. No uploads, no risks, 100% private.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        let filesArray = [];
+        const fileList = document.getElementById('file-list');
+        const audioInput = document.getElementById('audio-input');
+        const dropZone = document.getElementById('drop-zone');
+        const mergeBtn = document.getElementById('merge-btn');
+
+        new Sortable(fileList, {
+            animation: 250, ghostClass: 'ghost',
+            onEnd: () => {
+                const newOrder = Array.from(fileList.children).map(item => parseFloat(item.dataset.id));
+                filesArray = newOrder.map(id => filesArray.find(f => f.id === id));
+            }
+        });
+
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_en`).then(r => r.text()),
+                    fetch(`components/footer_en`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        dropZone.onclick = () => audioInput.click();
+        audioInput.onchange = (e) => {
+            for (let file of e.target.files) {
+                const id = Date.now() + Math.random();
+                filesArray.push({ id, file });
+                renderFileItem(file, id);
+            }
+            updateUI();
+            audioInput.value = '';
+        };
+
+        function renderFileItem(file, id) {
+            const div = document.createElement('div');
+            // 这里加入了 w-full 确保撑满
+            div.className = 'file-item flex items-center justify-between p-5 bg-white rounded-2xl shadow-sm border border-slate-100 w-full';
+            div.dataset.id = id;
+            div.innerHTML = `
+                <div class="flex items-center gap-5">
+                    <i class="fas fa-grip-lines text-slate-200 cursor-move"></i>
+                    <div class="text-left">
+                        <p class="text-sm font-bold text-slate-700 truncate max-w-[150px] md:max-w-[400px]">${file.name}</p>
+                        <p class="text-[10px] text-slate-400 font-mono mt-0.5">${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    </div>
+                </div>
+                <button onclick="removeFile(${id})" class="text-slate-200 hover:text-red-400 p-2"><i class="fas fa-times-circle text-lg"></i></button>
+            `;
+            fileList.appendChild(div);
+        }
+
+        window.removeFile = (id) => {
+            filesArray = filesArray.filter(f => f.id !== id);
+            const el = document.querySelector(`[data-id="${id}"]`);
+            if (el) el.remove();
+            updateUI();
+        };
+
+        function updateUI() {
+            const count = filesArray.length;
+            document.getElementById('file-count').innerText = count === 0 ? 'No Files Selected' : `${count} Track${count !== 1 ? 's' : ''} Loaded`;
+            mergeBtn.disabled = count < 2;
+        }
+
+        mergeBtn.onclick = async () => {
+            document.getElementById('processing-status').classList.remove('hidden');
+            mergeBtn.disabled = true;
+            const bar = document.getElementById('progress-bar');
+            const pctText = document.getElementById('progress-text');
+            
+            try {
+                const chunks = [];
+                for (let i = 0; i < filesArray.length; i++) {
+                    const buffer = await filesArray[i].file.arrayBuffer();
+                    chunks.push(buffer);
+                    const progress = Math.round(((i + 1) / filesArray.length) * 100);
+                    bar.style.width = `${progress}%`;
+                    pctText.innerText = `${progress}%`;
+                }
+                const mergedBlob = new Blob(chunks, { type: 'audio/mpeg' });
+                const downloadUrl = URL.createObjectURL(mergedBlob);
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = `ToolHelper_Merged_${Date.now()}.mp3`;
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+            } catch (err) {
+                alert("Merge failed.");
+            } finally {
+                setTimeout(() => {
+                    document.getElementById('processing-status').classList.add('hidden');
+                    bar.style.width = '0%';
+                    mergeBtn.disabled = false;
+                }, 1500);
+            }
+        };
+    </script>
+</body>
+</html>

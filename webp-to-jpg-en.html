@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>WebP to JPG/PNG - Fast Online Local Image Converter | ToolHelper</title>
+    <meta name="description" content="ToolHelper provides a high-speed WebP to JPG or PNG converter. 100% in-browser processing. No uploads required, total privacy. Batch convert WebP files instantly.">
+    <meta name="keywords" content="WebP to JPG, WebP to PNG, Image Converter, Online Image Tool, Private Conversion, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/webp-to-jpg-en" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">WebP to JPG/PNG</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Convert web-optimized WebP images to universal JPG or PNG formats instantly. 
+            All processing happens in your browser's Canvas engine—your files are never uploaded.
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept="image/webp" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-file-export text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3">Click or Drag WebP images here</p>
+                    <p class="text-sm text-slate-400">Supports batch processing for instant results</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-bold text-slate-600">Target Format:</span>
+                    <div class="flex bg-white rounded-lg p-1 border border-slate-200">
+                        <button onclick="setFormat('image/jpeg')" id="btn-jpg" class="px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all">JPG</button>
+                        <button onclick="setFormat('image/png')" id="btn-png" class="px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all">PNG</button>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-400">
+                    <i class="fas fa-bolt text-yellow-500"></i> Tip: Use PNG to preserve original transparency (Alpha channel).
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12 text-left">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-globe text-blue-500"></i> Why Convert WebP?
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    WebP is a format developed by Google to speed up web loading times. While highly efficient, it remains incompatible with many legacy office suites (like older PowerPoint versions), offline photo viewers, or certain social media platforms. <b>ToolHelper</b> bridges this gap seamlessly.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-emerald-500"></i> Ultimate Privacy
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed text-justify">
+                    Our conversion logic is entirely based on the browser's <b>HTML5 Canvas API</b>. When you drag a file in, the browser simply redraws the image in memory and exports it. <b>Your data never crosses the network</b>. This is faster and more secure than any server-based online converter.
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-slate-800 text-slate-300 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">WebP Conversion Architecture</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed text-justify">
+                <p>
+                    ToolHelper utilizes a high-performance asynchronous decoding scheme. By creating offscreen canvases, the system handles multiple WebP tasks without blocking the main thread's UI rendering. This approach perfectly preserves color profiles (ICC Profiles), ensuring the converted files look identical to the originals.
+                </p>
+                <p>
+                    For WebP images with transparency, choosing JPG as the output will automatically fill transparent areas with a white background. Selecting PNG will maintain the full Alpha channel. This intelligent mechanism ensures all professional use cases are covered.
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        // 1. Layout Initialization
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_en').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_en').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        // 2. Core Logic
+        let targetType = 'image/jpeg';
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const resultList = document.getElementById('result-list');
+
+        function setFormat(type) {
+            targetType = type;
+            const isJPG = type === 'image/jpeg';
+            document.getElementById('btn-jpg').className = isJPG ? 'px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all' : 'px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all';
+            document.getElementById('btn-png').className = !isJPG ? 'px-4 py-1 text-sm font-bold rounded-md bg-indigo-600 text-white transition-all' : 'px-4 py-1 text-sm font-bold rounded-md text-slate-500 hover:bg-slate-50 transition-all';
+        }
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => dropZone.classList.remove('drag-over'));
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            const currentFormat = targetType;
+            const extension = currentFormat === 'image/jpeg' ? '.jpg' : '.png';
+
+            for (let file of files) {
+                if (!file.type.includes('webp') && !file.name.toLowerCase().endsWith('.webp')) continue;
+
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100 text-left";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400">Processing...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    const bitmap = await createImageBitmap(file);
+                    const canvas = document.createElement('canvas');
+                    canvas.width = bitmap.width;
+                    canvas.height = bitmap.height;
+                    const ctx = canvas.getContext('2d');
+                    
+                    if (currentFormat === 'image/jpeg') {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+                    
+                    ctx.drawImage(bitmap, 0, 0);
+                    
+                    canvas.toBlob((blob) => {
+                        const url = URL.createObjectURL(blob);
+                        const newName = file.name.replace(/\.[^/.]+$/, "") + extension;
+
+                        item.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-emerald-500"></i>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                    <span class="text-[10px] text-slate-400">Converted to ${extension.toUpperCase().replace('.','')}</span>
+                                </div>
+                            </div>
+                            <a href="${url}" download="${newName}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm bg-indigo-50 px-4 py-2 rounded-lg">Download</a>
+                        `;
+                    }, currentFormat, 0.92);
+                } catch (error) {
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">Failed: ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

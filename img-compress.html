@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>在线图片压缩 - 支持 JPG, PNG, WebP, AVIF, HEIC 全格式本地无损压缩 | ToolHelper 万能工具箱</title>
+    <meta name="description" content="ToolHelper 提供最安全的在线图片压缩工具。支持 AVIF, HEIC, WebP, PNG, JPG 等全格式。采用 WebAssembly 技术，100% 浏览器本地处理，隐私安全，无需上传服务器。">
+    <meta name="keywords" content="图片压缩, JPG压缩, PNG压缩, WebP转换, AVIF压缩, HEIC压缩, 隐私工具, ToolHelper, 万能工具箱, 本地压缩">
+    <link rel="canonical" href="https://www.swiftconvert.ink/img-compress" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+
+    <style>
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .drop-zone { border: 2px dashed #e2e8f0; transition: all 0.3s ease; position: relative; }
+        .drop-zone.drag-over { border-color: #667eea; background: #f8fafc; transform: scale(1.005); }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-gradient:hover { opacity: 0.9; transform: translateY(-1px); }
+        .format-tag { background: #f1f5f9; color: #64748b; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: bold; }
+        .loader { border-top-color: #667eea; animation: spinner 0.6s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans text-slate-900">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-12 text-white text-center px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">万能图片压缩</h1>
+        <p class="opacity-90 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            支持所有主流格式。采用 Wasm 本地引擎，图片不上传云端，即刻提升网页加载速度并保护隐私。
+        </p>
+    </section>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-12">
+        
+        <div class="bg-white rounded-[2.5rem] shadow-xl p-6 md:p-12 mb-12">
+            
+            <div id="drop-zone" class="drop-zone rounded-[2rem] p-12 text-center cursor-pointer mb-8">
+                <input type="file" id="file-input" class="hidden" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,image/heic,image/heif,image/bmp" multiple>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-images text-3xl text-indigo-500"></i>
+                    </div>
+                    <p class="text-xl font-bold text-slate-700 mb-3">点击或将图片拖拽到此处</p>
+                    <div class="flex flex-wrap justify-center gap-2 max-w-md">
+                        <span class="format-tag">JPG</span><span class="format-tag">PNG</span>
+                        <span class="format-tag">WEBP</span><span class="format-tag">AVIF</span>
+                        <span class="format-tag">HEIC</span><span class="format-tag">GIF</span>
+                        <span class="format-tag">BMP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-slate-50 p-6 rounded-2xl mb-8">
+                <div class="flex-grow w-full">
+                    <div class="flex justify-between mb-2 text-sm font-bold text-slate-600">
+                        <span>压缩质量 (Quality)</span>
+                        <span id="quality-val" class="text-indigo-600 text-lg">80%</span>
+                    </div>
+                    <input type="range" id="quality-range" min="1" max="100" value="80" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                </div>
+            </div>
+
+            <div id="result-list" class="space-y-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12 text-left">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-camera text-blue-500"></i> 摄影与通用格式
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>JPEG/JPG:</b> 针对照片进行智能量化优化，在极小体积下保留丰富色彩。<br><br>
+                    <b>PNG:</b> 在保持 Alpha 透明通道的同时，通过颜色剔除技术显著减小文件大小。
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-bolt text-orange-500"></i> 下一代网页格式
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>WebP/AVIF:</b> 深度支持 Google 与现代浏览器推崇的高压格式，比传统 JPG 额外节省近 50% 空间。<br><br>
+                    <b>HEIC:</b> 完美支持 iOS 设备照片，无需中转即可直接本地优化。
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fas fa-tools text-purple-500"></i> 动态与办公格式
+                </h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <b>GIF:</b> 优化帧冗余信息，大幅提升动态图加载速度。<br><br>
+                    <b>BMP/TIFF:</b> 快速处理无损原始格式，转化为更适合传输的高质量副本。
+                </p>
+            </div>
+        </div>
+
+        <article class="bg-indigo-900 text-indigo-100 rounded-[2.5rem] p-8 md:p-12 text-left">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">ToolHelper 万能工具箱：隐私与技术说明</h2>
+            <div class="grid md:grid-cols-2 gap-10 text-sm opacity-80 leading-relaxed">
+                <div>
+                    <h4 class="text-white font-bold mb-2">1. 什么是 WebAssembly 本地处理？</h4>
+                    <p>
+                        传统的在线工具会将您的文件上传到服务器进行转换，这存在巨大的隐私泄露风险。<b>ToolHelper</b> 通过 WebAssembly 技术将压缩引擎直接加载到您的浏览器中。这意味着压缩过程利用的是您本机的计算能力，文件<b>永不离开您的电脑</b>。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-2">2. 为什么选择我们的算法？</h4>
+                    <p>
+                        我们的工具集成了智能量化与子采样技术。它不仅是简单的像素删减，而是通过算法分析图像中的结构信息，在保证视觉效果“无损”的情况下最大限度地去除冗余数据。这对于提升网站 SEO 评分和移动端加载速度至关重要。
+                    </p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        // 1. 布局加载
+        async function loadLayout() {
+            try {
+                const h = await fetch('components/header_zh').then(r => r.text());
+                document.getElementById('header-box').innerHTML = h;
+                const f = await fetch('components/footer_zh').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        // 2. 交互与逻辑
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const range = document.getElementById('quality-range');
+        const valDisp = document.getElementById('quality-val');
+        const resultList = document.getElementById('result-list');
+
+        range.oninput = (e) => { valDisp.innerText = e.target.value + '%'; };
+
+        // 阻止默认行为（核心：防止拖拽时浏览器直接打开图片）
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        ['dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, () => dropZone.classList.remove('drag-over'));
+        });
+
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        dropZone.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files));
+
+        async function handleFiles(files) {
+            if (files.length === 0) return;
+            const quality = range.value / 100;
+
+            for (let file of files) {
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-100";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5"></div>
+                        <span class="text-sm font-medium text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                    </div>
+                    <span class="text-xs text-slate-400 italic text-right">处理中...</span>
+                `;
+                resultList.prepend(item);
+
+                try {
+                    const options = {
+                        maxSizeMB: 5,           // 限制输出大小
+                        maxWidthOrHeight: 2560, // 限制分辨率
+                        useWebWorker: true,
+                        initialQuality: quality
+                    };
+
+                    const compressedFile = await imageCompression(file, options);
+                    
+                    const oldSize = (file.size / 1024).toFixed(1);
+                    const newSize = (compressedFile.size / 1024).toFixed(1);
+                    const ratio = Math.round((1 - compressedFile.size / file.size) * 100);
+
+                    item.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-emerald-500"></i>
+                            <div class="flex flex-col text-left">
+                                <span class="text-sm font-bold text-slate-700 truncate max-w-[200px]">${file.name}</span>
+                                <span class="text-[10px] text-slate-400">${oldSize}KB → <b class="text-emerald-600">${newSize}KB</b></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold">减小 ${ratio}%</span>
+                            <a href="${URL.createObjectURL(compressedFile)}" download="compressed_${file.name}" class="text-indigo-600 hover:text-indigo-800 font-bold text-sm">下载</a>
+                        </div>
+                    `;
+                } catch (error) {
+                    item.innerHTML = `<span class="text-red-500 text-xs text-left">压缩失败: ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

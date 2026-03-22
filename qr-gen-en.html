@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>QR Code Generator - Create High-Res QR Codes Online Free | ToolHelper</title>
+    <meta name="description" content="Free online QR Code generator. Convert text, URLs, or WiFi info into high-quality QR codes. Supports L/M/Q/H error correction and high-res PNG export. 100% private.">
+    <meta name="keywords" content="QR Code Generator, Create QR Code Online, URL to QR, Scan Code Creator, E-commerce Tools, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/qr-gen-en" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .tool-container { padding: 3.5rem 1rem 6.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        
+        .tool-card { 
+            width: 100%; max-width: 850px; background: #fff; border-radius: 2rem; 
+            border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); 
+            margin-bottom: 4.5rem; display: flex; flex-direction: column;
+        }
+
+        .qr-preview-box {
+            background: #fdfdfd; border: 2px dashed #e2e8f0; border-radius: 1.5rem;
+            min-height: 280px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 2rem; padding: 1.5rem;
+        }
+
+        #qrcode img { margin: 0 auto; border: 8px solid white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s; }
+        .btn-indigo:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3); }
+
+        .textarea-custom {
+            width: 100%; background: #fff; border: 1px solid #e2e8f0; padding: 1.25rem;
+            border-radius: 1.25rem; font-size: 1rem; min-height: 120px;
+            outline: none; transition: all 0.3s; resize: none;
+        }
+        .textarea-custom:focus { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b border-slate-50 gap-4">
+                <div class="text-left">
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">QR Code Generator</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1.5 font-bold uppercase tracking-[0.2em]">High-Efficiency Data Matrix</p>
+                </div>
+                <div class="text-[11px] font-mono bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl border border-indigo-100 font-bold">
+                    100% Client-Side
+                </div>
+            </div>
+
+            <div class="qr-preview-box">
+                <div id="qrcode"></div>
+                <div id="empty-state" class="text-slate-300 flex flex-col items-center hidden">
+                    <i class="fas fa-qrcode text-6xl mb-4"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest">Awaiting Input</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 mb-10">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Enter URL or Text Content</label>
+                    <textarea id="qr-input" placeholder="https://www.swiftconvert.ink" class="textarea-custom"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Resolution (Pixels)</label>
+                        <select id="qr-size" class="w-full bg-slate-50 border border-slate-100 p-3 rounded-xl font-bold text-sm outline-none">
+                            <option value="256">256 x 256</option>
+                            <option value="512" selected>512 x 512</option>
+                            <option value="1024">1024 x 1024 (HD)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Error Correction Level</label>
+                        <select id="qr-level" class="w-full bg-slate-50 border border-slate-100 p-3 rounded-xl font-bold text-sm outline-none">
+                            <option value="L">Low (7%)</option>
+                            <option value="M" selected>Medium (15%)</option>
+                            <option value="Q">Quartile (25%)</option>
+                            <option value="H">High (30% - Best for Logos)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button id="download-btn" class="w-full btn-indigo text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 uppercase tracking-widest text-sm">
+                <i class="fas fa-download"></i> Download QR Code (PNG)
+            </button>
+        </main>
+
+        <section class="w-full max-w-[850px] grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-8 rounded-2xl border border-slate-100">
+                <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center mb-5 text-indigo-500">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h4 class="text-sm font-black text-slate-700 mb-3 uppercase tracking-wider">No Tracking / 100% Private</h4>
+                <p class="text-[12px] text-slate-500 leading-relaxed">Unlike many online generators, ToolHelper doesn't store your data. All QR codes are rendered instantly in your browser—perfect for sensitive links or internal company URLs.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100">
+                <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 text-emerald-500">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <h4 class="text-sm font-black text-slate-700 mb-3 uppercase tracking-wider">Error Correction Tech</h4>
+                <p class="text-[12px] text-slate-500 leading-relaxed">Supports up to 30% error correction. This ensures that even if the printed QR code is partially damaged or obstructed, it remains readable by any standard scanner.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        const input = document.getElementById('qr-input');
+        const sizeSelect = document.getElementById('qr-size');
+        const levelSelect = document.getElementById('qr-level');
+        const qrcodeContainer = document.getElementById('qrcode');
+        const downloadBtn = document.getElementById('download-btn');
+        let qrcodeObj = null;
+
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_en`).then(r => r.text()),
+                    fetch(`components/footer_en`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        function generateQR() {
+            const text = input.value.trim() || "https://www.swiftconvert.ink";
+            const size = parseInt(sizeSelect.value);
+            const level = levelSelect.value;
+
+            qrcodeContainer.innerHTML = ""; 
+            qrcodeObj = new QRCode(qrcodeContainer, {
+                text: text,
+                width: size,
+                height: size,
+                colorDark : "#1e293b",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel[level]
+            });
+        }
+
+        generateQR();
+
+        input.oninput = generateQR;
+        sizeSelect.onchange = generateQR;
+        levelSelect.onchange = generateQR;
+
+        downloadBtn.onclick = () => {
+            const img = qrcodeContainer.querySelector('img');
+            if (img) {
+                const link = document.createElement('a');
+                link.href = img.src;
+                link.download = `QR_${Date.now()}.png`;
+                link.click();
+            }
+        };
+    </script>
+</body>
+</html>

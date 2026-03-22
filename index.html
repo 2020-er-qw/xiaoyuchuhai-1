@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>万能工具箱 - 100% 隐私安全的本地多媒体与办公工具箱</title>
+    <meta name="description" content="万能工具箱提供免费本地工具：支持图片压缩、HEIC/WebP 转换、音频合并剪辑、视频压缩、EAN 商品条码及二维码生成。100% 浏览器本地处理，确保隐私安全。">
+    <meta name="keywords" content="万能工具箱, 隐私工具, HEIC转JPG, WebP转换, 视频压缩, MP3合并, EAN条码, GS1-128, 短链解析">
+    <link rel="canonical" href="https://www.swiftconvert.ink" />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .tool-card:hover { transform: translateY(-5px); }
+        .bg-gradient-soft { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .tool-card { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div id="header-box"></div>
+
+    <section class="bg-gradient-soft py-16 text-white text-center px-4">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-6">让普通人也能轻松使用的在线工具</h1>
+        <p class="mb-8 opacity-90 text-lg">无需下载，无需注册，所有处理均在您的电脑本地完成</p>
+        <div class="max-w-2xl mx-auto relative">
+            <input type="text" placeholder="输入关键字，如：HEIC、条码、压缩..." class="w-full py-4 px-6 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300">
+            <button class="absolute right-3 top-2 bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700 transition font-bold">搜索</button>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        
+        <div class="mb-16">
+            <h2 class="text-xl font-bold mb-8 flex items-center gap-2 border-l-4 border-purple-600 pl-3">
+                <i class="fas fa-play-circle text-purple-600"></i> 影像多媒体
+            </h2>
+            
+            <h4 class="text-sm font-bold text-slate-400 mb-4 ml-3 uppercase tracking-widest">图片处理</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <a href="img-compress" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-compress-arrows-alt text-2xl text-blue-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">图片压缩</h3>
+                    <p class="text-xs text-gray-400">大幅缩小体积并保持画质</p>
+                </a>
+                <a href="heic-to-jpg" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-image text-2xl text-orange-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">HEIC 转 JPG</h3>
+                    <p class="text-xs text-gray-400">苹果手机照片专用转换器</p>
+                </a>
+                <a href="webp-to-jpg" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-file-image text-2xl text-indigo-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">WebP 转 JPG</h3>
+                    <p class="text-xs text-gray-400">高效转换现代网页图片格式</p>
+                </a>
+                <a href="img-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-file-export text-2xl text-emerald-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">图片转 PDF</h3>
+                    <p class="text-xs text-gray-400">将多张图片合成为PDF文档</p>
+                </a>
+            </div>
+
+            <h4 class="text-sm font-bold text-slate-400 mb-4 ml-3 uppercase tracking-widest">音频工具</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <a href="mp3-cutter" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-cut text-2xl text-rose-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">MP3 切割器</h3>
+                    <p class="text-xs text-gray-400">快速裁剪音频片段制成铃声</p>
+                </a>
+                <a href="mp3-merge" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-object-group text-2xl text-teal-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">MP3 合并器</h3>
+                    <p class="text-xs text-gray-400">将多个音频无损拼接</p>
+                </a>
+                <a href="mp3-compress" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-file-audio text-2xl text-blue-400 mb-3"></i>
+                    <h3 class="font-bold mb-1">MP3 压缩</h3>
+                    <p class="text-xs text-gray-400">优化音频码率缩小体积</p>
+                </a>
+            </div>
+
+            <h4 class="text-sm font-bold text-slate-400 mb-4 ml-3 uppercase tracking-widest">视频工具</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="video-compress" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-video text-2xl text-purple-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">视频压缩</h3>
+                    <p class="text-xs text-gray-400">本地处理，隐私无风险</p>
+                </a>
+                <a href="video-to-mp3" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-volume-up text-2xl text-yellow-600 mb-3"></i>
+                    <h3 class="font-bold mb-1">视频转 MP3</h3>
+                    <p class="text-xs text-gray-400">一键提取视频中的音频</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-xl font-bold mb-8 flex items-center gap-2 border-l-4 border-blue-600 pl-3">
+                <i class="fas fa-barcode text-blue-600"></i> 条码工具
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="barcode-ean8" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-barcode text-2xl text-slate-600 mb-3"></i>
+                    <h3 class="font-bold mb-1">EAN-8 生成</h3>
+                    <p class="text-xs text-gray-400">适用于小型包裹的条码</p>
+                </a>
+                <a href="barcode-ean13" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-barcode text-2xl text-slate-800 mb-3"></i>
+                    <h3 class="font-bold mb-1">EAN-13 生成</h3>
+                    <p class="text-xs text-gray-400">标准零售商品识别条码</p>
+                </a>
+                <a href="barcode-gs1" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-truck text-2xl text-blue-400 mb-3"></i>
+                    <h3 class="font-bold mb-1">EAN-14 / GS1-128</h3>
+                    <p class="text-xs text-gray-400">物流与供应链标准编码</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-xl font-bold mb-8 flex items-center gap-2 border-l-4 border-green-600 pl-3">
+                <i class="fas fa-rocket text-green-600"></i> 生产力工具
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="qr-gen" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-qrcode text-2xl text-emerald-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">二维码生成</h3>
+                    <p class="text-xs text-gray-400">支持Logo、颜色个性化美化</p>
+                </a>
+                <a href="url-shorten" class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <i class="fas fa-link text-2xl text-sky-500 mb-3"></i>
+                    <h3 class="font-bold mb-1">短链生成</h3>
+                    <p class="text-xs text-gray-400">免费=快速生成短链及二维码</p>
+                </a>
+            </div>
+        </div>
+
+        <article class="bg-white rounded-[2rem] p-10 border border-gray-100 shadow-inner mt-20">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">万能工具箱：隐私与效率的完美结合</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-gray-600 text-sm leading-relaxed">
+                <div class="space-y-4">
+                    <h4 class="font-bold text-gray-800 text-base">1. 本地处理技术 (WebAssembly)</h4>
+                    <p>
+                        万能工具箱采用前沿的 <b>WebAssembly (Wasm)</b> 技术。这意味着所有的视频转码、音频切割、条码生成逻辑都在您的浏览器内存中运行。
+                        与传统工具不同，您的文件<b>永不上传</b>至服务器，从物理层面确保了您的数字资产隐私。
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-bold text-gray-800 text-base">2. 全方位的办公套件</h4>
+                    <p>
+                        从电商运营必备的 <b>GS1-128 条码</b>到日常使用的 <b>HEIC 转码</b>，我们致力于提供轻量、免费且高效的一站式解决方案。
+                        无论您是设计师、物流操作员还是学生，这里都有您需要的生产力小工具。
+                    </p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <div id="footer-box"></div>
+
+    <script>
+        async function loadLayout() {
+            try {
+                const header = await fetch('components/header_zh').then(r => r.text());
+                document.getElementById('header-box').innerHTML = header;
+                const footer = await fetch('components/footer_zh').then(r => r.text());
+                document.getElementById('footer-box').innerHTML = footer;
+            } catch (e) {
+                console.warn("Layout fetch skipped or failed.");
+            }
+        }
+        loadLayout();
+    </script>
+</body>
+</html>

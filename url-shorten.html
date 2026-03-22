@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>短链接生成器 - 在线制作简短网址 (100% 免费) | ToolHelper</title>
+    <meta name="description" content="免费在线短链接生成工具。将冗长的亚马逊、淘宝或社交媒体链接一键缩短，支持自动生成二维码，方便分享与追踪。">
+    <link rel="canonical" href="https://www.swiftconvert.ink/url-shorten" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; font-family: 'PingFang SC', system-ui, sans-serif; }
+        .tool-container { padding: 3.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        .tool-card { width: 100%; max-width: 850px; background: #fff; border-radius: 2rem; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s; }
+        .input-custom { width: 100%; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 1.25rem; outline: none; transition: all 0.3s; }
+        .input-custom:focus { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+        .loader { border: 2px solid #f3f3f3; border-top: 2px solid #fff; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            <div class="flex justify-between items-center mb-10 pb-6 border-b border-slate-50">
+                <div>
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">短链接生成器</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1.5 font-bold uppercase tracking-[0.2em]">一键缩短 易于分享</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">粘贴长链接 (支持 http/https)</label>
+                    <input type="url" id="long-url" placeholder="https://www.amazon.co.uk/dp/B0GHR8WGQN/ref=..." class="input-custom">
+                </div>
+                
+                <button id="gen-btn" class="w-full btn-indigo text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 uppercase tracking-widest text-sm">
+                    <span id="btn-text">立即生成短链</span>
+                </button>
+            </div>
+
+            <div id="result-area" class="mt-10 hidden space-y-6 animate-fade-in">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 relative">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">您的短链接</span>
+                    <div class="flex items-center justify-between gap-4">
+                        <span id="short-url-text" class="text-lg font-bold text-indigo-600 break-all"></span>
+                        <button id="copy-btn" class="shrink-0 bg-white border border-slate-200 p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                            <i class="far fa-copy text-slate-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center p-6 bg-white border border-dashed border-slate-200 rounded-2xl">
+                    <div id="qrcode" class="mb-4"></div>
+                    <p class="text-[11px] text-slate-400 font-medium">扫码访问短链接</p>
+                </div>
+            </div>
+
+            <p id="error-msg" class="text-[10px] text-red-400 mt-6 font-bold hidden italic text-center italic">生成失败，请检查链接格式或稍后再试</p>
+        
+			<section class="w-full max-w-[850px] space-y-12 mt-16">
+			            
+			            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
+			                    <div class="w-12 h-12 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+			                        <i class="fas fa-bolt"></i>
+			                    </div>
+			                    <h3 class="text-sm font-bold text-slate-800 mb-2">极速生成</h3>
+			                    <p class="text-[12px] text-slate-500 leading-relaxed">采用高效分布式 API 接口，毫秒级响应，无需注册即可直接使用。</p>
+			                </div>
+			                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
+			                    <div class="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+			                        <i class="fas fa-shield-alt"></i>
+			                    </div>
+			                    <h3 class="text-sm font-bold text-slate-800 mb-2">永久有效</h3>
+			                    <p class="text-[12px] text-slate-500 leading-relaxed">生成的短链接基于全球领先的 TinyURL 协议，除非原始链接失效，否则短链永久可用。</p>
+			                </div>
+			                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
+			                    <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+			                        <i class="fas fa-qrcode"></i>
+			                    </div>
+			                    <h3 class="text-sm font-bold text-slate-800 mb-2">自带二维码</h3>
+			                    <p class="text-[12px] text-slate-500 leading-relaxed">支持生成配套的高清二维码，方便在亚马逊售后卡、包装盒或社交媒体上展示。</p>
+			                </div>
+			            </div>
+			
+			            <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm">
+			                <h2 class="text-xl font-black text-slate-800 mb-6 flex items-center gap-3">
+			                    <span class="w-2 h-6 bg-indigo-500 rounded-full"></span>
+			                    为什么需要短链接？
+			                </h2>
+			                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[13px] leading-relaxed text-slate-600">
+			                    <div class="space-y-4">
+			                        <div class="flex gap-4">
+			                            <span class="text-indigo-500 font-bold">01.</span>
+			                            <p><strong>优化视觉体验：</strong> 冗长的原始 URL（尤其是带有大量 UTM 追踪参数的亚马逊链接）会占用大量字符空间，短链接能让文案看起来更简洁专业。</p>
+			                        </div>
+			                        <div class="flex gap-4">
+			                            <span class="text-indigo-500 font-bold">02.</span>
+			                            <p><strong>提高点击率：</strong> 在社交媒体（如 TikTok、Instagram）中，过于复杂的链接容易引发用户警惕。短链接显得更安全，能有效提升用户的点击意愿。</p>
+			                        </div>
+			                    </div>
+			                    <div class="space-y-4">
+			                        <div class="flex gap-4">
+			                            <span class="text-indigo-500 font-bold">03.</span>
+			                            <p><strong>规避平台限制：</strong> 某些平台对特定长链接有字数限制或拦截机制，使用经过认证的短链接服务可以提高链接的到达率。</p>
+			                        </div>
+			                        <div class="flex gap-4">
+			                            <span class="text-indigo-500 font-bold">04.</span>
+			                            <p><strong>线下场景应用：</strong> 配合自动生成的二维码，您可以轻松将短链接应用在产品说明书、线下展会海报或物料卡片上。</p>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			
+			            <div class="space-y-4">
+			                <h2 class="text-lg font-black text-slate-800 px-2 mb-4">常见问题</h2>
+			                <div class="bg-white border border-slate-100 rounded-2xl p-6">
+			                    <h4 class="text-sm font-bold text-slate-800 mb-2">这个短链接服务收费吗？</h4>
+			                    <p class="text-[12px] text-slate-500">ToolHelper 提供的短链接生成服务完全免费。我们通过调用全球公共 API 实现，不向用户收取任何费用。</p>
+			                </div>
+			                <div class="bg-white border border-slate-100 rounded-2xl p-6">
+			                    <h4 class="text-sm font-bold text-slate-800 mb-2">链接有效期是多久？</h4>
+			                    <p class="text-[12px] text-slate-500">默认情况下是永久有效的。但请注意，如果原始目标网页被删除或违反了短链平台的政策，短链接可能会失效。</p>
+			                </div>
+			                <div class="bg-white border border-slate-100 rounded-2xl p-6">
+			                    <h4 class="text-sm font-bold text-slate-800 mb-2">我可以自定义短链后缀吗？</h4>
+			                    <p class="text-[12px] text-slate-500">当前版本为随机生成。如果您有品牌定制化需求，建议联系我们进行高级功能的定制开发。</p>
+			                </div>
+			            </div>
+			
+			            <div class="text-center text-[11px] text-slate-400 italic">
+			                * 提醒：请勿使用本工具生成涉及诈骗、赌博或违禁内容的链接。所有操作日志受平台安全系统实时监控。
+			            </div>
+			        </section>
+		
+		</main>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        const longUrlInput = document.getElementById('long-url');
+        const genBtn = document.getElementById('gen-btn');
+        const btnText = document.getElementById('btn-text');
+        const resultArea = document.getElementById('result-area');
+        const shortUrlText = document.getElementById('short-url-text');
+        const qrcodeContainer = document.getElementById('qrcode');
+        const errorMsg = document.getElementById('error-msg');
+
+        // 初始化加载组件 (Header/Footer)
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_zh`).then(r => r.text()),
+                    fetch(`components/footer_Zh`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        genBtn.onclick = async () => {
+            const longUrl = longUrlInput.value.trim();
+            if (!longUrl) return;
+        
+            errorMsg.classList.add('hidden');
+            btnText.innerHTML = '<span class="loader"></span> 正在通过私有节点生成...';
+            genBtn.disabled = true;
+        
+            try {
+                // 【核心修改】替换成你刚部署的 Worker 地址
+                const myApi = `https://link-api.yuerkang175.workers.dev?url=${encodeURIComponent(longUrl)}`;
+        
+                const response = await fetch(myApi);
+                const data = await response.json();
+        
+                if (data.shortUrl && data.shortUrl.startsWith('http')) {
+                    const shortUrl = data.shortUrl;
+                    
+                    shortUrlText.innerText = shortUrl;
+                    resultArea.classList.remove('hidden');
+                    
+                    // 二维码生成
+                    qrcodeContainer.innerHTML = "";
+                    new QRCode(qrcodeContainer, {
+                        text: shortUrl,
+                        width: 140,
+                        height: 140,
+                        colorDark : "#1e293b",
+                        colorLight : "#ffffff"
+                    });
+                } else {
+                    throw new Error("Invalid Response");
+                }
+            } catch (err) {
+                console.error(err);
+                errorMsg.classList.remove('hidden');
+                errorMsg.innerText = "生成失败：私有接口响应异常，请检查 Worker 部署状态。";
+            } finally {
+                btnText.innerText = '立即生成短链';
+                genBtn.disabled = false;
+            }
+        };
+
+        document.getElementById('copy-btn').onclick = () => {
+            navigator.clipboard.writeText(shortUrlText.innerText);
+            alert('短链接已复制！');
+        };
+    </script>
+</body>
+</html>

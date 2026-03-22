@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>EAN-8 Barcode Generator - Create Retail Barcodes Online Free | ToolHelper</title>
+    <meta name="description" content="Free online EAN-8 barcode generator. Enter 7 or 8 digits to instantly create standard retail barcodes. Export to PNG or SVG. 100% private local processing.">
+    <meta name="keywords" content="EAN8 Generator, Barcode Creator, Retail Barcode, Product Barcode, EAN-8 Converter, E-commerce Tool, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/barcode-ean8-en" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .tool-container { padding: 3.5rem 1rem 6.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        
+        .tool-card { 
+            width: 100%; max-width: 850px; background: #fff; border-radius: 2rem; 
+            border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); 
+            margin-bottom: 4.5rem; display: flex; flex-direction: column;
+        }
+
+        .barcode-preview-box {
+            background: #fdfdfd; border: 2px dashed #e2e8f0; border-radius: 1.5rem;
+            min-height: 200px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 2rem; overflow: hidden;
+        }
+
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s; }
+        .btn-indigo:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3); }
+
+        .input-custom {
+            width: 100%; background: #fff; border: 1px solid #e2e8f0; padding: 1.25rem;
+            border-radius: 1.25rem; font-family: 'Monaco', monospace; font-size: 1.25rem;
+            text-align: center; letter-spacing: 0.2em; outline: none; transition: border 0.3s;
+        }
+        .input-custom:focus { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b border-slate-50 gap-4">
+                <div class="text-left">
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">EAN-8 Barcode</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1.5 font-bold uppercase tracking-[0.2em]">Retail Standard Short Protocol</p>
+                </div>
+                <div class="text-[11px] font-mono bg-indigo-50 text-indigo-600 px-4 py-2 rounded-xl border border-indigo-100 font-bold">
+                    Auto-Check Digit
+                </div>
+            </div>
+
+            <div class="barcode-preview-box">
+                <svg id="barcode-canvas"></svg>
+                <div id="empty-state" class="text-slate-300 flex flex-col items-center">
+                    <i class="fas fa-barcode text-5xl mb-3"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest">Preview Area</p>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 mb-3 block">Enter 7 or 8 digits</label>
+                <input type="text" id="barcode-input" maxlength="8" placeholder="1234567" class="input-custom">
+                <p id="error-msg" class="text-[10px] text-red-400 mt-3 font-bold ml-1 hidden italic">Please enter a valid numeric code</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button id="download-png" class="btn-indigo text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 uppercase tracking-widest text-xs disabled:opacity-40" disabled>
+                    <i class="fas fa-image"></i> Download PNG
+                </button>
+                <button id="download-svg" class="border border-slate-200 text-slate-500 hover:bg-slate-50 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all uppercase tracking-widest text-xs disabled:opacity-40" disabled>
+                    <i class="fas fa-vector-square"></i> Download SVG
+                </button>
+            </div>
+        </main>
+
+        <section class="tech-grid flex flex-col md:flex-row gap-8 w-full max-w-[850px]">
+            <div class="tech-item border border-slate-100 flex-1">
+                <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 text-indigo-500">
+                    <i class="fas fa-sliders-h text-xl"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800 mb-4 uppercase tracking-wider">Format Validation</h3>
+                <p class="text-[13px] leading-relaxed text-slate-500">Built-in EAN-8 algorithm. If you enter only 7 digits, the system automatically calculates the 8th checksum digit based on GS1 standards.</p>
+            </div>
+            <div class="tech-item border border-slate-100 flex-1">
+                <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-500">
+                    <i class="fas fa-user-shield text-xl"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-800 mb-4 uppercase tracking-wider">Privacy as a Service</h3>
+                <p class="text-[13px] leading-relaxed text-slate-500">All rendering happens in your browser. Your SKU or internal codes are never sent to a server, keeping your supply chain data private.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        const input = document.getElementById('barcode-input');
+        const canvas = document.getElementById('barcode-canvas');
+        const emptyState = document.getElementById('empty-state');
+        const downloadPng = document.getElementById('download-png');
+        const downloadSvg = document.getElementById('download-svg');
+        const errorMsg = document.getElementById('error-msg');
+
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_en`).then(r => r.text()),
+                    fetch(`components/footer_en`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        input.oninput = (e) => {
+            const val = e.target.value.replace(/\D/g, ''); 
+            e.target.value = val;
+
+            if (val.length >= 7) {
+                try {
+                    JsBarcode("#barcode-canvas", val, {
+                        format: "EAN8",
+                        width: 3,
+                        height: 100,
+                        displayValue: true,
+                        fontSize: 20,
+                        background: "#fdfdfd"
+                    });
+                    canvas.classList.remove('hidden');
+                    emptyState.classList.add('hidden');
+                    downloadPng.disabled = false;
+                    downloadSvg.disabled = false;
+                    errorMsg.classList.add('hidden');
+                } catch (err) {
+                    errorMsg.classList.remove('hidden');
+                    canvas.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    downloadPng.disabled = true;
+                    downloadSvg.disabled = true;
+                }
+            } else {
+                canvas.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                downloadPng.disabled = true;
+                downloadSvg.disabled = true;
+                errorMsg.classList.add('hidden');
+            }
+        };
+
+        // PNG Export
+        downloadPng.onclick = () => {
+            const svgData = new XMLSerializer().serializeToString(canvas);
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+            
+            const img = new Image();
+            img.onload = () => {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = img.width * 2; 
+                tempCanvas.height = img.height * 2;
+                const ctx = tempCanvas.getContext('2d');
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                ctx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
+                
+                const pngUrl = tempCanvas.toDataURL("image/png");
+                const downloadLink = document.createElement("a");
+                downloadLink.href = pngUrl;
+                downloadLink.download = `EAN8_${input.value}.png`;
+                downloadLink.click();
+            };
+            img.src = url;
+        };
+
+        // SVG Export
+        downloadSvg.onclick = () => {
+            const svgData = new XMLSerializer().serializeToString(canvas);
+            const blob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `EAN8_${input.value}.svg`;
+            link.click();
+        };
+    </script>
+</body>
+</html>

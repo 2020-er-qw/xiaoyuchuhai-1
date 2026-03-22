@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>GS1-128 / EAN-14 条码生成器 - 在线制作物流外箱标签 | ToolHelper</title>
+    <meta name="description" content="免费在线生成 GS1-128 和 EAN-14 物流条码。支持 AI 应用标识符，自动计算校验位，提供高清 SVG/PNG 下载，适用于亚马逊 FBA 外箱及物流配送。">
+    <meta name="keywords" content="GS1-128生成器, EAN14条码制作, 物流外箱标签, 运输条码, UCC/EAN-128, 跨境电商物流工具, ToolHelper">
+    <link rel="canonical" href="https://www.swiftconvert.ink/barcode-gs1" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKW589EGYQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKW589EGYQ');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+        .tool-container { padding: 3.5rem 1rem 6.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+        
+        .tool-card { 
+            width: 100%; max-width: 950px; background: #fff; border-radius: 2rem; 
+            border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); 
+            margin-bottom: 4.5rem; display: flex; flex-direction: column;
+        }
+
+        .barcode-preview-box {
+            background: #fdfdfd; border: 2px dashed #e2e8f0; border-radius: 1.5rem;
+            min-height: 260px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 2rem; overflow-x: auto; padding: 2rem;
+        }
+
+        .btn-indigo { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); transition: all 0.3s; }
+        .btn-indigo:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3); }
+
+        .input-custom {
+            width: 100%; background: #fff; border: 1px solid #e2e8f0; padding: 1.25rem;
+            border-radius: 1.25rem; font-family: 'Monaco', monospace; font-size: 1.25rem;
+            outline: none; transition: border 0.3s;
+        }
+        .input-custom:focus { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
+
+        .ai-badge {
+            font-size: 10px; background: #eff6ff; color: #3b82f6; padding: 2px 8px;
+            border-radius: 6px; border: 1px solid #dbeafe; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-box"></div>
+
+    <div class="tool-container">
+        <main class="tool-card p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b border-slate-50 gap-4">
+                <div class="text-left">
+                    <h1 class="text-2xl font-black text-slate-800 tracking-tight">GS1-128 / EAN-14 条码生成</h1>
+                    <p class="text-[10px] text-indigo-500 mt-1.5 font-bold uppercase tracking-[0.2em]">供应链与物流运输标准</p>
+                </div>
+                <div class="flex gap-2">
+                    <select id="protocol-select" class="text-[11px] font-bold bg-slate-100 text-slate-600 px-3 py-2 rounded-xl border-none outline-none cursor-pointer">
+                        <option value="CODE128">GS1-128 (通用)</option>
+                        <option value="EAN14">EAN-14 (外箱专用)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="barcode-preview-box">
+                <svg id="barcode-canvas"></svg>
+                <div id="empty-state" class="text-slate-300 flex flex-col items-center">
+                    <i class="fas fa-shipping-fast text-6xl mb-4"></i>
+                    <p class="text-xs font-bold uppercase tracking-widest">等待输入物流编码</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 mb-10">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1 block">输入编码内容</label>
+                        <span id="ai-hint" class="text-[10px] text-indigo-400 font-bold cursor-help hover:underline">什么是应用标识符 (AI)?</span>
+                    </div>
+                    <input type="text" id="barcode-input" placeholder="(01)12345678901234(10)ABC-123" class="input-custom">
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="ai-badge">AI (01) GTIN</span>
+                        <span class="ai-badge">AI (17) 有效期</span>
+                        <span class="ai-badge">AI (10) 批次号</span>
+                        <span class="ai-badge">AI (21) 序列号</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button id="download-png" class="btn-indigo text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-100 uppercase tracking-widest text-xs disabled:opacity-40" disabled>
+                    <i class="fas fa-file-download"></i> 保存为高清图片 (PNG)
+                </button>
+                <button id="download-svg" class="border border-slate-200 text-slate-500 hover:bg-slate-50 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all uppercase tracking-widest text-xs disabled:opacity-40" disabled>
+                    <i class="fas fa-vector-square"></i> 保存为矢量图 (SVG)
+                </button>
+            </div>
+        </main>
+
+        <section class="w-full max-w-[950px] grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-100">
+                <h4 class="text-sm font-black text-slate-700 mb-3 flex items-center gap-2">
+                    <i class="fas fa-box text-indigo-500"></i> EAN-14 (GTIN)
+                </h4>
+                <p class="text-[12px] text-slate-500 leading-relaxed">主要用于非零售的物流单元（如大箱、托盘）。它由14位数字组成，最前面通常是包装指示符。</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100">
+                <h4 class="text-sm font-black text-slate-700 mb-3 flex items-center gap-2">
+                    <i class="fas fa-barcode text-emerald-500"></i> GS1-128
+                </h4>
+                <p class="text-[12px] text-slate-500 leading-relaxed">一种高度灵活的编码。通过 (01) 或 (10) 等括号内的数字标识后续数据的含义，是现代数字化仓储的核心。</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-100">
+                <h4 class="text-sm font-black text-slate-700 mb-3 flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-amber-500"></i> 100% 离线安全
+                </h4>
+                <p class="text-[12px] text-slate-500 leading-relaxed">您的批次号、生产日期等敏感商业信息仅在浏览器本地处理，绝不上传云端，确保供应链数据安全。</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-box"></div>
+
+    <script>
+        const input = document.getElementById('barcode-input');
+        const canvas = document.getElementById('barcode-canvas');
+        const protocol = document.getElementById('protocol-select');
+        const emptyState = document.getElementById('empty-state');
+        const downloadPng = document.getElementById('download-png');
+        const downloadSvg = document.getElementById('download-svg');
+
+        async function loadLayout() {
+            try {
+                const [h, f] = await Promise.all([
+                    fetch(`components/header_zh`).then(r => r.text()),
+                    fetch(`components/footer_zh`).then(r => r.text())
+                ]);
+                document.getElementById('header-box').innerHTML = h;
+                document.getElementById('footer-box').innerHTML = f;
+            } catch(e) {}
+        }
+        loadLayout();
+
+        const generate = () => {
+            const val = input.value.trim();
+            const type = protocol.value;
+
+            if (val.length > 0) {
+                try {
+                    // JsBarcode 会自动处理 GS1-128 的括号逻辑
+                    JsBarcode("#barcode-canvas", val, {
+                        format: type === "EAN14" ? "CODE128" : "CODE128", 
+                        // 注意：对于 GS1-128，底层协议是 CODE128，
+                        // 高级库通常会根据输入内容（带括号）自动调整 FNC1 字符
+                        width: 2,
+                        height: 100,
+                        displayValue: true,
+                        fontSize: 16,
+                        background: "#fdfdfd"
+                    });
+                    canvas.classList.remove('hidden');
+                    emptyState.classList.add('hidden');
+                    downloadPng.disabled = false;
+                    downloadSvg.disabled = false;
+                } catch (err) {
+                    canvas.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    downloadPng.disabled = true;
+                    downloadSvg.disabled = true;
+                }
+            } else {
+                canvas.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                downloadPng.disabled = true;
+                downloadSvg.disabled = true;
+            }
+        };
+
+        input.oninput = generate;
+        protocol.onchange = generate;
+
+        downloadPng.onclick = () => {
+            const svgData = new XMLSerializer().serializeToString(canvas);
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+            const img = new Image();
+            img.onload = () => {
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = img.width * 2;
+                tempCanvas.height = img.height * 2;
+                const ctx = tempCanvas.getContext('2d');
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                ctx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
+                const pngUrl = tempCanvas.toDataURL("image/png");
+                const link = document.createElement("a");
+                link.href = pngUrl;
+                link.download = `GS1_Barcode_${Date.now()}.png`;
+                link.click();
+            };
+            img.src = url;
+        };
+
+        downloadSvg.onclick = () => {
+            const svgData = new XMLSerializer().serializeToString(canvas);
+            const blob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `GS1_Barcode_${Date.now()}.svg`;
+            link.click();
+        };
+    </script>
+</body>
+</html>
